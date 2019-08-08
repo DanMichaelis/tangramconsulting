@@ -83,6 +83,7 @@ public class IssueConverterTests {
             
             for (IssueHistory issue : IssueList.getAllIssues()) {
                 System.out.println(issue.toString(true));
+                IssueConverter.toFile(issue);
             }
         } catch (IOException e) {
             e.printStackTrace();
