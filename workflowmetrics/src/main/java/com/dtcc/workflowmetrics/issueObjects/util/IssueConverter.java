@@ -99,28 +99,6 @@ public class IssueConverter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        ArrayList<String> transitionElements = new ArrayList<String>();
-        transitionElements.add(addNameValuePair("from_status", issue.getPreviousStatus()));
-        transitionElements.add(addNameValuePair("to_status", issue.getStatus()));
-        transitionElements.add(addNameValuePair("previous_status_duration", issue.getDurationInPreviousStatus()));
-
-        ArrayList<String> fields = new ArrayList<String>();
-        fields.add(addNameValuePair("key", issue.getKey()));
-        fields.add(addNameValuePair("summary", issue.getSummary()));
-        fields.add(addNameValuePair("description", issue.getDescription()));
-
-        sb.append(addStructure("transition", transitionElements));
-        sb.append(",");
-
-        sb.append(addStructure("issue", addStructure("fields", fields)));
-        sb.append(",");
-
-        sb.append(addNameValuePair("timestamp", issue.getEventDate().getTime()));
-
-        return encloseItem(sb.toString());
-        
-
         return null;
     }
 }
