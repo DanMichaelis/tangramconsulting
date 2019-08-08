@@ -19,6 +19,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dtcc.workflowmetrics.issueObjects.IssueHistory;
+import com.dtcc.workflowmetrics.issueObjects.IssueList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -61,9 +62,26 @@ public class IssueConverterTests {
     public void testFromAuditHistory() {
 
         try {
-            File testAuditHistory = new ClassPathResource("TestFiles/issueWithHistory.json").getFile();
+            //File testAuditHistory = new ClassPathResource("TestFiles/issueWithHistory.json").getFile();
+            File testAuditHistory = new ClassPathResource("TestFiles/CDAAS-7.json").getFile();
             ArrayList<IssueHistory> issues = IssueConverter.fromAuditToHistory(Files.contentOf(testAuditHistory, Charset.defaultCharset()));
             for (IssueHistory issue : issues) {
+                IssueList.addIssue(issue);
+            }
+            
+            testAuditHistory = new ClassPathResource("TestFiles/CDAAS-268.json").getFile();
+            issues = IssueConverter.fromAuditToHistory(Files.contentOf(testAuditHistory, Charset.defaultCharset()));
+            for (IssueHistory issue : issues) {
+                IssueList.addIssue(issue);
+            }
+            
+            testAuditHistory = new ClassPathResource("TestFiles/CDAAS-269.json").getFile();
+            issues = IssueConverter.fromAuditToHistory(Files.contentOf(testAuditHistory, Charset.defaultCharset()));
+            for (IssueHistory issue : issues) {
+                IssueList.addIssue(issue);
+            }
+            
+            for (IssueHistory issue : IssueList.getAllIssues()) {
                 System.out.println(issue.toString(true));
             }
         } catch (IOException e) {

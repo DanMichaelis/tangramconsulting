@@ -25,5 +25,13 @@ public class IssueList {
     public static final ArrayList<IssueHistory> getIssuesByKey(String key) {
         return issueList.get(key);
     }
-  
+     
+    public static final ArrayList<IssueHistory> getAllIssues() {
+        ArrayList<IssueHistory> issues = new ArrayList<IssueHistory>();
+        for (String key : issueList.keySet()) {
+            issues.addAll(issueList.get(key));
+        }
+        issues.sort(IssueComparatorFactory.getKeyAndDateComparator());
+        return issues;
+    }
 }
