@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class IssueHistory {
 
-    
     private IssueHistoryId id;
     private String issueType;
     private String previousStatus;
@@ -91,7 +90,6 @@ public class IssueHistory {
         return this;
     }
 
-
     public Date getEventDate() {
         return id.getEventDate();
     }
@@ -121,32 +119,44 @@ public class IssueHistory {
 
         return this;
     }
-    
+
     public String toJiraJSONFormat() {
         return IssueConverter.toJson(this);
-        
+
     }
-    
+
     public long getDurationInPreviousStatus() {
         return durationInPreviousStatus;
     }
 
     public IssueHistory setDurationInPreviousStatus(IssueHistory previousIssueHistory) {
         this.durationInPreviousStatus = getEventDate().getTime() - previousIssueHistory.getEventDate().getTime();
-    
-        return this;
-    }
-    public IssueHistory setDurationInPreviousStatus(Date previousEventDate) {
-        this.durationInPreviousStatus = getEventDate().getTime() - previousEventDate.getTime();
-    
+
         return this;
     }
 
+    public IssueHistory setDurationInPreviousStatus(Date previousEventDate) {
+        this.durationInPreviousStatus = getEventDate().getTime() - previousEventDate.getTime();
+
+        return this;
+    }
+
+    
+
     @Override
     public String toString() {
-        return "Issue [key=" + getKey() + ", previousStatus=" + previousStatus + ", currentStatus=" + status + ", statusDateTime="
-                + getEventDate() + ", issueType=" + issueType + ", title=" + summary + ", description="
-                + description + "]";
+        return "IssueHistory [id=" + id + ", issueType=" + issueType + ", previousStatus=" + previousStatus
+                + ", status=" + status + ", summary=" + summary + ", description=" + description
+                + ", durationInPreviousStatus=" + durationInPreviousStatus + "]";
+    }
+    
+    public String toString(Boolean brief) {
+        if (brief) {
+            return "IssueHistory [id=" + id + ", issueType=" + issueType + ", previousStatus=" + previousStatus
+                    + ", status=" + status + ", summary=" + summary 
+                    + ", durationInPreviousStatus=" + durationInPreviousStatus + "]";
+        }
+        return this.toString();
     }
 
     @Override

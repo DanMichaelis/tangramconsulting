@@ -1,7 +1,9 @@
 package com.dtcc.workflowmetrics.issueObjects.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
@@ -90,15 +92,81 @@ public class IssueConverter {
 
     }
 
-    public static final String fromAuditToHistory(String auditJSONString) {
+    public static final ArrayList<IssueHistory> fromAuditToHistory(String auditJSONString) {
+
+        // Create the return array to hold issues
+        ArrayList<IssueHistory> issues = new ArrayList<IssueHistory>();
+
+        // Create the nodes and other objects that we'll work with, so that we don't do
+        // that in loops.
         JsonNode auditNode = null;
+        JsonNode historyNodes = null;
+        JsonNode items = null;
+        IssueHistory issue = null;
+        IssueHistory newIssue = null;
+        Date lastStatusDate = null;
 
         try {
             auditNode = mapper.readTree(auditJSONString);
+
+            // Create the history record that indicates that the item was created; that's
+            // not represented the same way as it is in the webhook calL
+
+            issue = new IssueHistory();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZ");
+
+            try {
+                issue.setDescription(auditNode.at("/fields/description").asText())
+                        .setEventDate(sdf.parse(auditNode.at("/fields/created").asText()))
+                        .setDurationInPreviousStatus(issue.getEventDate())
+                        .setIssueType(auditNode.at("/fields/issuetype/name").asText())
+                        .setKey(auditNode.at("/key").asText()).setPreviousStatus(null).setStatus("To Do")
+                        .setSummary(auditNode.at("/fields/summary").asText());
+               
+                issues.add(issue);
+                
+                lastStatusDate = issue.getEventDate();
+            } catch (ParseException e) {
+                throw new RuntimeException("Couldn't parse issue " + auditJSONString, e);
+            }
+
+            historyNodes = auditNode.get("changelog").get("histories");
+
+            if (historyNodes.isArray()) {
+                for (JsonNode historyNode : historyNodes) {
+                    items = historyNode.get("items");
+                    for (JsonNode itemNode : items) {
+                        if (itemNode.at("/field").asText().toLowerCase().contentEquals("status")) {
+                            newIssue = cloneIssue(issue);
+                            newIssue.setStatus(itemNode.at("/toString").asText());
+                            newIssue.setPreviousStatus(itemNode.at("/fromString").asText());
+                            try {
+                                newIssue.setEventDate(sdf.parse(historyNode.at("/created").asText()));
+                            } catch (ParseException e) {
+                                throw new RuntimeException("Couldn't parse change log " + itemNode.toString(), e);
+                            }
+                            newIssue.setDurationInPreviousStatus(lastStatusDate);
+                            issues.add(newIssue);
+                            lastStatusDate = newIssue.getEventDate();
+                        }
+                    }
+                }
+            } else {
+                throw new RuntimeException("No arraynode at /changelog/histories");
+            }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return null;
+        return issues;
+    }
+
+    public static IssueHistory cloneIssue(IssueHistory originalIssue) {
+        IssueHistory clone = new IssueHistory();
+        clone.setDescription(originalIssue.getDescription()).setEventDate(originalIssue.getEventDate())
+                .setIssueType(originalIssue.getIssueType()).setKey(originalIssue.getKey())
+                .setPreviousStatus(originalIssue.getPreviousStatus()).setStatus(originalIssue.getStatus())
+                .setSummary(originalIssue.getSummary()).setDurationInPreviousStatus(originalIssue);
+        return clone;
     }
 }
