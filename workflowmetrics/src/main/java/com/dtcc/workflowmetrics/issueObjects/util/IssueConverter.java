@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.stream.Stream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +37,7 @@ public class IssueConverter {
         ArrayList<String> fields = new ArrayList<String>();
         fields.add(addNameValuePair("key", issue.getKey()));
         fields.add(addNameValuePair("summary", issue.getSummary()));
-        fields.add(addNameValuePair("description", issue.getDescription()));
+        //fields.add(addNameValuePair("description", issue.getDescription()));
 
         sb.append(addStructure("transition", transitionElements));
         sb.append(",");
@@ -168,5 +171,27 @@ public class IssueConverter {
                 .setPreviousStatus(originalIssue.getPreviousStatus()).setStatus(originalIssue.getStatus())
                 .setSummary(originalIssue.getSummary()).setDurationInPreviousStatus(originalIssue);
         return clone;
+    }
+
+    public static void convertJsonFilesInDirectory(String directory) {
+        
+        ArrayList<File> files = JsonFileReader.getAllFilesInDirectory(directory);
+        ArrayList<IssueHistory> issues = null;
+        
+        for (File f : files) {
+            StringBuilder contentBuilder = new StringBuilder();
+            try (Stream<String> stream = Files.lines( Paths.get(f.getAbsolutePath()), StandardCharsets.UTF_8))
+            {
+                stream.forEach(s -> contentBuilder.append(s).append("\n"));
+                issues = fromAuditToHistory(contentBuilder.toString());
+                issues.stream().forEach(i->toFile(i));
+            }
+            catch (IOException e)
+            {
+                throw new RuntimeException("Couldn't stream file " + f.getAbsolutePath(), e);
+            }
+            
+            
+        }
     }
 }

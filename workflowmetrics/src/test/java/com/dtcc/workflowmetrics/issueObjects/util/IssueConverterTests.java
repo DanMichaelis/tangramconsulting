@@ -42,8 +42,10 @@ public class IssueConverterTests {
     public void testStructureCreatorWithString() {
         ArrayList<String> elements = new ArrayList<String>();
         elements.add(IssueConverter.addNameValuePair("summary", "summary"));
-        elements.add(IssueConverter.addNameValuePair("desciption", "description"));
-        // System.out.println(IssueToJsonConverter.addStructure("fields", elements));
+        
+        // We'll need to put this back someday, but to avoid having to deal with the problem of special characters in the description field, we're going to ignore it for now.
+        //elements.add(IssueConverter.addNameValuePair("description", "description"));
+
         assertEquals("\"fields\":{\"summary\":\"summary\",\"desciption\":\"description\"}",
                 IssueConverter.addStructure("fields", elements));
 
@@ -88,6 +90,19 @@ public class IssueConverterTests {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    @Test
+    public void testJsonFileReader() {
+        ArrayList<File> files = JsonFileReader.getAllFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/test/resources/TestFiles");
+        for (File f : files) {
+            System.out.println("File:  " + f.getAbsolutePath());
+        }
+    }
+    
+    @Test
+    public void convertAuditFilesToHistoryFiles() {
+        IssueConverter.convertJsonFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/main/resources/junk");
     }
 
 }
