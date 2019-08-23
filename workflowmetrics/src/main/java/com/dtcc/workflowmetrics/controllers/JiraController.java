@@ -1,5 +1,6 @@
 package com.dtcc.workflowmetrics.controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -56,6 +57,12 @@ public class JiraController {
                 IssueConverter.toFile(generatedIssue);
             }
         }
+        return "Done";
+    }
+    
+    @RequestMapping("/jira/parsePulledIssueData")
+    public String parsePulledIssueData(@RequestParam(value = "loadDirectory", defaultValue = "ASPE") String loadDirectory) {
+        IssueConverter.convertJsonFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/main/resources/" + loadDirectory);
         return "Done";
     }
 }

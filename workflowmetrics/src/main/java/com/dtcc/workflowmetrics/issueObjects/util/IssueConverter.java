@@ -37,7 +37,9 @@ public class IssueConverter {
         ArrayList<String> fields = new ArrayList<String>();
         fields.add(addNameValuePair("key", issue.getKey()));
         fields.add(addNameValuePair("summary", issue.getSummary()));
-        //fields.add(addNameValuePair("description", issue.getDescription()));
+        fields.add(addNameValuePair("sysId", issue.getSysId()));
+        //fields.add(addNameValuePair("description", issue.getDescription())); 
+        fields.add(addStructure("issuetype", addNameValuePair("name", issue.getIssueType())));
 
         sb.append(addStructure("transition", transitionElements));
         sb.append(",");
@@ -124,7 +126,7 @@ public class IssueConverter {
                         .setDurationInPreviousStatus(issue.getEventDate())
                         .setIssueType(auditNode.at("/fields/issuetype/name").asText())
                         .setKey(auditNode.at("/key").asText()).setPreviousStatus(null).setStatus("To Do")
-                        .setSummary(auditNode.at("/fields/summary").asText());
+                        .setSummary(auditNode.at("/fields/summary").asText()).setSysId(auditNode.at("/fields/customfield_18506").asText());
                
                 issues.add(issue);
                 

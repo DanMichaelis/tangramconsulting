@@ -24,6 +24,9 @@ public class IssueHistory {
     private String summary;
     private String description;
     private long durationInPreviousStatus;
+    private String sysId;
+    
+
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public IssueHistory() {
@@ -47,7 +50,18 @@ public class IssueHistory {
         setKey(node.at("/issue/key").asText());
         setIssueType(node.at("/issue/issuetype/fields/type").asText());
         setSummary(node.at("/issue/fields/summary").asText());
+        setSysId(node.at("/issue/fields/customfield_18506").asText());
         setDescription(node.at("/issue/fields/description").asText());
+    }
+    
+    public String getSysId() {
+        return sysId;
+    }
+
+    public IssueHistory setSysId(String sysId) {
+        this.sysId = sysId;
+    
+        return this;
     }
 
     public String getSummary() {
@@ -141,20 +155,18 @@ public class IssueHistory {
         return this;
     }
 
-    
-
     @Override
     public String toString() {
         return "IssueHistory [id=" + id + ", issueType=" + issueType + ", previousStatus=" + previousStatus
                 + ", status=" + status + ", summary=" + summary + ", description=" + description
-                + ", durationInPreviousStatus=" + durationInPreviousStatus + "]";
+                + ", durationInPreviousStatus=" + durationInPreviousStatus + ", sysId=" + sysId + "]";
     }
-    
+
     public String toString(Boolean brief) {
         if (brief) {
             return "IssueHistory [id=" + id + ", issueType=" + issueType + ", previousStatus=" + previousStatus
                     + ", status=" + status + ", summary=" + summary 
-                    + ", durationInPreviousStatus=" + durationInPreviousStatus + "]";
+                    + ", durationInPreviousStatus=" + durationInPreviousStatus + ", SysId= " + sysId + "]";
         }
         return this.toString();
     }
@@ -163,13 +175,14 @@ public class IssueHistory {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((status == null) ? 0 : status.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + (int) (durationInPreviousStatus ^ (durationInPreviousStatus >>> 32));
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((issueType == null) ? 0 : issueType.hashCode());
-        result = prime * result + ((getKey() == null) ? 0 : getKey().hashCode());
         result = prime * result + ((previousStatus == null) ? 0 : previousStatus.hashCode());
-        result = prime * result + ((getEventDate() == null) ? 0 : getEventDate().hashCode());
+        result = prime * result + ((status == null) ? 0 : status.hashCode());
         result = prime * result + ((summary == null) ? 0 : summary.hashCode());
+        result = prime * result + ((sysId == null) ? 0 : sysId.hashCode());
         return result;
     }
 
@@ -182,42 +195,46 @@ public class IssueHistory {
         if (getClass() != obj.getClass())
             return false;
         IssueHistory other = (IssueHistory) obj;
-        if (status == null) {
-            if (other.status != null)
-                return false;
-        } else if (!status.equals(other.status))
-            return false;
         if (description == null) {
             if (other.description != null)
                 return false;
         } else if (!description.equals(other.description))
+            return false;
+        if (durationInPreviousStatus != other.durationInPreviousStatus)
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
             return false;
         if (issueType == null) {
             if (other.issueType != null)
                 return false;
         } else if (!issueType.equals(other.issueType))
             return false;
-        if (getKey() == null) {
-            if (other.getKey() != null)
-                return false;
-        } else if (!getKey().equals(other.getKey()))
-            return false;
         if (previousStatus == null) {
             if (other.previousStatus != null)
                 return false;
         } else if (!previousStatus.equals(other.previousStatus))
             return false;
-        if (getEventDate() == null) {
-            if (other.getEventDate() != null)
+        if (status == null) {
+            if (other.status != null)
                 return false;
-        } else if (!getEventDate().equals(other.getEventDate()))
+        } else if (!status.equals(other.status))
             return false;
         if (summary == null) {
             if (other.summary != null)
                 return false;
         } else if (!summary.equals(other.summary))
             return false;
+        if (sysId == null) {
+            if (other.sysId != null)
+                return false;
+        } else if (!sysId.equals(other.sysId))
+            return false;
         return true;
     }
+
+    
 
 }

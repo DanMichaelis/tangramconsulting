@@ -46,8 +46,9 @@ public class IssueConverterTests {
         // We'll need to put this back someday, but to avoid having to deal with the problem of special characters in the description field, we're going to ignore it for now.
         //elements.add(IssueConverter.addNameValuePair("description", "description"));
 
-        assertEquals("\"fields\":{\"summary\":\"summary\",\"desciption\":\"description\"}",
-                IssueConverter.addStructure("fields", elements));
+        //assertEquals("\"fields\":{\"summary\":\"summary\",\"desciption\":\"description\"}",
+        //        IssueConverter.addStructure("fields", elements));
+        assertEquals("\"fields\":{\"summary\":\"summary\"}", IssueConverter.addStructure("fields", elements));
 
         System.out.println(IssueConverter.addStructure("issue", IssueConverter.addStructure("fields", elements)));
     }
@@ -102,7 +103,7 @@ public class IssueConverterTests {
     
     @Test
     public void convertAuditFilesToHistoryFiles() {
-        IssueConverter.convertJsonFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/main/resources/junk");
+        IssueConverter.convertJsonFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/main/resources/ASPE");
     }
 
 }
