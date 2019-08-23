@@ -7,25 +7,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  private _msg : String;
-  private _show = false;
+  private _msg: String;
+  showPanel: Boolean;
 
   constructor() {
-	  this._msg = null;
+    this._msg = null;
+    this.showPanel = false;
   }
 
   clearError() {
-    this._show = false;
+    this.showPanel = false;
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
-  set msg (msg : String) {
+  set msg(msg: String) {
     this._msg = msg;
-    this._show = true;
+    this.showPanel = msg !== null && msg.length > 0;
   }
 
-  get msg(): String {return this._msg;}
-
-  get show() : Boolean {return this._show}
+  get msg(): String { return this._msg; }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MissingTranslationStrategy } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-warning',
@@ -6,26 +7,33 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./warning.component.css']
 })
 export class WarningComponent implements OnInit {
-
-	 private _msg : String;
-  private _show = false;
+  
+  private _msg : String;
+  showPanel : Boolean = false;
 
   constructor() {
-	  this._msg = null;
+    this._msg = null;
+    this.showPanel = false;
+    console.log("showPanel: " + this.showPanel);
   }
 
   clearError() {
-    this._show = false;
+    this.showPanel = false;
+    console.log("showPanel: " + this.showPanel);
   }
   ngOnInit() {}
 
   set msg (msg : String) {
     this._msg = msg;
-    this._show = true;
+    
+    if (msg !== null && msg.length > 0) {
+      this.showPanel = true;
+    } else {
+      this.showPanel = false;
+    }
+    console.log("showPanel: " + this.showPanel);
   }
 
   get msg(): String {return this._msg;}
-
-  get show() : Boolean {return this._show}
 
 }
