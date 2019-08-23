@@ -1,3 +1,7 @@
 <p>
-  generate-test-data works!
+  How many issues do you want to generate? <input [(ngModel)]="generatedTestCases" (input)="setGeneratedTestCasePhrase(false)">
+  <br>
+  <span [innerText]="generatedTestCasePhrase" [class.d-none]="generatedTestCases == undefined || generatedTestCases == null || generatedTestCases == 0"></span>
+  <br>
+  <button type="button" clas="btn btn-primary" (click)="generateTestData()">Generate Test Data</button>
 </p>

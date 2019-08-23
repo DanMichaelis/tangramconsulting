@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import {FormsModule} from '@angular/Forms';	
 import { ErrorComponent } from './error-component/error.component';
 import {WarningComponent} from './warning-component/warning.component';
 import { GenerateTestDataComponent } from './generate-test-data/generate-test-data.component';
