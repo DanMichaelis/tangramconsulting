@@ -8,21 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ErrorComponent implements OnInit {
 
   private _msg: String;
-  showPanel: Boolean;
+  showComponent: Boolean;
 
   constructor() {
     this._msg = null;
-    this.showPanel = false;
+    this.showComponent = false;
   }
 
   clearError() {
-    this.showPanel = false;
+    this.showComponent = false;
   }
   ngOnInit() { }
 
   set msg(msg: String) {
     this._msg = msg;
-    this.showPanel = msg !== null && msg.length > 0;
+    this.showComponent = msg !== null && msg.length > 0;
   }
 
   get msg(): String { return this._msg; }

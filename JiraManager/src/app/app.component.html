@@ -1,54 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="/assets/JiraSquare.png" width="25" height="25" hspace="10">Jira
-            Manager</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle show" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        (click)="toggleShowDropdown()">
-                        Management Options
-                    </a>
-                    <div class="dropdown-menu" [ngClass]="{'show': isShowDropdown}" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost:10000/jira/parsePulledIssueData">Parse Pulled
-                            Data</a>
-                        <a class="dropdown-item" href="#"
-                            (click)="manuallyPullIssueData($event); toggleShowDropdown()">Generate Test Data</a>
-                        <a class="dropdown-item" href="#"
-                            (click)="manuallyPullIssueData($event); toggleShowDropdown()">Get Issue History by Key</a>
-                        <a class="dropdown-item" href="#"
-                            (click)="manuallyPullIssueData($event); toggleShowDropdown()">Manually Pull Jira Issue</a>
-                        <div class="dropdown-divider"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div>
+                <navbar-component></navbar-component>
+                <div class="container">
+                    <div class="col-xs-6">
+                        <app-generate-test-data *ngIf="getSelectedComponent().toString() === 'Generate Test Data'">
+                        </app-generate-test-data>
+                        <app-parse-jira-data *ngIf="getSelectedComponent().toString() === 'Parse Pulled Data'">
+                        </app-parse-jira-data>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <div>
+                    <app-warning></app-warning>
+                    <app-error></app-error>
+                </div>
+            </div>
         </div>
-    </nav>
-    <div>
-       
-    </div>
-    <div class="container">
-        <div class="col-xs-6">
-            <app-generate-test-data></app-generate-test-data>
-        </div>
-        <div class="col-xs-6">
-            
-        </div>
-    </div>
-    <div>
-        <app-warning></app-warning>
-        <app-error></app-error>
-         <button (click)="toggleErrorMessage(null)">Clear Error</button>
-        <button (click)="toggleWarningMessage(null)">Clear Warning</button>
     </div>
 </div>
