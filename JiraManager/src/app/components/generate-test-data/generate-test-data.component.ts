@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormsModule} from '@angular/Forms';
+import { FormsModule } from '@angular/Forms';
 
 @Component({
   selector: 'app-generate-test-data',
@@ -10,9 +10,9 @@ export class GenerateTestDataComponent implements OnInit {
 
   _showPanel: Boolean = false;
   generatedTestCases: Number = 0;
-  generatedTestCasePhrase: String = '0 test cases will be generated';
+  generatedTestCasePhrase: string = '0 test cases will be generated';
 
-  constructor() { 
+  constructor() {
     this.setGeneratedTestCasePhrase(false);
   }
 
@@ -21,9 +21,9 @@ export class GenerateTestDataComponent implements OnInit {
 
   setGeneratedTestCasePhrase(isGenerated: Boolean) {
     if (!isGenerated) {
-    this.generatedTestCasePhrase =  this.generatedTestCases + ' test cases will be generated';
+      this.generatedTestCasePhrase = this.generatedTestCases + ' test cases will be generated';
     } else {
-      this.generatedTestCasePhrase =  this.generatedTestCases + ' test cases have been generated';
+      this.generatedTestCasePhrase = this.generatedTestCases + ' test cases have been generated';
     }
   }
 

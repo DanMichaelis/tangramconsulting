@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ErrorMessage } from 'src/app/dataobjects/errormessage';
 
 @Component({
   selector: 'app-error',
@@ -7,11 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  private _msg: String;
+  private msg: ErrorMessage;
   showComponent: Boolean;
 
   constructor() {
-    this._msg = null;
     this.showComponent = false;
   }
 
@@ -20,11 +20,12 @@ export class ErrorComponent implements OnInit {
   }
   ngOnInit() { }
 
-  set msg(msg: String) {
-    this._msg = msg;
-    this.showComponent = msg !== null && msg.length > 0;
+  setMessage(msg: ErrorMessage) {
+    this.msg = msg;
+    this.showComponent = (msg.getErrorMessage() && msg.getErrorMessage().length > 0);
   }
 
-  get msg(): String { return this._msg; }
-
+  public toString(): string {
+    return this.msg.toString();
+  }
 }

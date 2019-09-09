@@ -10,7 +10,7 @@ import { element } from '@angular/core/src/render3';
 export class ParseJiraDataComponent implements OnInit {
 
   inputFiles: Array<File> = [];
-  inputFileMessage: String = 'No file selected';
+  inputFileMessage: string = 'No file selected';
   showPanel: Boolean = false;
 
   constructor() { }
@@ -21,9 +21,9 @@ export class ParseJiraDataComponent implements OnInit {
 
   handleFileInput(files: FileList) {
 
-   Array.from(files).forEach(item => {
-     this.inputFiles.push(item);
-   })
+    Array.from(files).forEach(item => {
+      this.inputFiles.push(item);
+    })
 
     this.inputFiles.forEach(item => {
       console.log(item.name);

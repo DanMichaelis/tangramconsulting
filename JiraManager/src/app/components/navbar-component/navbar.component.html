@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="/assets/JiraSquare.png" width="25" height="25" hspace="10">Jira
+    <a class="navbar-brand" href="#"><img src="/assets/JiraSquare.png" class="img-responsive" style="max-height: 25px"
+            hspace="10">Jira
         Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +10,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#" (click)="clearSelectedOperation()">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" (click)="clearSelectedOperation()">Home <span
+                        class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle show" href="#" id="navbarDropdown" role="button"
@@ -27,7 +29,8 @@
                         Issue History
                         by Key</a>
                     <a class="dropdown-item" href="#"
-                        (click)="setSelectedOperation($event); toggleShowDropdown()">Manually Pull Jira
+                        (click)="setSelectedOperation($event); toggleShowDropdown()">Manually
+                        Pull Jira
                         Issue</a>
                     <div class="dropdown-divider"></div>
                 </div>

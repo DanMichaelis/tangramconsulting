@@ -3,18 +3,23 @@
     <div class="row">
         <div class="col-xs-12">
             <div>
-                <navbar-component></navbar-component>
+                <app-navbar-component></app-navbar-component>
                 <div class="container">
                     <div class="col-xs-6">
                         <app-generate-test-data *ngIf="getSelectedComponent().toString() === 'Generate Test Data'">
                         </app-generate-test-data>
                         <app-parse-jira-data *ngIf="getSelectedComponent().toString() === 'Parse Pulled Data'">
                         </app-parse-jira-data>
+                        <app-gethistorybykey-component
+                            *ngIf="getSelectedComponent().toString() === 'Get Issue History by Key'">
+                        </app-gethistorybykey-component>
+                        <app-manually-pull-jira-issue
+                            *ngIf="getSelectedComponent().toString() === 'Manually Pull Jira Issue'">
+                        </app-manually-pull-jira-issue>
                     </div>
                 </div>
                 <div>
-                    <app-warning></app-warning>
-                    <app-error></app-error>
+                    <app-message-box></app-message-box>
                 </div>
             </div>
         </div>
