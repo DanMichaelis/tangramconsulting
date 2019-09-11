@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ErrorComponent } from '../error-component/error.component';
-import { WarningComponent } from '../warning-component/warning.component';
-import { ErrorMessage } from 'src/app/dataobjects/errormessage';
+
+import { UserMessageList } from 'src/app/dataobjects/userMessage/usermessagelist';
+import { UserMessage } from 'src/app/dataobjects/userMessage/usermessage';
 
 @Component({
   selector: 'app-message-box',
@@ -10,28 +10,19 @@ import { ErrorMessage } from 'src/app/dataobjects/errormessage';
 })
 export class MessageBoxComponent implements OnInit {
 
-  private errorMessage: ErrorMessage;
+  messageList: UserMessage[] = [];
+  showComponent: boolean;
 
-  constructor() { }
+  constructor(public userMessageList: UserMessageList) {
+    this.messageList = this.userMessageList.getAllMessages();
+    this.showComponent = this.messageList.length > 0 && this.messageList[0] !== null;
 
-  ngOnInit() {
   }
 
-  @ViewChild(ErrorComponent)
-  errorComponent: ErrorComponent;
-
-  @ViewChild(WarningComponent)
-  warningComponent: WarningComponent;
-
-  public setMessage(msg: ErrorMessage) {
-    this.errorMessage = msg;
-    console.log(msg.getSeverity().toLowerCase() === 'warning');
-    if (msg.getSeverity().toLowerCase() === 'warning') {
-      console.log('Setting warning message:  ' + msg.toString());
-      this.warningComponent.setMessage(this.errorMessage);
-    }
-    if (msg.getSeverity().toLowerCase() === 'error') {
-      this.errorComponent.setMessage(this.errorMessage);
-    }
+  ngOnInit() {
+    this.userMessageList.subscribe(update => {
+      this.messageList = this.userMessageList.getAllMessages();
+      this.showComponent = this.messageList.length > 0 && this.messageList[0] !== null;
+    })
   }
 }

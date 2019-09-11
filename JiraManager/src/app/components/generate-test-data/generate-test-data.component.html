@@ -1,9 +1,10 @@
 <p>
-  How many issues do you want to generate? <input [(ngModel)]="generatedTestCases" (input)="setGeneratedTestCasePhrase(false)">
+  How many issues do you want to generate? <input [(ngModel)]="generatedTestCases"
+    (input)="setGeneratedTestCasePhrase(false)">
   <br>
   <span [innerText]="generatedTestCasePhrase" *ngIf="getShowPanel()"></span>
   <br>
-  <button type="button" class="btn btn-primary" (click)="generateTestData()" *ngIf="getShowPanel()">Generate Test Data</button>
+  <button type="button" class="btn btn-primary" (click)="generateTestData()"
+    *ngIf="getShowPanel()">Generate Test
+    Data</button>
 </p>
-<app-warning></app-warning>
-<app-error></app-error>

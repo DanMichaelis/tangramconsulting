@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ErrorComponent } from '../application-message-box-component/error-component/error.component';
-import { MessageBoxComponent } from '../application-message-box-component/message-box/message-box.component';
-import { ErrorMessage } from 'src/app/dataobjects/errormessage';
+import { Component, OnInit } from '@angular/core';
+
+
+import { UserMessage } from 'src/app/dataobjects/userMessage/usermessage';
+import { UserMessageList } from 'src/app/dataobjects/userMessage/usermessagelist';
 
 
 @Component({
@@ -11,23 +12,10 @@ import { ErrorMessage } from 'src/app/dataobjects/errormessage';
 })
 
 export class GethistorybykeyComponent implements OnInit {
-  @ViewChild(MessageBoxComponent)
-  messageBox: MessageBoxComponent;
-
-  private errorMessage: ErrorMessage;
-
   constructor() {
-    this.errorMessage = ErrorMessage.getErrorByErrorNumber(9000);
+    UserMessageList.addMessage(new UserMessage('Get History Not Yet Implemented', 9000, 'WARNING'));
   }
-
   ngOnInit() {
-    this.setErrorMessage();
+
   }
-
-
-
-  setErrorMessage() {
-    this.messageBox.setMessage(this.errorMessage);
-  }
-
 }

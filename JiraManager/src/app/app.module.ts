@@ -9,9 +9,10 @@ import { NavbarComponent } from './components/navbar-component/navbar.component'
 import { ParseJiraDataComponent } from './components/parse-jira-data-component/parse-jira-data.component';
 import { GethistorybykeyComponent } from './components/gethistorybykey-component/gethistorybykey.component';
 import { MessageBoxComponent } from './components/application-message-box-component/message-box/message-box.component';
-import { ErrorComponent } from './components/application-message-box-component/error-component/error.component';
-import { WarningComponent } from './components/application-message-box-component/warning-component/warning.component';
 import { ManuallyPullJiraIssueComponent } from './components/manually-pull-jira-issue/manually-pull-jira-issue.component';
+import { UserMessageService } from './Services/usermessage.service';
+import { UserMessageList } from './dataobjects/userMessage/usermessagelist';
+import { MetricsCollectionInteractionService } from './Services/metricscollectioninteraction.service';
 
 
 @NgModule({
@@ -22,8 +23,6 @@ import { ManuallyPullJiraIssueComponent } from './components/manually-pull-jira-
         ParseJiraDataComponent,
         GethistorybykeyComponent,
         MessageBoxComponent,
-        ErrorComponent,
-        WarningComponent,
         ManuallyPullJiraIssueComponent
     ],
     imports: [
@@ -31,7 +30,7 @@ import { ManuallyPullJiraIssueComponent } from './components/manually-pull-jira-
         FormsModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [UserMessageService, UserMessageList, MetricsCollectionInteractionService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

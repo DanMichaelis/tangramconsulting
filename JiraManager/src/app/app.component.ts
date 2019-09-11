@@ -3,7 +3,8 @@ import { NavbarComponent } from './components/navbar-component/navbar.component'
 import { GenerateTestDataComponent } from './components/generate-test-data/generate-test-data.component';
 import { GethistorybykeyComponent } from './components/gethistorybykey-component/gethistorybykey.component';
 import { MessageBoxComponent } from './components/application-message-box-component/message-box/message-box.component';
-import { ErrorMessage } from './dataobjects/errormessage';
+import { UserMessage } from './dataobjects/userMessage/usermessage';
+
 
 @Component({
 
@@ -19,20 +20,8 @@ export class AppComponent {
 	@ViewChild(NavbarComponent)
 	private navbarComponent: NavbarComponent;
 
-	@ViewChild(GenerateTestDataComponent)
-	private generateTestDataComponent: GenerateTestDataComponent;
-
-	@ViewChild(GethistorybykeyComponent)
-	private getHistoryByKeyComponent: GethistorybykeyComponent;
-
-	@ViewChild(MessageBoxComponent)
-	messageBox: MessageBoxComponent;
-
 	getSelectedComponent(): String {
 		return this.navbarComponent.selectedOperation;
 	}
 
-	onErrorOccurred(eventData: ErrorMessage) {
-
-	}
 }

@@ -3,15 +3,14 @@
     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
   </div>
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
-      (change)="handleFileInput($event.target.files)" multiple>
+    <input type="file" class="custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01" (change)="handleFileInput($event.target.files)"
+      multiple>
     <label class="custom-file-label" for="inputGroupFile01">What file do you want to parse?</label>
   </div>
 </div>
 <hr>
 <ul>
-Files to be parsed:
-<li *ngFor="let item of inputFiles">{{item.name}}</li>
+  Files to be parsed:
+  <li *ngFor="let item of inputFiles">{{item.name}}</li>
 </ul>
-<app-warning></app-warning>
-<app-error></app-error>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MessageBoxComponent } from '../application-message-box-component/message-box/message-box.component';
-import { ErrorMessage } from 'src/app/dataobjects/errormessage';
+
+import { UserMessageList } from 'src/app/dataobjects/userMessage/usermessagelist';
+import { MetricsCollectionInteractionService } from 'src/app/Services/metricscollectioninteraction.service';
 
 @Component({
   selector: 'app-manually-pull-jira-issue',
@@ -9,23 +10,22 @@ import { ErrorMessage } from 'src/app/dataobjects/errormessage';
 })
 export class ManuallyPullJiraIssueComponent implements OnInit {
 
-  @ViewChild(MessageBoxComponent)
-  messageBox: MessageBoxComponent;
+  projectToParse: string = null;
+  methodResponse: string = null;
 
-  private errorMessage: ErrorMessage;
+  constructor(private userMsgSvc: UserMessageList,
+    public metricsCollectionSvc: MetricsCollectionInteractionService) {
 
-  constructor() {
-    this.errorMessage = ErrorMessage.getErrorByErrorNumber(9000);
   }
 
   ngOnInit() {
-    this.setErrorMessage();
+
   }
 
-
-
-  setErrorMessage() {
-    this.messageBox.setMessage(this.errorMessage);
+  parseProject() {
+    this.metricsCollectionSvc.invokeFileParsing(this.projectToParse);
+    console.log('Method Response:  ' + this.methodResponse);
   }
+
 
 }

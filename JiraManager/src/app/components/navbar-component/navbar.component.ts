@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import { ErrorMessage } from 'src/app/dataobjects/errormessage';
 import { MessageBoxComponent } from '../application-message-box-component/message-box/message-box.component';
+import { UserMessage } from 'src/app/dataobjects/userMessage/usermessage';
 
 
 @Component({
@@ -14,10 +14,10 @@ export class NavbarComponent implements OnInit {
   isErrored: Boolean = false;
   isWarninged: Boolean = false;
   selectedOperation: string = '';
-  errorMessage: ErrorMessage;
+  errorMessage: UserMessage;
 
   @Output('onOptionSelected') optionSelected = new EventEmitter<{ navItemSelected: string }>();
-  @Output('onErrorOccurred') errorOccured = new EventEmitter<{ errorMessage: ErrorMessage }>();
+  @Output('onErrorOccurred') errorOccured = new EventEmitter<{ errorMessage: UserMessage }>();
 
   @ViewChild(MessageBoxComponent)
   messageBox: MessageBoxComponent;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.dtcc.workflowmetrics.util.simulator.workflows.WorkflowGenerator;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class JiraController {
 
@@ -62,7 +64,8 @@ public class JiraController {
     
     @RequestMapping("/jira/parsePulledIssueData")
     public String parsePulledIssueData(@RequestParam(value = "loadDirectory", defaultValue = "ASPE") String loadDirectory) {
+        System.out.println("Inside parsePulledIssueData");
         IssueConverter.convertJsonFilesInDirectory("/Users/dan.michaelis/CodeProjects/tangramconsulting/workflowmetrics/src/main/resources/" + loadDirectory);
-        return "Done";
+        return "{\"status\":\"Complete\"}";
     }
 }
