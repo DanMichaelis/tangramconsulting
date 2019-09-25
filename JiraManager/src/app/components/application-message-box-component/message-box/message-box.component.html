@@ -1,9 +1,10 @@
-<div class="container fixed-bottom" *ngIf='showComponent'>
-  <div class="row">
-    <div class="col-xs-12">
+<div class="container fixed-bottom row pre-scrollable" style="max-height: 10%"
+  *ngIf='showComponent'>
+  <div>
+    <div>
       <div>
         <p *ngFor='let msg of messageList'>
-          {{msg.getType()}}({{msg.getSeverity()}}) - {{msg.getNumber()}}: {{msg.getMessage()}}
+          <app-usermessage [msg]='msg'></app-usermessage>
         </p>
       </div>
     </div>

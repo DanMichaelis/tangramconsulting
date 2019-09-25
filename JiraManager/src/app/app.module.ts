@@ -13,6 +13,7 @@ import { ManuallyPullJiraIssueComponent } from './components/manually-pull-jira-
 import { UserMessageService } from './Services/usermessage.service';
 import { UserMessageList } from './dataobjects/userMessage/usermessagelist';
 import { MetricsCollectionInteractionService } from './Services/metricscollectioninteraction.service';
+import { UserMessageComponent } from './components/application-message-box-component/usermessage/usermessage.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MetricsCollectionInteractionService } from './Services/metricscollectio
         ParseJiraDataComponent,
         GethistorybykeyComponent,
         MessageBoxComponent,
-        ManuallyPullJiraIssueComponent
+        ManuallyPullJiraIssueComponent,
+        UserMessageComponent
     ],
     imports: [
         BrowserModule,
