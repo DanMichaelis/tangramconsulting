@@ -1,30 +1,31 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
-public class Watches {
+public class CustomField {
     private String self;
-    private Integer watchCount;
-    private Boolean isWatching;
+    private String value;
+    private Integer id;
+    
     public String getSelf() {
         return self;
     }
-    public Watches setSelf(String self) {
+    public CustomField setSelf(String self) {
         this.self = self;
     
         return this;
     }
-    public Integer getWatchCount() {
-        return watchCount;
+    public String getValue() {
+        return value;
     }
-    public Watches setWatchCount(Integer watchCount) {
-        this.watchCount = watchCount;
+    public CustomField setValue(String value) {
+        this.value = value;
     
         return this;
     }
-    public Boolean getIsWatching() {
-        return isWatching;
+    public Integer getId() {
+        return id;
     }
-    public Watches setIsWatching(Boolean isWatching) {
-        this.isWatching = isWatching;
+    public CustomField setId(Integer id) {
+        this.id = id;
     
         return this;
     }
@@ -32,9 +33,9 @@ public class Watches {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((isWatching == null) ? 0 : isWatching.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((self == null) ? 0 : self.hashCode());
-        result = prime * result + ((watchCount == null) ? 0 : watchCount.hashCode());
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
         return result;
     }
     @Override
@@ -48,12 +49,12 @@ public class Watches {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Watches other = (Watches) obj;
-        if (isWatching == null) {
-            if (other.isWatching != null) {
+        CustomField other = (CustomField) obj;
+        if (id == null) {
+            if (other.id != null) {
                 return false;
             }
-        } else if (!isWatching.equals(other.isWatching)) {
+        } else if (!id.equals(other.id)) {
             return false;
         }
         if (self == null) {
@@ -63,11 +64,11 @@ public class Watches {
         } else if (!self.equals(other.self)) {
             return false;
         }
-        if (watchCount == null) {
-            if (other.watchCount != null) {
+        if (value == null) {
+            if (other.value != null) {
                 return false;
             }
-        } else if (!watchCount.equals(other.watchCount)) {
+        } else if (!value.equals(other.value)) {
             return false;
         }
         return true;
@@ -75,15 +76,13 @@ public class Watches {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Watches [self=");
+        builder.append("CustomField [self=");
         builder.append(self);
-        builder.append(", watchCount=");
-        builder.append(watchCount);
-        builder.append(", isWatching=");
-        builder.append(isWatching);
+        builder.append(", value=");
+        builder.append(value);
+        builder.append(", id=");
+        builder.append(id);
         builder.append("]");
         return builder.toString();
     }
-    
-    
 }

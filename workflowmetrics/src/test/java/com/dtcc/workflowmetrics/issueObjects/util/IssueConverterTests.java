@@ -18,8 +18,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
-import com.dtcc.workflowmetrics.metricsitems.IssueList;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

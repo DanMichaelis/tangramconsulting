@@ -2,7 +2,7 @@ package com.dtcc.workflowmetrics.issueObjects.util;
 
 import java.util.Comparator;
 
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 
 public class IssueComparatorFactory {
 

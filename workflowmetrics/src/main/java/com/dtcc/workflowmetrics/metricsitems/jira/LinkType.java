@@ -1,48 +1,48 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
-public class StatusCategory {
-    private String self;
-    private Integer id;
-    private String key;
-    private String colorName;
+public class LinkType {
+    private String id;
     private String name;
-    public String getSelf() {
-        return self;
-    }
-    public StatusCategory setSelf(String self) {
-        this.self = self;
-    
-        return this;
-    }
-    public Integer getId() {
+    private String inward;
+    private String outward;
+    private String self;
+    public String getId() {
         return id;
     }
-    public StatusCategory setId(Integer id) {
+    public LinkType setId(String id) {
         this.id = id;
-    
-        return this;
-    }
-    public String getKey() {
-        return key;
-    }
-    public StatusCategory setKey(String key) {
-        this.key = key;
-    
-        return this;
-    }
-    public String getColorName() {
-        return colorName;
-    }
-    public StatusCategory setColorName(String colorName) {
-        this.colorName = colorName;
     
         return this;
     }
     public String getName() {
         return name;
     }
-    public StatusCategory setName(String name) {
+    public LinkType setName(String name) {
         this.name = name;
+    
+        return this;
+    }
+    public String getInward() {
+        return inward;
+    }
+    public LinkType setInward(String inward) {
+        this.inward = inward;
+    
+        return this;
+    }
+    public String getOutward() {
+        return outward;
+    }
+    public LinkType setOutward(String outward) {
+        this.outward = outward;
+    
+        return this;
+    }
+    public String getSelf() {
+        return self;
+    }
+    public LinkType setSelf(String self) {
+        this.self = self;
     
         return this;
     }
@@ -50,10 +50,10 @@ public class StatusCategory {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((colorName == null) ? 0 : colorName.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
+        result = prime * result + ((inward == null) ? 0 : inward.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((outward == null) ? 0 : outward.hashCode());
         result = prime * result + ((self == null) ? 0 : self.hashCode());
         return result;
     }
@@ -68,14 +68,7 @@ public class StatusCategory {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        StatusCategory other = (StatusCategory) obj;
-        if (colorName == null) {
-            if (other.colorName != null) {
-                return false;
-            }
-        } else if (!colorName.equals(other.colorName)) {
-            return false;
-        }
+        LinkType other = (LinkType) obj;
         if (id == null) {
             if (other.id != null) {
                 return false;
@@ -83,11 +76,11 @@ public class StatusCategory {
         } else if (!id.equals(other.id)) {
             return false;
         }
-        if (key == null) {
-            if (other.key != null) {
+        if (inward == null) {
+            if (other.inward != null) {
                 return false;
             }
-        } else if (!key.equals(other.key)) {
+        } else if (!inward.equals(other.inward)) {
             return false;
         }
         if (name == null) {
@@ -95,6 +88,13 @@ public class StatusCategory {
                 return false;
             }
         } else if (!name.equals(other.name)) {
+            return false;
+        }
+        if (outward == null) {
+            if (other.outward != null) {
+                return false;
+            }
+        } else if (!outward.equals(other.outward)) {
             return false;
         }
         if (self == null) {
@@ -109,19 +109,17 @@ public class StatusCategory {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("StatusCategory [self=");
-        builder.append(self);
-        builder.append(", id=");
+        builder.append("LinkType [id=");
         builder.append(id);
-        builder.append(", key=");
-        builder.append(key);
-        builder.append(", colorName=");
-        builder.append(colorName);
         builder.append(", name=");
         builder.append(name);
+        builder.append(", inward=");
+        builder.append(inward);
+        builder.append(", outward=");
+        builder.append(outward);
+        builder.append(", self=");
+        builder.append(self);
         builder.append("]");
         return builder.toString();
-    }  
-    
+    }
 }
-                        

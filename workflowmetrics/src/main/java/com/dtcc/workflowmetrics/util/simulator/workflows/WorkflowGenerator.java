@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 
 public class WorkflowGenerator {
     

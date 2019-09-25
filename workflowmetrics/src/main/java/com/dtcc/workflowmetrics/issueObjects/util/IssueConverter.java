@@ -17,9 +17,9 @@ import java.nio.file.StandardOpenOption;
 
 import org.springframework.core.env.Environment;
 
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
-import com.dtcc.workflowmetrics.metricsitems.IssueHistoryId;
-import com.dtcc.workflowmetrics.metricsitems.JiraIssue;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistoryId;
+import com.dtcc.workflowmetrics.metricsitems.jira.JiraIssue;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

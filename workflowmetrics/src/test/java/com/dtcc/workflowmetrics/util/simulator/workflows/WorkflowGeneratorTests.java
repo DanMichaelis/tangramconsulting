@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
