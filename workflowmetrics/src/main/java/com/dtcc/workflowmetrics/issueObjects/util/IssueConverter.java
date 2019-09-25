@@ -17,14 +17,28 @@ import java.nio.file.StandardOpenOption;
 
 import org.springframework.core.env.Environment;
 
-import com.dtcc.workflowmetrics.issueObjects.IssueHistory;
-import com.dtcc.workflowmetrics.issueObjects.IssueHistoryId;
+import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.IssueHistoryId;
+import com.dtcc.workflowmetrics.metricsitems.JiraIssue;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class IssueConverter {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = (new ObjectMapper()).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    
+
+    
+    public static final JiraIssue toJiraIssue(String issueJson) {
+        try {
+            JiraIssue issue = mapper.readValue(issueJson, JiraIssue.class);
+            return issue;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
     public static final String toJson(IssueHistory issue) {
         StringBuffer sb = new StringBuffer();
@@ -115,7 +129,7 @@ public class IssueConverter {
             auditNode = mapper.readTree(auditJSONString);
 
             // Create the history record that indicates that the item was created; that's
-            // not represented the same way as it is in the webhook calL
+            // not represented the same way as it is in the webhook call
 
             issue = new IssueHistory();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZ");
@@ -174,26 +188,37 @@ public class IssueConverter {
                 .setSummary(originalIssue.getSummary()).setDurationInPreviousStatus(originalIssue);
         return clone;
     }
-
+    
     public static void convertJsonFilesInDirectory(String directory) {
-        
         ArrayList<File> files = JsonFileReader.getAllFilesInDirectory(directory);
-        ArrayList<IssueHistory> issues = null;
-        
         for (File f : files) {
-            StringBuilder contentBuilder = new StringBuilder();
-            try (Stream<String> stream = Files.lines( Paths.get(f.getAbsolutePath()), StandardCharsets.UTF_8))
-            {
-                stream.forEach(s -> contentBuilder.append(s).append("\n"));
-                issues = fromAuditToHistory(contentBuilder.toString());
-                issues.stream().forEach(i->toFile(i));
+            try {
+                byte[] fileBytes = Files.readAllBytes(f.toPath());
+                JiraIssue issue = IssueConverter.toJiraIssue(new String(fileBytes));
+                System.out.println(issue.toString());
+                
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-            catch (IOException e)
-            {
-                throw new RuntimeException("Couldn't stream file " + f.getAbsolutePath(), e);
-            }
-            
-            
         }
     }
+
+    /*
+     * public static void convertJsonFilesInDirectory(String directory) {
+     * 
+     * ArrayList<File> files = JsonFileReader.getAllFilesInDirectory(directory);
+     * ArrayList<IssueHistory> issues = null;
+     * 
+     * for (File f : files) { StringBuilder contentBuilder = new StringBuilder();
+     * try (Stream<String> stream = Files.lines( Paths.get(f.getAbsolutePath()),
+     * StandardCharsets.UTF_8)) { stream.forEach(s ->
+     * contentBuilder.append(s).append("\n")); issues =
+     * fromAuditToHistory(contentBuilder.toString());
+     * issues.stream().forEach(i->toFile(i)); } catch (IOException e) { throw new
+     * RuntimeException("Couldn't stream file " + f.getAbsolutePath(), e); }
+     * 
+     * 
+     * } }
+     */
 }

@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.issueObjects;
+package com.dtcc.workflowmetrics.metricsitems;
 
 import java.util.Date;
 

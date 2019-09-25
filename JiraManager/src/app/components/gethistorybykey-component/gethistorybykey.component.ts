@@ -12,8 +12,8 @@ import { UserMessageList } from 'src/app/dataobjects/userMessage/usermessagelist
 })
 
 export class GethistorybykeyComponent implements OnInit {
-  constructor() {
-    UserMessageList.addMessage(new UserMessage('Get History Not Yet Implemented', 9000, 'WARNING'));
+  constructor(userMessageList: UserMessageList) {
+    userMessageList.addMessage(new UserMessage('Get History Not Yet Implemented', 9000, 'WARNING'));
   }
   ngOnInit() {
 

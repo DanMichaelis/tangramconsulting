@@ -1,14 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div>
             <div>
                 <app-navbar-component></app-navbar-component>
                 <div class="container">
-                    <div class="col-xs-6">
-                        <app-generate-test-data *ngIf="getSelectedComponent().toString() === 'Generate Test Data'">
+                    <div>
+                        <app-generate-test-data
+                            *ngIf="getSelectedComponent().toString() === 'Generate Test Data'">
                         </app-generate-test-data>
-                        <app-parse-jira-data *ngIf="getSelectedComponent().toString() === 'Parse Pulled Data'">
+                        <app-parse-jira-data
+                            *ngIf="getSelectedComponent().toString() === 'Parse Pulled Data'">
                         </app-parse-jira-data>
                         <app-gethistorybykey-component
                             *ngIf="getSelectedComponent().toString() === 'Get Issue History by Key'">
