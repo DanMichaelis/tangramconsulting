@@ -2,9 +2,6 @@ package com.dtcc.workflowmetrics.metricsitems.jira;
 
 import java.util.ArrayList;
 
-import com.dtcc.workflowmetrics.metricsitems.JsonTypeBean;
-import com.dtcc.workflowmetrics.metricsitems.ScreenID;
-
 public class Field {
     private String id;
     private String name;

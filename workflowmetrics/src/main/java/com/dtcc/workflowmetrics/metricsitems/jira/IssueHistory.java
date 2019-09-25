@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
 import java.io.IOException;
 import java.util.Date;

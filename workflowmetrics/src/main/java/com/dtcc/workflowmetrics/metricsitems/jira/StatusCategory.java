@@ -1,39 +1,48 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
-public class Priority {
+public class StatusCategory {
     private String self;
-    private String iconUrl;
+    private Integer id;
+    private String key;
+    private String colorName;
     private String name;
-    private String id;
     public String getSelf() {
         return self;
     }
-    public Priority setSelf(String self) {
+    public StatusCategory setSelf(String self) {
         this.self = self;
     
         return this;
     }
-    public String getIconUrl() {
-        return iconUrl;
+    public Integer getId() {
+        return id;
     }
-    public Priority setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
+    public StatusCategory setId(Integer id) {
+        this.id = id;
+    
+        return this;
+    }
+    public String getKey() {
+        return key;
+    }
+    public StatusCategory setKey(String key) {
+        this.key = key;
+    
+        return this;
+    }
+    public String getColorName() {
+        return colorName;
+    }
+    public StatusCategory setColorName(String colorName) {
+        this.colorName = colorName;
     
         return this;
     }
     public String getName() {
         return name;
     }
-    public Priority setName(String name) {
+    public StatusCategory setName(String name) {
         this.name = name;
-    
-        return this;
-    }
-    public String getId() {
-        return id;
-    }
-    public Priority setId(String id) {
-        this.id = id;
     
         return this;
     }
@@ -41,8 +50,9 @@ public class Priority {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((iconUrl == null) ? 0 : iconUrl.hashCode());
+        result = prime * result + ((colorName == null) ? 0 : colorName.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((key == null) ? 0 : key.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((self == null) ? 0 : self.hashCode());
         return result;
@@ -58,12 +68,12 @@ public class Priority {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Priority other = (Priority) obj;
-        if (iconUrl == null) {
-            if (other.iconUrl != null) {
+        StatusCategory other = (StatusCategory) obj;
+        if (colorName == null) {
+            if (other.colorName != null) {
                 return false;
             }
-        } else if (!iconUrl.equals(other.iconUrl)) {
+        } else if (!colorName.equals(other.colorName)) {
             return false;
         }
         if (id == null) {
@@ -71,6 +81,13 @@ public class Priority {
                 return false;
             }
         } else if (!id.equals(other.id)) {
+            return false;
+        }
+        if (key == null) {
+            if (other.key != null) {
+                return false;
+            }
+        } else if (!key.equals(other.key)) {
             return false;
         }
         if (name == null) {
@@ -92,15 +109,19 @@ public class Priority {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Priority [self=");
+        builder.append("StatusCategory [self=");
         builder.append(self);
-        builder.append(", iconUrl=");
-        builder.append(iconUrl);
-        builder.append(", name=");
-        builder.append(name);
         builder.append(", id=");
         builder.append(id);
+        builder.append(", key=");
+        builder.append(key);
+        builder.append(", colorName=");
+        builder.append(colorName);
+        builder.append(", name=");
+        builder.append(name);
         builder.append("]");
         return builder.toString();
-    }
+    }  
+    
 }
+                        

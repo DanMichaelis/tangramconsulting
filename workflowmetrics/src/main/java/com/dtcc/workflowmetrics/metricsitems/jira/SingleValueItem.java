@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
 public class SingleValueItem {
     private String lastViewed;

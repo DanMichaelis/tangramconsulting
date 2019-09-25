@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
-import com.dtcc.workflowmetrics.metricsitems.IssueHistory;
-import com.dtcc.workflowmetrics.metricsitems.IssueList;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
 import com.dtcc.workflowmetrics.util.simulator.workflows.WorkflowGenerator;
 
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
 import java.util.ArrayList;
 import java.util.HashMap;

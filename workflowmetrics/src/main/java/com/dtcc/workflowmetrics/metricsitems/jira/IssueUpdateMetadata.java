@@ -1,8 +1,6 @@
-package com.dtcc.workflowmetrics.metricsitems;
+package com.dtcc.workflowmetrics.metricsitems.jira;
 
 import java.util.ArrayList;
-
-import com.dtcc.workflowmetrics.metricsitems.jira.Field;
 
 public class IssueUpdateMetadata {
     ArrayList<Field> fields;
