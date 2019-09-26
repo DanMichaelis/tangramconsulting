@@ -1,14 +1,14 @@
 package com.dtcc.workflowmetrics.metricsitems.jira;
 
 public class SingleValueItem {
-    private String lastViewed;
+    private String item;
 
     public String getLastViewed() {
-        return lastViewed;
+        return item;
     }
 
     public SingleValueItem setLastViewed(String lastViewed) {
-        this.lastViewed = lastViewed;
+        this.item = lastViewed;
     
         return this;
     }
@@ -17,7 +17,7 @@ public class SingleValueItem {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((lastViewed == null) ? 0 : lastViewed.hashCode());
+        result = prime * result + ((item == null) ? 0 : item.hashCode());
         return result;
     }
 
@@ -33,11 +33,11 @@ public class SingleValueItem {
             return false;
         }
         SingleValueItem other = (SingleValueItem) obj;
-        if (lastViewed == null) {
-            if (other.lastViewed != null) {
+        if (item == null) {
+            if (other.item != null) {
                 return false;
             }
-        } else if (!lastViewed.equals(other.lastViewed)) {
+        } else if (!item.equals(other.item)) {
             return false;
         }
         return true;
@@ -47,7 +47,7 @@ public class SingleValueItem {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("LastViewed [lastViewed=");
-        builder.append(lastViewed);
+        builder.append(item);
         builder.append("]");
         return builder.toString();
     }

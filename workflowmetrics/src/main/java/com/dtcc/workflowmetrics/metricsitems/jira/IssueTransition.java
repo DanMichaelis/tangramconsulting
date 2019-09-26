@@ -1,5 +1,7 @@
 package com.dtcc.workflowmetrics.metricsitems.jira;
 
+import com.dtcc.workflowmetrics.metricsitems.jira.common.StatusDetails;
+
 public class IssueTransition {
     private String id;
     private String name;

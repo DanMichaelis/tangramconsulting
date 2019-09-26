@@ -1,57 +1,40 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
-public class StatusDetails {
+public class Resolution {
     private String self;
+    private Integer id;
     private String description;
-    private String iconUrl;
     private String name;
-    private String id;
-    private StatusCategory statusCategory;
+    
     public String getSelf() {
         return self;
     }
-    public StatusDetails setSelf(String self) {
+    public Resolution setSelf(String self) {
         this.self = self;
+    
+        return this;
+    }
+    public Integer getId() {
+        return id;
+    }
+    public Resolution setId(Integer id) {
+        this.id = id;
     
         return this;
     }
     public String getDescription() {
         return description;
     }
-    public StatusDetails setDescription(String description) {
+    public Resolution setDescription(String description) {
         this.description = description;
-    
-        return this;
-    }
-    public String getIconUrl() {
-        return iconUrl;
-    }
-    public StatusDetails setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
     
         return this;
     }
     public String getName() {
         return name;
     }
-    public StatusDetails setName(String name) {
+    public Resolution setName(String name) {
         this.name = name;
-    
-        return this;
-    }
-    public String getId() {
-        return id;
-    }
-    public StatusDetails setId(String id) {
-        this.id = id;
-    
-        return this;
-    }
-    public StatusCategory getStatusCategory() {
-        return statusCategory;
-    }
-    public StatusDetails setStatusCategory(StatusCategory statusCategory) {
-        this.statusCategory = statusCategory;
     
         return this;
     }
@@ -60,11 +43,9 @@ public class StatusDetails {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((description == null) ? 0 : description.hashCode());
-        result = prime * result + ((iconUrl == null) ? 0 : iconUrl.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((self == null) ? 0 : self.hashCode());
-        result = prime * result + ((statusCategory == null) ? 0 : statusCategory.hashCode());
         return result;
     }
     @Override
@@ -78,19 +59,12 @@ public class StatusDetails {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        StatusDetails other = (StatusDetails) obj;
+        Resolution other = (Resolution) obj;
         if (description == null) {
             if (other.description != null) {
                 return false;
             }
         } else if (!description.equals(other.description)) {
-            return false;
-        }
-        if (iconUrl == null) {
-            if (other.iconUrl != null) {
-                return false;
-            }
-        } else if (!iconUrl.equals(other.iconUrl)) {
             return false;
         }
         if (id == null) {
@@ -114,31 +88,21 @@ public class StatusDetails {
         } else if (!self.equals(other.self)) {
             return false;
         }
-        if (statusCategory == null) {
-            if (other.statusCategory != null) {
-                return false;
-            }
-        } else if (!statusCategory.equals(other.statusCategory)) {
-            return false;
-        }
         return true;
     }
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("StatusDetails [self=");
+        builder.append("Resolution [self=");
         builder.append(self);
-        builder.append(", description=");
-        builder.append(description);
-        builder.append(", iconUrl=");
-        builder.append(iconUrl);
-        builder.append(", name=");
-        builder.append(name);
         builder.append(", id=");
         builder.append(id);
-        builder.append(", statusCategory=");
-        builder.append(statusCategory);
+        builder.append(", description=");
+        builder.append(description);
+        builder.append(", name=");
+        builder.append(name);
         builder.append("]");
         return builder.toString();
-    } 
+    }
+    
 }

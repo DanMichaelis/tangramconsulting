@@ -1,33 +1,26 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
-public class IssueType {
+import com.dtcc.workflowmetrics.metricsitems.jira.StatusCategory;
+
+public class StatusDetails {
     private String self;
-    private String id;
     private String description;
     private String iconUrl;
     private String name;
-    private Boolean subtask;
-    private String avatarId;
+    private String id;
+    private StatusCategory statusCategory;
     public String getSelf() {
         return self;
     }
-    public IssueType setSelf(String self) {
+    public StatusDetails setSelf(String self) {
         this.self = self;
-    
-        return this;
-    }
-    public String getId() {
-        return id;
-    }
-    public IssueType setId(String id) {
-        this.id = id;
     
         return this;
     }
     public String getDescription() {
         return description;
     }
-    public IssueType setDescription(String description) {
+    public StatusDetails setDescription(String description) {
         this.description = description;
     
         return this;
@@ -35,7 +28,7 @@ public class IssueType {
     public String getIconUrl() {
         return iconUrl;
     }
-    public IssueType setIconUrl(String iconUrl) {
+    public StatusDetails setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     
         return this;
@@ -43,24 +36,24 @@ public class IssueType {
     public String getName() {
         return name;
     }
-    public IssueType setName(String name) {
+    public StatusDetails setName(String name) {
         this.name = name;
     
         return this;
     }
-    public Boolean getSubtask() {
-        return subtask;
+    public String getId() {
+        return id;
     }
-    public IssueType setSubtask(Boolean subtask) {
-        this.subtask = subtask;
+    public StatusDetails setId(String id) {
+        this.id = id;
     
         return this;
     }
-    public String getAvatarId() {
-        return avatarId;
+    public StatusCategory getStatusCategory() {
+        return statusCategory;
     }
-    public IssueType setAvatarId(String avatarId) {
-        this.avatarId = avatarId;
+    public StatusDetails setStatusCategory(StatusCategory statusCategory) {
+        this.statusCategory = statusCategory;
     
         return this;
     }
@@ -68,13 +61,12 @@ public class IssueType {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((avatarId == null) ? 0 : avatarId.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((iconUrl == null) ? 0 : iconUrl.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((self == null) ? 0 : self.hashCode());
-        result = prime * result + ((subtask == null) ? 0 : subtask.hashCode());
+        result = prime * result + ((statusCategory == null) ? 0 : statusCategory.hashCode());
         return result;
     }
     @Override
@@ -88,21 +80,7 @@ public class IssueType {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        IssueType other = (IssueType) obj;
-        if (name == null) {
-            if (other.name != null) {
-                return false;
-            }
-        } else if (!name.equals(other.name)) {
-            return false;
-        }
-        if (avatarId == null) {
-            if (other.avatarId != null) {
-                return false;
-            }
-        } else if (!avatarId.equals(other.avatarId)) {
-            return false;
-        }
+        StatusDetails other = (StatusDetails) obj;
         if (description == null) {
             if (other.description != null) {
                 return false;
@@ -124,6 +102,13 @@ public class IssueType {
         } else if (!id.equals(other.id)) {
             return false;
         }
+        if (name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!name.equals(other.name)) {
+            return false;
+        }
         if (self == null) {
             if (other.self != null) {
                 return false;
@@ -131,11 +116,11 @@ public class IssueType {
         } else if (!self.equals(other.self)) {
             return false;
         }
-        if (subtask == null) {
-            if (other.subtask != null) {
+        if (statusCategory == null) {
+            if (other.statusCategory != null) {
                 return false;
             }
-        } else if (!subtask.equals(other.subtask)) {
+        } else if (!statusCategory.equals(other.statusCategory)) {
             return false;
         }
         return true;
@@ -143,22 +128,19 @@ public class IssueType {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("IssueType [self=");
+        builder.append("StatusDetails [self=");
         builder.append(self);
-        builder.append(", id=");
-        builder.append(id);
         builder.append(", description=");
         builder.append(description);
         builder.append(", iconUrl=");
         builder.append(iconUrl);
-        builder.append(", Name=");
+        builder.append(", name=");
         builder.append(name);
-        builder.append(", subtask=");
-        builder.append(subtask);
-        builder.append(", avatarId=");
-        builder.append(avatarId);
+        builder.append(", id=");
+        builder.append(id);
+        builder.append(", statusCategory=");
+        builder.append(statusCategory);
         builder.append("]");
         return builder.toString();
-    }
-    
+    } 
 }
