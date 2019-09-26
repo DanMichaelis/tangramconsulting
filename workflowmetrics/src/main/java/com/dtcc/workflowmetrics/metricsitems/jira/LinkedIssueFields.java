@@ -1,5 +1,8 @@
 package com.dtcc.workflowmetrics.metricsitems.jira;
 
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.StatusDetails;
+
 public class LinkedIssueFields {
     private String summary;
     private String description;

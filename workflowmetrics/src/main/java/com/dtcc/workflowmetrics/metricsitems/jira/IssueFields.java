@@ -2,6 +2,11 @@ package com.dtcc.workflowmetrics.metricsitems.jira;
 
 import java.util.ArrayList;
 
+import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.IssueLink;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Watches;
+
 public class IssueFields {
     private ArrayList<CustomField> customFields;
     private Resolution resolution;

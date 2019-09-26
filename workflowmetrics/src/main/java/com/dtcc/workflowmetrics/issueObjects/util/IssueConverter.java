@@ -20,13 +20,15 @@ import org.springframework.core.env.Environment;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistoryId;
 import com.dtcc.workflowmetrics.metricsitems.jira.JiraIssue;
+import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class IssueConverter {
 
-    private static final ObjectMapper mapper = (new ObjectMapper()).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    private static final ObjectMapper mapper = (new ObjectMapper()).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     
 
     
@@ -221,4 +223,22 @@ public class IssueConverter {
      * 
      * } }
      */
+    
+    public static WebhookData webhookJSONToWebhookData(String webhookJSON) {
+        WebhookData data = null;
+        try {
+            data = mapper.readValue(webhookJSON, WebhookData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Couldn't parse JSON string from webhook:  " + webhookJSON, e);
+        }
+        try {
+            System.out.println("Converted Data:  " + mapper.writeValueAsString(data));    
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        
+        return data;
+    }
 }

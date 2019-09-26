@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
+import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
 import com.dtcc.workflowmetrics.util.simulator.workflows.WorkflowGenerator;
 
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,9 +29,9 @@ public class JiraController {
     @RequestMapping("/jira/addIssue")
     public void jiraMessage(@RequestHeader MultiValueMap<String, String> headers, @RequestBody String inboundBody) {
         System.out.println("Service Invocation " + counter++);
-        System.out.println(inboundBody);
-        IssueHistory issue = new IssueHistory(inboundBody);
-        IssueList.addIssue(issue);
+        System.out.println("Data:  " + inboundBody);
+        WebhookData issue = IssueConverter.webhookJSONToWebhookData(inboundBody);
+        //IssueList.addIssue(issue);
     }
 
     @RequestMapping("/jira/getIssueByKey")

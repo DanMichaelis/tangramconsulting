@@ -1,4 +1,7 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
+
+import com.dtcc.workflowmetrics.metricsitems.jira.LinkType;
+import com.dtcc.workflowmetrics.metricsitems.jira.LinkedIssue;
 
 public class IssueLink {
     private String id;
