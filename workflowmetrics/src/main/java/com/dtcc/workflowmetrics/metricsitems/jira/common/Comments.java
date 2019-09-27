@@ -11,6 +11,7 @@ public class Comments {
         return comments;
     }
     public Comments setComments(ArrayList<Comment> comments) {
+        System.out.println("Setting comments");
         this.comments = comments;
     
         return this;

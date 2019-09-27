@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
 public class FixVersion {
     private String self;
-    private String id;
+    private Integer id;
     private String description;
     private String name;
     private Boolean archived;
@@ -16,10 +16,10 @@ public class FixVersion {
     
         return this;
     }
-    public String getId() {
+    public Integer getId() {
         return id;
     }
-    public FixVersion setId(String id) {
+    public FixVersion setId(Integer id) {
         this.id = id;
     
         return this;

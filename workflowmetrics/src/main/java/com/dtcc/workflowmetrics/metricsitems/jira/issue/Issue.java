@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.issue;
 
 import java.util.ArrayList;
 
-public class JiraIssue {
+public class Issue {
     private String expand;
     private String id;
     private String self;
@@ -14,7 +14,7 @@ public class JiraIssue {
         return expand;
     }
 
-    public JiraIssue setExpand(String expand) {
+    public Issue setExpand(String expand) {
         this.expand = expand;
 
         return this;
@@ -24,7 +24,7 @@ public class JiraIssue {
         return id;
     }
 
-    public JiraIssue setId(String id) {
+    public Issue setId(String id) {
         this.id = id;
 
         return this;
@@ -34,7 +34,7 @@ public class JiraIssue {
         return self;
     }
 
-    public JiraIssue setSelf(String self) {
+    public Issue setSelf(String self) {
         this.self = self;
 
         return this;
@@ -44,7 +44,7 @@ public class JiraIssue {
         return key;
     }
 
-    public JiraIssue setKey(String key) {
+    public Issue setKey(String key) {
         this.key = key;
 
         return this;
@@ -54,7 +54,7 @@ public class JiraIssue {
         return fields;
     }
 
-    public JiraIssue setFields(IssueFields fields) {
+    public Issue setFields(IssueFields fields) {
         this.fields = fields;
 
         return this;
@@ -64,7 +64,7 @@ public class JiraIssue {
         return changelog;
     }
 
-    public JiraIssue setChangelog(Changelog changelog) {
+    public Issue setChangelog(Changelog changelog) {
         this.changelog = changelog;
 
         return this;
@@ -94,7 +94,7 @@ public class JiraIssue {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        JiraIssue other = (JiraIssue) obj;
+        Issue other = (Issue) obj;
         if (changelog == null) {
             if (other.changelog != null) {
                 return false;

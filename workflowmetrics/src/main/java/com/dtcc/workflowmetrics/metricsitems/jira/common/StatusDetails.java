@@ -1,7 +1,5 @@
 package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.StatusCategory;
-
 public class StatusDetails {
     private String self;
     private String description;

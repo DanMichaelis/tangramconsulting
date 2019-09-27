@@ -2,13 +2,13 @@ package com.dtcc.workflowmetrics.metricsitems.jira.webhook;
 
 import java.util.ArrayList;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.FixVersion;
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueType;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Comment;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Comments;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Component;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.FixVersion;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.IssueLink;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Project;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Resolution;
@@ -17,7 +17,7 @@ import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Watches;
 
 public class Fields {
-    private IssueType issueType;
+    private Issuetype issueType;
     private ArrayList<Component> components;
     private String timespent;
     private String timeoriginalestimate;
@@ -47,10 +47,12 @@ public class Fields {
     private String updated;
     private StatusDetails status;
     private ArrayList<CustomField> customFields;
-    public IssueType getIssueType() {
+    
+    public Issuetype getIssuetype() {
         return issueType;
     }
-    public Fields setIssueType(IssueType issueType) {
+    public Fields setIssuetype(Issuetype issueType) {
+        System.out.println("Setting issuetype");
         this.issueType = issueType;
     
         return this;

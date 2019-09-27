@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.issue;
 
 public class Item {
     private String field;

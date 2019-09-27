@@ -19,7 +19,7 @@ import org.springframework.core.env.Environment;
 
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistoryId;
-import com.dtcc.workflowmetrics.metricsitems.jira.JiraIssue;
+import com.dtcc.workflowmetrics.metricsitems.jira.issue.Issue;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,9 +32,9 @@ public class IssueConverter {
     
 
     
-    public static final JiraIssue toJiraIssue(String issueJson) {
+    public static final Issue toJiraIssue(String issueJson) {
         try {
-            JiraIssue issue = mapper.readValue(issueJson, JiraIssue.class);
+            Issue issue = mapper.readValue(issueJson, Issue.class);
             return issue;
         } catch (IOException e) {
             e.printStackTrace();
@@ -196,7 +196,7 @@ public class IssueConverter {
         for (File f : files) {
             try {
                 byte[] fileBytes = Files.readAllBytes(f.toPath());
-                JiraIssue issue = IssueConverter.toJiraIssue(new String(fileBytes));
+                Issue issue = IssueConverter.toJiraIssue(new String(fileBytes));
                 System.out.println(issue.toString());
                 
             } catch (IOException e) {

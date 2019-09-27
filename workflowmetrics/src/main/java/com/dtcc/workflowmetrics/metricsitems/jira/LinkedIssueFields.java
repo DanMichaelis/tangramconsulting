@@ -1,5 +1,6 @@
 package com.dtcc.workflowmetrics.metricsitems.jira;
 
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.StatusDetails;
 
@@ -8,7 +9,7 @@ public class LinkedIssueFields {
     private String description;
     private StatusDetails status;
     private Priority priority;
-    private IssueType issuetype;
+    private Issuetype issuetype;
     public String getSummary() {
         return summary;
     }
@@ -41,10 +42,10 @@ public class LinkedIssueFields {
     
         return this;
     }
-    public IssueType getIssuetype() {
+    public Issuetype getIssuetype() {
         return issuetype;
     }
-    public LinkedIssueFields setIssuetype(IssueType issuetype) {
+    public LinkedIssueFields setIssuetype(Issuetype issuetype) {
         this.issuetype = issuetype;
     
         return this;
