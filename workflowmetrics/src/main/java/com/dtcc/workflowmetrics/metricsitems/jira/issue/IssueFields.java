@@ -1,32 +1,36 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.issue;
 
 import java.util.ArrayList;
 
 import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.FixVersion;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.IssueLink;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Resolution;
+import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Watches;
 
 public class IssueFields {
     private ArrayList<CustomField> customFields;
     private Resolution resolution;
-    private SingleValueItem lastViewed;
-    private SingleValueItem aggregatetimeinitialestimate;
+    private String lastViewed;
+    private String aggregatetimeinitialestimate;
     private ArrayList<IssueLink> issuelinks;
-    private IssueType issuetype;
-    private SingleValueItem timetracking;
-    private SingleValueItem environment;
-    private SingleValueItem timeestimate;
-    private SingleValueItem workratio;
+    private Issuetype issuetype;
+    private String timetracking;
+    private String environment;
+    private String timeestimate;
+    private String workratio;
     private ArrayList<String> labels;
-    private Reporter reporter;
+    private User reporter;
     private Watches watches;
     private String description;
     private ArrayList<FixVersion> fixVersions;
     private Priority priority;
     private String created;
-    private ArrayList<SingleValueItem> attachment;
-    private Reporter assignee;
+    private ArrayList<String> attachment;
+    private User assignee;
     public ArrayList<CustomField> getCustomFields() {
         return customFields;
     }
@@ -43,18 +47,18 @@ public class IssueFields {
     
         return this;
     }
-    public SingleValueItem getLastViewed() {
+    public String getLastViewed() {
         return lastViewed;
     }
-    public IssueFields setLastViewed(SingleValueItem lastViewed) {
+    public IssueFields setLastViewed(String lastViewed) {
         this.lastViewed = lastViewed;
     
         return this;
     }
-    public SingleValueItem getAggregatetimeinitialestimate() {
+    public String getAggregatetimeinitialestimate() {
         return aggregatetimeinitialestimate;
     }
-    public IssueFields setAggregatetimeinitialestimate(SingleValueItem aggregatetimeinitialestimate) {
+    public IssueFields setAggregatetimeinitialestimate(String aggregatetimeinitialestimate) {
         this.aggregatetimeinitialestimate = aggregatetimeinitialestimate;
     
         return this;
@@ -67,42 +71,42 @@ public class IssueFields {
     
         return this;
     }
-    public IssueType getIssuetype() {
+    public Issuetype getIssuetype() {
         return issuetype;
     }
-    public IssueFields setIssuetype(IssueType issuetype) {
+    public IssueFields setIssuetype(Issuetype issuetype) {
         this.issuetype = issuetype;
     
         return this;
     }
-    public SingleValueItem getTimetracking() {
+    public String getTimetracking() {
         return timetracking;
     }
-    public IssueFields setTimetracking(SingleValueItem timetracking) {
+    public IssueFields setTimetracking(String timetracking) {
         this.timetracking = timetracking;
     
         return this;
     }
-    public SingleValueItem getEnvironment() {
+    public String getEnvironment() {
         return environment;
     }
-    public IssueFields setEnvironment(SingleValueItem environment) {
+    public IssueFields setEnvironment(String environment) {
         this.environment = environment;
     
         return this;
     }
-    public SingleValueItem getTimeestimate() {
+    public String getTimeestimate() {
         return timeestimate;
     }
-    public IssueFields setTimeestimate(SingleValueItem timeestimate) {
+    public IssueFields setTimeestimate(String timeestimate) {
         this.timeestimate = timeestimate;
     
         return this;
     }
-    public SingleValueItem getWorkratio() {
+    public String getWorkratio() {
         return workratio;
     }
-    public IssueFields setWorkratio(SingleValueItem workratio) {
+    public IssueFields setWorkratio(String workratio) {
         this.workratio = workratio;
     
         return this;
@@ -115,10 +119,10 @@ public class IssueFields {
     
         return this;
     }
-    public Reporter getReporter() {
+    public User getUser() {
         return reporter;
     }
-    public IssueFields setReporter(Reporter reporter) {
+    public IssueFields setUser(User reporter) {
         this.reporter = reporter;
     
         return this;
@@ -163,19 +167,19 @@ public class IssueFields {
     
         return this;
     }
-    public ArrayList<SingleValueItem> getAttachment() {
+    public ArrayList<String> getAttachment() {
         return attachment;
     }
-    public IssueFields setAttachment(ArrayList<SingleValueItem> attachment) {
+    public IssueFields setAttachment(ArrayList<String> attachment) {
         this.attachment = attachment;
     
         return this;
     }
-    public Reporter getAssignee() {
+    public User getAssignee() {
         return assignee;
     }
 
-    public IssueFields setAssignee(Reporter assignee) {
+    public IssueFields setAssignee(User assignee) {
         this.assignee = assignee;
     
         return this;

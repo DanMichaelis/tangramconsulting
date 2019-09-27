@@ -1,6 +1,8 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.issue;
 
 import java.util.ArrayList;
+
+import com.dtcc.workflowmetrics.metricsitems.jira.common.Author;
 
 public class History {
     private Integer id;

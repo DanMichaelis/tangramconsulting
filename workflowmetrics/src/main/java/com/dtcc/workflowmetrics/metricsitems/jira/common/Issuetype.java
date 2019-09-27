@@ -1,6 +1,6 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
-public class IssueType {
+public class Issuetype {
     private String self;
     private String id;
     private String description;
@@ -11,7 +11,7 @@ public class IssueType {
     public String getSelf() {
         return self;
     }
-    public IssueType setSelf(String self) {
+    public Issuetype setSelf(String self) {
         this.self = self;
     
         return this;
@@ -19,7 +19,7 @@ public class IssueType {
     public String getId() {
         return id;
     }
-    public IssueType setId(String id) {
+    public Issuetype setId(String id) {
         this.id = id;
     
         return this;
@@ -27,7 +27,7 @@ public class IssueType {
     public String getDescription() {
         return description;
     }
-    public IssueType setDescription(String description) {
+    public Issuetype setDescription(String description) {
         this.description = description;
     
         return this;
@@ -35,7 +35,7 @@ public class IssueType {
     public String getIconUrl() {
         return iconUrl;
     }
-    public IssueType setIconUrl(String iconUrl) {
+    public Issuetype setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     
         return this;
@@ -43,7 +43,7 @@ public class IssueType {
     public String getName() {
         return name;
     }
-    public IssueType setName(String name) {
+    public Issuetype setName(String name) {
         this.name = name;
     
         return this;
@@ -51,7 +51,7 @@ public class IssueType {
     public Boolean getSubtask() {
         return subtask;
     }
-    public IssueType setSubtask(Boolean subtask) {
+    public Issuetype setSubtask(Boolean subtask) {
         this.subtask = subtask;
     
         return this;
@@ -59,7 +59,7 @@ public class IssueType {
     public String getAvatarId() {
         return avatarId;
     }
-    public IssueType setAvatarId(String avatarId) {
+    public Issuetype setAvatarId(String avatarId) {
         this.avatarId = avatarId;
     
         return this;
@@ -88,7 +88,7 @@ public class IssueType {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        IssueType other = (IssueType) obj;
+        Issuetype other = (Issuetype) obj;
         if (name == null) {
             if (other.name != null) {
                 return false;

@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
 public class StatusCategory {
     private String self;
