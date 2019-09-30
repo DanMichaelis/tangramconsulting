@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dtcc.workflowmetrics.dataaccess.rest.IssueRESTDAO;
 import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
@@ -31,13 +32,15 @@ public class JiraController {
         System.out.println("Service Invocation " + counter++);
         System.out.println("Data:  " + inboundBody);
         WebhookData issue = IssueConverter.webhookJSONToWebhookData(inboundBody);
+        System.out.println(issue);
+        
         //IssueList.addIssue(issue);
     }
 
     @RequestMapping("/jira/getIssueByKey")
     public ArrayList<IssueHistory> getIssueByKey(@RequestParam(value = "key") String key) {
-        System.out.println("key:  " + key);
-        return IssueList.getIssuesByKey(key);
+       IssueRESTDAO.getIssue(key);
+       return null;
     }
     
     @RequestMapping("/jira/getJiraJsonByKey")

@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-
 import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
