@@ -227,8 +227,10 @@ public class IssueConverter {
     public static WebhookData webhookJSONToWebhookData(String webhookJSON) {
         WebhookData data = null;
         try {
+        	
             data = mapper.readValue(webhookJSON, WebhookData.class);
-        } catch (IOException e) {
+            
+         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Couldn't parse JSON string from webhook:  " + webhookJSON, e);
         }
