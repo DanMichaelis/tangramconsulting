@@ -1,7 +1,5 @@
 package com.dtcc.workflowmetrics.metricsitems.jira.webhook;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.webhook.Fields;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
 
 public class WebhookData {
