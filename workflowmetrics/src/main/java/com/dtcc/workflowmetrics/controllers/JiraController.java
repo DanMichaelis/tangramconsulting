@@ -1,9 +1,8 @@
 package com.dtcc.workflowmetrics.controllers;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +16,8 @@ import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
+import com.dtcc.workflowmetrics.service.JiraService;
 import com.dtcc.workflowmetrics.util.simulator.workflows.WorkflowGenerator;
-
-import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,11 +25,17 @@ public class JiraController {
 
     private int counter = 0;
 
+    @Autowired
+	private JiraService jiraService;
+
     @RequestMapping("/jira/addIssue")
     public void jiraMessage(@RequestHeader MultiValueMap<String, String> headers, @RequestBody String inboundBody) {
         System.out.println("Service Invocation " + counter++);
         System.out.println("Data:  " + inboundBody);
         WebhookData issue = IssueConverter.webhookJSONToWebhookData(inboundBody);
+
+        jiraService.addJiraData(issue);
+        
         System.out.println(issue);
         
         //IssueList.addIssue(issue);
