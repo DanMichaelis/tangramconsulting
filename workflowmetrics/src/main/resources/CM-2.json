@@ -1,0 +1,2819 @@
+{
+	"expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+	"id": "10100",
+	"self": "http://localhost:8080/rest/api/2/issue/10100",
+	"key": "CM-2",
+	"fields": {
+		"issuetype": {
+			"self": "http://localhost:8080/rest/api/2/issuetype/10002",
+			"id": "10002",
+			"description": "A task that needs to be done.",
+			"iconUrl": "http://localhost:8080/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+			"name": "Task",
+			"subtask": false,
+			"avatarId": 10318
+		},
+		"components": [],
+		"timespent": null,
+		"timeoriginalestimate": null,
+		"description": "bar",
+		"project": {
+			"self": "http://localhost:8080/rest/api/2/project/10000",
+			"id": "10000",
+			"key": "CM",
+			"name": "Company Management",
+			"projectTypeKey": "software",
+			"avatarUrls": {
+				"48x48": "http://localhost:8080/secure/projectavatar?avatarId=10324",
+				"24x24": "http://localhost:8080/secure/projectavatar?size=small&avatarId=10324",
+				"16x16": "http://localhost:8080/secure/projectavatar?size=xsmall&avatarId=10324",
+				"32x32": "http://localhost:8080/secure/projectavatar?size=medium&avatarId=10324"
+			}
+		},
+		"fixVersions": [],
+		"aggregatetimespent": null,
+		"resolution": null,
+		"timetracking": {
+			
+		},
+		"customfield_10105": "0|hzzzzz:",
+		"attachment": [],
+		"aggregatetimeestimate": null,
+		"resolutiondate": null,
+		"workratio": -1,
+		"summary": "Foo",
+		"lastViewed": "2019-08-08T14:34:14.291-0400",
+		"watches": {
+			"self": "http://localhost:8080/rest/api/2/issue/CM-2/watchers",
+			"watchCount": 1,
+			"isWatching": true
+		},
+		"creator": {
+			"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+			"name": "dan.michaelis",
+			"key": "dan.michaelis",
+			"emailAddress": "tangramconsult@gmail.com",
+			"avatarUrls": {
+				"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+				"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+				"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+				"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+			},
+			"displayName": "Dan Michaelis",
+			"active": true,
+			"timeZone": "America/New_York"
+		},
+		"subtasks": [],
+		"created": "2019-07-09T14:47:01.663-0400",
+		"reporter": {
+			"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+			"name": "dan.michaelis",
+			"key": "dan.michaelis",
+			"emailAddress": "tangramconsult@gmail.com",
+			"avatarUrls": {
+				"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+				"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+				"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+				"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+			},
+			"displayName": "Dan Michaelis",
+			"active": true,
+			"timeZone": "America/New_York"
+		},
+		"customfield_10000": "{summaryBean=com.atlassian.jira.plugin.devstatus.rest.SummaryBean@63834b8e[summary={pullrequest=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@116b50df[overall=PullRequestOverallBean{stateCount=0, state='OPEN', details=PullRequestOverallDetails{openCount=0, mergedCount=0, declinedCount=0}},byInstanceType={}], build=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@30d76255[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BuildOverallBean@7bf13138[failedBuildCount=0,successfulBuildCount=0,unknownBuildCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], review=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@6b0228e3[overall=com.atlassian.jira.plugin.devstatus.summary.beans.ReviewsOverallBean@2ec845a2[stateCount=0,state=<null>,dueDate=<null>,overDue=false,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], deployment-environment=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@25064fe4[overall=com.atlassian.jira.plugin.devstatus.summary.beans.DeploymentOverallBean@578cc28d[topEnvironments=[],showProjects=false,successfulCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], repository=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@2db3adaf[overall=com.atlassian.jira.plugin.devstatus.summary.beans.CommitOverallBean@413a08ee[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], branch=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@56540642[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BranchOverallBean@677d2eaf[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}]},errors=[],configErrors=[]], devSummaryJson={\"cachedValue\":{\"errors\":[],\"configErrors\":[],\"summary\":{\"pullrequest\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":\"OPEN\",\"details\":{\"openCount\":0,\"mergedCount\":0,\"declinedCount\":0,\"total\":0},\"open\":true},\"byInstanceType\":{}},\"build\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"failedBuildCount\":0,\"successfulBuildCount\":0,\"unknownBuildCount\":0},\"byInstanceType\":{}},\"review\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":null,\"dueDate\":null,\"overDue\":false,\"completed\":false},\"byInstanceType\":{}},\"deployment-environment\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"topEnvironments\":[],\"showProjects\":false,\"successfulCount\":0},\"byInstanceType\":{}},\"repository\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}},\"branch\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}}}},\"isStale\":false}}",
+		"aggregateprogress": {
+			"progress": 0,
+			"total": 0
+		},
+		"priority": {
+			"self": "http://localhost:8080/rest/api/2/priority/3",
+			"iconUrl": "http://localhost:8080/images/icons/priorities/medium.svg",
+			"name": "Medium",
+			"id": "3"
+		},
+		"customfield_10100": [
+			"com.atlassian.greenhopper.service.sprint.Sprint@6eddbaf8[id=1,rapidViewId=1,state=ACTIVE,name=Sample Sprint 1,startDate=2019-07-22T10:36:25.888-04:00,endDate=2019-08-05T10:36:00.000-04:00,completeDate=<null>,sequence=1,goal=]"
+		],
+		"customfield_10101": null,
+		"customfield_10200": null,
+		"labels": [],
+		"environment": null,
+		"timeestimate": null,
+		"aggregatetimeoriginalestimate": null,
+		"versions": [],
+		"duedate": null,
+		"progress": {
+			"progress": 0,
+			"total": 0
+		},
+		"comment": {
+			"comments": [],
+			"maxResults": 0,
+			"total": 0,
+			"startAt": 0
+		},
+		"issuelinks": [],
+		"votes": {
+			"self": "http://localhost:8080/rest/api/2/issue/CM-2/votes",
+			"votes": 0,
+			"hasVoted": false
+		},
+		"worklog": {
+			"startAt": 0,
+			"maxResults": 20,
+			"total": 0,
+			"worklogs": []
+		},
+		"assignee": null,
+		"updated": "2019-08-08T14:34:13.891-0400",
+		"status": {
+			"self": "http://localhost:8080/rest/api/2/status/10000",
+			"description": "",
+			"iconUrl": "http://localhost:8080/",
+			"name": "To Do",
+			"id": "10000",
+			"statusCategory": {
+				"self": "http://localhost:8080/rest/api/2/statuscategory/2",
+				"id": 2,
+				"key": "new",
+				"colorName": "blue-gray",
+				"name": "To Do"
+			}
+		}
+	},
+	"changelog": {
+		"startAt": 0,
+		"maxResults": 92,
+		"total": 92,
+		"histories": [
+			{
+				"id": "10200",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T15:07:57.305-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10201",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T17:16:29.242-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10202",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T17:16:47.301-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10203",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T17:16:55.625-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10204",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T17:18:07.694-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10205",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-15T17:18:15.351-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10300",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-18T13:18:02.708-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10301",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-18T13:18:10.270-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10302",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-18T13:18:19.464-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10400",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:41:48.524-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10401",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:41:53.750-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10402",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:42:00.977-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10403",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:43:08.614-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10404",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:43:11.467-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10405",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:46:44.910-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10406",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-19T13:46:51.728-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10500",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:27:07.057-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10501",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:27:21.302-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10502",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:27:53.362-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10503",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:28:41.604-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10504",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:28:49.020-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10505",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T14:28:50.577-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10506",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T15:02:16.704-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10507",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-22T15:02:42.622-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10600",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T14:44:30.650-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10601",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T14:44:39.644-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10602",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T15:28:49.284-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10603",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T15:29:48.109-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10700",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T23:35:49.482-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10800",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-23T23:36:20.990-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10801",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:13:33.318-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10802",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:13:34.425-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10803",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:14:52.908-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10804",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:14:57.877-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10805",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:17:47.733-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10806",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:17:49.041-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10807",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:18:39.820-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10808",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:18:40.596-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10809",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:20:16.855-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10810",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:20:18.022-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10811",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:21:18.804-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10812",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:21:20.004-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10813",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:23:56.674-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10814",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:23:57.713-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10815",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:24:53.576-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10816",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:24:54.365-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10817",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:26:33.219-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10818",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:26:34.875-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10819",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:29:29.507-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10820",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:29:30.678-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10821",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:45:45.104-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10822",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:45:46.733-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10823",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:46:00.252-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10824",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:47:57.619-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10825",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:51:04.300-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10826",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:51:08.291-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10827",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-24T16:52:46.629-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10900",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:04:34.001-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10901",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:15:32.998-0400",
+				"items": [
+					{
+						"field": "description",
+						"fieldtype": "jira",
+						"from": null,
+						"fromString": null,
+						"to": null,
+						"toString": "bar"
+					}
+				]
+			},
+			{
+				"id": "10902",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:15:34.827-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10903",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:20:06.009-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10904",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:20:08.816-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10905",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:20:10.175-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10906",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:22:31.243-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10907",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T12:22:33.264-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10908",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:42.738-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10909",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:46.674-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10910",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:48.474-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10911",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:50.216-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10912",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:51.501-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10913",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:22:52.586-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10914",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:24:58.752-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10915",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:25:02.081-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10916",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:25:03.060-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "10917",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:25:05.496-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "10918",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:25:07.355-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "10919",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-25T13:25:09.064-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "11001",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:35:54.968-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "11002",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:36:07.575-0400",
+				"items": [
+					{
+						"field": "Sprint",
+						"fieldtype": "custom",
+						"from": null,
+						"fromString": null,
+						"to": "1",
+						"toString": "Sample Sprint 1"
+					}
+				]
+			},
+			{
+				"id": "11005",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:41:10.642-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "11006",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:41:15.221-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "11011",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:41:32.827-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "11012",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:41:35.398-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "11016",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T10:54:36.532-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "11019",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T11:12:59.590-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "11024",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T11:13:08.675-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "11028",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T11:13:16.305-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "11029",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T11:13:19.210-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "11032",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-26T11:20:58.113-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			},
+			{
+				"id": "11100",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-29T08:20:09.724-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10000",
+						"fromString": "To Do",
+						"to": "3",
+						"toString": "In Progress"
+					}
+				]
+			},
+			{
+				"id": "11215",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-07-29T13:10:49.764-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "3",
+						"fromString": "In Progress",
+						"to": "10001",
+						"toString": "Done"
+					}
+				]
+			},
+			{
+				"id": "11300",
+				"author": {
+					"self": "http://localhost:8080/rest/api/2/user?username=dan.michaelis",
+					"name": "dan.michaelis",
+					"key": "dan.michaelis",
+					"emailAddress": "tangramconsult@gmail.com",
+					"avatarUrls": {
+						"48x48": "http://localhost:8080/secure/useravatar?ownerId=dan.michaelis&avatarId=10601",
+						"24x24": "http://localhost:8080/secure/useravatar?size=small&ownerId=dan.michaelis&avatarId=10601",
+						"16x16": "http://localhost:8080/secure/useravatar?size=xsmall&ownerId=dan.michaelis&avatarId=10601",
+						"32x32": "http://localhost:8080/secure/useravatar?size=medium&ownerId=dan.michaelis&avatarId=10601"
+					},
+					"displayName": "Dan Michaelis",
+					"active": true,
+					"timeZone": "America/New_York"
+				},
+				"created": "2019-08-08T14:34:13.892-0400",
+				"items": [
+					{
+						"field": "status",
+						"fieldtype": "jira",
+						"from": "10001",
+						"fromString": "Done",
+						"to": "10000",
+						"toString": "To Do"
+					}
+				]
+			}
+		]
+	}
+}

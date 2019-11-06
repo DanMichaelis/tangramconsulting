@@ -1,0 +1,10 @@
+<div>
+    <div>
+        Project to parse: <input [(ngModel)]="projectToParse"> <button type="button"
+            class="btn btn-primary" (click)="parseProject()"
+            [disabled]='projectToParse === null || projectToParse.length === 0'>Parse</button>
+    </div>
+    <div>
+        {{methodResponse}}
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <div class="row">
+        <div>
+            <div>
+                <app-navbar-component></app-navbar-component>
+                <div class="container">
+                    <div>
+                        <app-generate-test-data
+                            *ngIf="getSelectedComponent().toString() === 'Generate Test Data'">
+                        </app-generate-test-data>
+                        <app-parse-jira-data
+                            *ngIf="getSelectedComponent().toString() === 'Parse Pulled Data'">
+                        </app-parse-jira-data>
+                        <app-gethistorybykey-component
+                            *ngIf="getSelectedComponent().toString() === 'Get Issue History by Key'">
+                        </app-gethistorybykey-component>
+                        <app-manually-pull-jira-issue
+                            *ngIf="getSelectedComponent().toString() === 'Manually Pull Jira Issue'">
+                        </app-manually-pull-jira-issue>
+                    </div>
+                </div>
+                <div>
+                    <app-message-box></app-message-box>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
