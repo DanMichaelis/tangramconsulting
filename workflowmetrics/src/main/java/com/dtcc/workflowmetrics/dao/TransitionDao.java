@@ -1,12 +1,10 @@
 package com.dtcc.workflowmetrics.dao;
 
-import com.dtcc.workflowmetrics.pojo.Transition;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TransitionDao {
+import com.dtcc.workflowmetrics.entity.Transition;
 
-	public void addTransitionDetails(Transition transition);
-	
-	public void getTransitionById(Integer workflowId);
+public interface TransitionDao extends CrudRepository<Transition, Integer>{
 
 
 }

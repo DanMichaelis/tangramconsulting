@@ -1,12 +1,19 @@
-package com.dtcc.workflowmetrics.pojo;
+package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TransitionDuration")
@@ -18,32 +25,94 @@ public class TransitionDuration implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "IssueID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer transitionDurationId;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
 	private Integer issueID;
 
 	@Column(name = "Status")
 	private String status;
-	
+
 	@Column(name = "DurationInStatus")
 	private String durationInStatus;
-	
-	@Column(name = "UserId")
-	private Integer userId;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
+	private UserDetail userDetail;
+
+	@Column(name = "UserID", insertable = false, updatable = false)
+	private int userId;
 
 	@Column(name = "StartDateTime")
 	private Date startDateTime;
-	
+
 	@Column(name = "EndDateTime")
 	private Date endDateTime;
-	
-	@Column(name = "ProjectID")
-	private Integer projectID;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID")
+	private ProjectDetails projectDetail;
+
+	@Column(name = "ProjectID", insertable = false, updatable = false)
+	private int projectID;
 
 	@Column(name = "SysID")
-	private Integer  sysID;
-	
+	private Integer sysID;
+
 	@Column(name = "TStatus")
 	private String TStatus;
+
+	public Integer getTransitionDurationId() {
+		return transitionDurationId;
+	}
+
+	public void setTransitionDurationId(Integer transitionDurationId) {
+		this.transitionDurationId = transitionDurationId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public void setProjectID(int projectID) {
+		this.projectID = projectID;
+	}
+
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
+	public ProjectDetails getProjectDetail() {
+		return projectDetail;
+	}
+
+	public void setProjectDetail(ProjectDetails projectDetail) {
+		this.projectDetail = projectDetail;
+	}
 
 	public Integer getIssueID() {
 		return issueID;
@@ -133,6 +202,5 @@ public class TransitionDuration implements Serializable {
 
 	public TransitionDuration() {
 	}
-	
-	
+
 }
