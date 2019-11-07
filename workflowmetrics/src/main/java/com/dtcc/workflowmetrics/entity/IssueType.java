@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.pojo;
+package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 
@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "IssueType")
+@Entity(name = "issueType")
+@Table(name = "Issue_Type")
 public class IssueType implements Serializable{
 
 	/**
@@ -26,8 +26,8 @@ public class IssueType implements Serializable{
 	@Column(name = "Description")
 	private String description;
 
-	@Column(name = "Name")
-	private String name;
+	@Column(name = "IssueName")
+	private String issueName;
 
 	@Column(name = "Subtask")
 	private Boolean subtask;
@@ -58,11 +58,11 @@ public class IssueType implements Serializable{
 	}
 
 	public String getName() {
-		return name;
+		return issueName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.issueName = name;
 	}
 
 	public Boolean getSubtask() {
@@ -78,7 +78,7 @@ public class IssueType implements Serializable{
 		this.issueTypeID = issueTypeID;
 		this.self = self;
 		this.description = description;
-		this.name = name;
+		this.issueName = name;
 		this.subtask = subtask;
 	}
 

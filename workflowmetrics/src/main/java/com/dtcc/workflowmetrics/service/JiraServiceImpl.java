@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dtcc.workflowmetrics.dao.CommentDao;
 import com.dtcc.workflowmetrics.dao.FieldsDao;
@@ -15,18 +16,18 @@ import com.dtcc.workflowmetrics.dao.TStatusDurationDao;
 import com.dtcc.workflowmetrics.dao.TransitionDao;
 import com.dtcc.workflowmetrics.dao.TransitionDurationDao;
 import com.dtcc.workflowmetrics.dao.UserDao;
+import com.dtcc.workflowmetrics.entity.Comment;
+import com.dtcc.workflowmetrics.entity.Issue;
+import com.dtcc.workflowmetrics.entity.IssueType;
+import com.dtcc.workflowmetrics.entity.ProjectDetails;
+import com.dtcc.workflowmetrics.entity.Transition;
+import com.dtcc.workflowmetrics.entity.UserDetail;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Project;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookIssue;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookTransition;
-import com.dtcc.workflowmetrics.pojo.Comment;
-import com.dtcc.workflowmetrics.pojo.Issue;
-import com.dtcc.workflowmetrics.pojo.IssueType;
-import com.dtcc.workflowmetrics.pojo.ProjectDetails;
-import com.dtcc.workflowmetrics.pojo.Transition;
-import com.dtcc.workflowmetrics.pojo.UserDetail;
 
 @Service
 public class JiraServiceImpl implements JiraService {
@@ -62,6 +63,7 @@ public class JiraServiceImpl implements JiraService {
 	UserDao userDao;
 	
 	@Override
+	@Transactional
 	public void addJiraData(WebhookData data) {
 		
 		UserDetail userdetail = new UserDetail();
@@ -78,54 +80,58 @@ public class JiraServiceImpl implements JiraService {
 		WebhookIssue webhookIssue = data.getIssue();
 		
 		userdetail.setSelf(user.getSelf());
-		userdetail.setName(user.getName());
-		userdetail.setKey(user.getKey());
+		userdetail.setUserName(user.getName());
+		userdetail.setUserKey(user.getKey());
 		userdetail.setEmailId(user.getEmailAddress());
 		
-		userDao.addUser(userdetail);
+		userDao.save(userdetail);
 		
-		projectDetails.setKey(project.getKey());
-		projectDetails.setProjectId(project.getId());
-		projectDetails.setName(project.getName());
-		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
-		projectDetails.setSelf(project.getSelf());
-		
-		projectDao.addProject(projectDetails);
-		
-		issueType.setIssueTypeID(Integer.getInteger(issuetype.getId()));
-		issueType.setSelf(issuetype.getSelf());
-		issueType.setName(issuetype.getName());
-		issueType.setDescription(issuetype.getDescription());
-		issueType.setSubtask(issuetype.getSubtask());
-		
-		issueTypeDao.addIssueType(issueType);
-		
-		issueDetail.setId(webhookIssue.getId());
-		issueDetail.setSelf(webhookIssue.getSelf());
-		issueDetail.setKey(webhookIssue.getKey());
-		issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
-		issueDetail.setIssueTypeID(Integer.getInteger(webhookIssue.getFields().getIssuetype().getId()));
-		issueDetail.setProjectID(webhookIssue.getFields().getProject().getId());
-		
-		issueDao.addIssue(issueDetail);
-		
-		comment.setIssueID(webhookIssue.getId());
-		comment.setUserId(userdetail.getUserID());
-		//comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
-		comment.setDateTime(new Date(data.getTimestamp()));
-		
-		commentDao.addComment(comment);
-		
-		transition.setTransitionId(webhookTransition.getTransitionId());
-		transition.setWorkflowId(webhookTransition.getWorkflowId());
-		transition.setWorkflowName(webhookTransition.getWorkflowName());
-		transition.setIssueId(webhookIssue.getId());
-		transition.setFromStatus(webhookTransition.getFrom_status());
-		transition.setToStatus(webhookTransition.getTo_status());
-		transition.setUserId(userdetail.getUserID());
-		transition.setTransitionName(webhookTransition.getTransitionName());
-		transition.setTimestamp(new Date(data.getTimestamp()));
-		
+		/*
+		 * projectDetails.setProjectKey(project.getKey());
+		 * projectDetails.setProjectId(project.getId());
+		 * projectDetails.setProjectName(project.getName());
+		 * projectDetails.setProjectTypeKey(project.getProjectTypeKey());
+		 * projectDetails.setSelf(project.getSelf());
+		 * 
+		 * projectDao.save(projectDetails);
+		 * 
+		 * issueType.setIssueTypeID(Integer.getInteger(issuetype.getId()));
+		 * issueType.setSelf(issuetype.getSelf());
+		 * issueType.setName(issuetype.getName());
+		 * issueType.setDescription(issuetype.getDescription());
+		 * issueType.setSubtask(issuetype.getSubtask());
+		 * 
+		 * issueTypeDao.save(issueType);
+		 * 
+		 * issueDetail.setId(webhookIssue.getId());
+		 * issueDetail.setSelf(webhookIssue.getSelf());
+		 * issueDetail.setKey(webhookIssue.getKey());
+		 * issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
+		 * issueDetail.setIssueTypeID(Integer.getInteger(webhookIssue.getFields().
+		 * getIssuetype().getId()));
+		 * issueDetail.setProjectID(webhookIssue.getFields().getProject().getId());
+		 * 
+		 * issueDao.save(issueDetail);
+		 * 
+		 * comment.setIssueID(webhookIssue.getId());
+		 * comment.setUserId(userdetail.getUserID());
+		 * //comment.setCommentDetails(webhookIssue.getFields().getComment().getComments
+		 * ().get(0)); comment.setDateTime(new Date(data.getTimestamp()));
+		 * 
+		 * commentDao.save(comment);
+		 * 
+		 * transition.setTransitionId(webhookTransition.getTransitionId());
+		 * transition.setWorkflowId(webhookTransition.getWorkflowId());
+		 * transition.setWorkflowName(webhookTransition.getWorkflowName());
+		 * transition.setIssueId(webhookIssue.getId());
+		 * transition.setFromStatus(webhookTransition.getFrom_status());
+		 * transition.setToStatus(webhookTransition.getTo_status());
+		 * transition.setUserId(userdetail.getUserID());
+		 * transition.setTransitionName(webhookTransition.getTransitionName());
+		 * transition.setTimestamp(new Date(data.getTimestamp()));
+		 * 
+		 * transitionDao.save(transition);
+		 */		
 	}
 
 	@Override

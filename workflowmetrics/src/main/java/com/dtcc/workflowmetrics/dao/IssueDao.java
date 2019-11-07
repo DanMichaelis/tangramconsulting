@@ -1,11 +1,9 @@
 package com.dtcc.workflowmetrics.dao;
 
-import com.dtcc.workflowmetrics.pojo.Issue;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IssueDao {
+import com.dtcc.workflowmetrics.entity.Issue;
 
-	public void addIssue(Issue issue);
-	
-	public void getIssueById(Integer issueId);
+public interface IssueDao extends CrudRepository<Issue, Integer>{
 
 }

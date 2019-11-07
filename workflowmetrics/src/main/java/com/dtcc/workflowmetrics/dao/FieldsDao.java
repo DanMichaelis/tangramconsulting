@@ -1,11 +1,9 @@
 package com.dtcc.workflowmetrics.dao;
 
-import com.dtcc.workflowmetrics.pojo.Fields;
+import org.springframework.data.repository.CrudRepository;
 
-public interface FieldsDao {
+import com.dtcc.workflowmetrics.entity.Fields;
 
-	public void addFieldDetails(Fields fields);
-
-	public void getFieldById(Integer issueId);
+public interface FieldsDao extends CrudRepository<Fields, Integer>{
 
 }

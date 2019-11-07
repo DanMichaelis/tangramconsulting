@@ -1,18 +1,23 @@
-package com.dtcc.workflowmetrics.pojo;
+package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TransitionTable")
-public class Transition implements Serializable{
+public class Transition implements Serializable {
 
 	/**
 	 * 
@@ -26,28 +31,38 @@ public class Transition implements Serializable{
 
 	@Column(name = "workflowName")
 	private String workflowName;
-	
+
 	@Column(name = "WebhookId")
 	private Integer webhookId;
-	
-	@Column(name = "UserId")
-	private Integer userId;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
+	private UserDetail userDetail;
+
+	@Column(name = "UserID", insertable = false, updatable = false)
+	private int userId;
 
 	@Column(name = "TransitionName")
 	private String transitionName;
-	
+
 	@Column(name = "TransitionId")
 	private Integer transitionId;
 
 	@Column(name = "ToStatus")
 	private String toStatus;
-	
-	@Column(name = "IssueId")
-	private Integer issueId;
-	
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
+	private Integer issueID;
+
 	@Column(name = "FromStatus")
 	private String fromStatus;
-	
+
 	@Column(name = "Timestamp")
 	private Date Timestamp;
 
@@ -108,11 +123,11 @@ public class Transition implements Serializable{
 	}
 
 	public Integer getIssueId() {
-		return issueId;
+		return issueID;
 	}
 
 	public void setIssueId(Integer issueId) {
-		this.issueId = issueId;
+		this.issueID = issueId;
 	}
 
 	public String getFromStatus() {
@@ -144,10 +159,9 @@ public class Transition implements Serializable{
 		this.transitionName = transitionName;
 		this.transitionId = transitionId;
 		this.toStatus = toStatus;
-		this.issueId = issueId;
+		this.issueID = issueId;
 		this.fromStatus = fromStatus;
 		Timestamp = timestamp;
 	}
 
-	
 }

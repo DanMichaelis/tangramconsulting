@@ -1,11 +1,9 @@
 package com.dtcc.workflowmetrics.dao;
 
-import com.dtcc.workflowmetrics.pojo.ProjectDetails;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ProjectDao {
+import com.dtcc.workflowmetrics.entity.ProjectDetails;
 
-	public void addProject(ProjectDetails project);
-	
-	public void getProjectById(Integer projectId);
+public interface ProjectDao extends CrudRepository<ProjectDetails, Integer>{
 
 }

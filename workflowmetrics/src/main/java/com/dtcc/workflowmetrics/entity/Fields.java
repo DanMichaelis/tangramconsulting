@@ -1,14 +1,21 @@
-package com.dtcc.workflowmetrics.pojo;
+package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity(name="fields")
 @Table(name = "Fields")
 public class Fields implements Serializable {
 
@@ -16,8 +23,17 @@ public class Fields implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "IssueID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer fieldId;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
 	private Integer issueID;
 
 	@Column(name = "FieldName")
@@ -29,8 +45,28 @@ public class Fields implements Serializable {
 	@Column(name = "FieldDatatype")
 	private String fieldDatatype;
 
-	@Column(name = "Date")
+	@Column(name = "CreationDate")
 	private Date dt;
+
+	public Integer getFieldId() {
+		return fieldId;
+	}
+
+	public void setFieldId(Integer fieldId) {
+		this.fieldId = fieldId;
+	}
+
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public Integer getIssueID() {
 		return issueID;
