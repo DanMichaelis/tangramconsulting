@@ -34,104 +34,105 @@ public class JiraServiceImpl implements JiraService {
 
 	@Autowired
 	CommentDao commentDao;
-	
+
 	@Autowired
 	FieldsDao fieldsDao;
-	
+
 	@Autowired
 	IssueDao issueDao;
-	
+
 	@Autowired
 	IssueLinkDao issueLinkDao;
-	
+
 	@Autowired
 	IssueTypeDao issueTypeDao;
-	
+
 	@Autowired
 	ProjectDao projectDao;
-	
+
 	@Autowired
 	TransitionDao transitionDao;
-	
+
 	@Autowired
 	TransitionDurationDao transitionDurationDao;
-	
+
 	@Autowired
 	TStatusDurationDao tStatusDurationDao;
-	
+
 	@Autowired
 	UserDao userDao;
-	
+
 	@Override
 	@Transactional
 	public void addJiraData(WebhookData data) {
-		
+
 		UserDetail userdetail = new UserDetail();
 		ProjectDetails projectDetails = new ProjectDetails();
 		IssueType issueType = new IssueType();
 		Issue issueDetail = new Issue();
 		Comment comment = new Comment();
 		Transition transition = new Transition();
-		
+
 		WebhookTransition webhookTransition = data.getTransition();
 		User user = data.getUser();
 		Project project = data.getIssue().getFields().getProject();
 		Issuetype issuetype = data.getIssue().getFields().getIssuetype();
 		WebhookIssue webhookIssue = data.getIssue();
 		
+		Integer issueId = webhookIssue.getId();
+		Integer projectId = project.getId();
+
 		userdetail.setSelf(user.getSelf());
 		userdetail.setUserName(user.getName());
 		userdetail.setUserKey(user.getKey());
 		userdetail.setEmailId(user.getEmailAddress());
-		
+
 		userDao.save(userdetail);
-		
-		/*
-		 * projectDetails.setProjectKey(project.getKey());
-		 * projectDetails.setProjectId(project.getId());
-		 * projectDetails.setProjectName(project.getName());
-		 * projectDetails.setProjectTypeKey(project.getProjectTypeKey());
-		 * projectDetails.setSelf(project.getSelf());
-		 * 
-		 * projectDao.save(projectDetails);
-		 * 
-		 * issueType.setIssueTypeID(Integer.getInteger(issuetype.getId()));
-		 * issueType.setSelf(issuetype.getSelf());
-		 * issueType.setName(issuetype.getName());
-		 * issueType.setDescription(issuetype.getDescription());
-		 * issueType.setSubtask(issuetype.getSubtask());
-		 * 
-		 * issueTypeDao.save(issueType);
-		 * 
-		 * issueDetail.setId(webhookIssue.getId());
-		 * issueDetail.setSelf(webhookIssue.getSelf());
-		 * issueDetail.setKey(webhookIssue.getKey());
-		 * issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
-		 * issueDetail.setIssueTypeID(Integer.getInteger(webhookIssue.getFields().
-		 * getIssuetype().getId()));
-		 * issueDetail.setProjectID(webhookIssue.getFields().getProject().getId());
-		 * 
-		 * issueDao.save(issueDetail);
-		 * 
-		 * comment.setIssueID(webhookIssue.getId());
-		 * comment.setUserId(userdetail.getUserID());
-		 * //comment.setCommentDetails(webhookIssue.getFields().getComment().getComments
-		 * ().get(0)); comment.setDateTime(new Date(data.getTimestamp()));
-		 * 
-		 * commentDao.save(comment);
-		 * 
-		 * transition.setTransitionId(webhookTransition.getTransitionId());
-		 * transition.setWorkflowId(webhookTransition.getWorkflowId());
-		 * transition.setWorkflowName(webhookTransition.getWorkflowName());
-		 * transition.setIssueId(webhookIssue.getId());
-		 * transition.setFromStatus(webhookTransition.getFrom_status());
-		 * transition.setToStatus(webhookTransition.getTo_status());
-		 * transition.setUserId(userdetail.getUserID());
-		 * transition.setTransitionName(webhookTransition.getTransitionName());
-		 * transition.setTimestamp(new Date(data.getTimestamp()));
-		 * 
-		 * transitionDao.save(transition);
-		 */		
+
+		projectDetails.setProjectKey(project.getKey());
+		projectDetails.setProjectId(projectId);
+		projectDetails.setProjectName(project.getName());
+		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
+		projectDetails.setSelf(project.getSelf());
+
+		projectDao.save(projectDetails);
+
+		issueType.setIssueTypeID(issuetype.getId());
+		issueType.setSelf(issuetype.getSelf());
+		issueType.setName(issuetype.getName());
+		issueType.setDescription(issuetype.getDescription());
+		issueType.setSubtask(issuetype.getSubtask());
+
+		issueTypeDao.save(issueType);
+
+		issueDetail.setId(issueId);
+		issueDetail.setSelf(webhookIssue.getSelf());
+		issueDetail.setKey(webhookIssue.getKey());
+		issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
+		issueDetail.setIssueTypeID(webhookIssue.getFields().getIssuetype().getId());
+		issueDetail.setProjectID(projectId);
+
+		issueDao.save(issueDetail);
+
+		comment.setIssueID(issueId);
+		comment.setUserId(userdetail.getUserID());
+		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
+		comment.setDateTime(new Date(data.getTimestamp()));
+
+		commentDao.save(comment);
+
+		transition.setTransitionId(webhookTransition.getTransitionId());
+		transition.setWorkflowId(webhookTransition.getWorkflowId());
+		transition.setWorkflowName(webhookTransition.getWorkflowName());
+		transition.setIssueId(issueId);
+		transition.setFromStatus(webhookTransition.getFrom_status());
+		transition.setToStatus(webhookTransition.getTo_status());
+		//transition.setUserId();
+		transition.setTransitionName(webhookTransition.getTransitionName());
+		transition.setTimestamp(new Date(data.getTimestamp()));
+
+		transitionDao.save(transition);
+
 	}
 
 	@Override
