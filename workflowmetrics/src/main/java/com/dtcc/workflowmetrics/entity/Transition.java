@@ -3,17 +3,12 @@ package com.dtcc.workflowmetrics.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TransitionTable")
@@ -35,12 +30,17 @@ public class Transition implements Serializable {
 	@Column(name = "WebhookId")
 	private Integer webhookId;
 
-	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
-	private UserDetail userDetail;
-
-	@Column(name = "UserID", insertable = false, updatable = false)
+	/*
+	 * @JsonBackReference
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "UserID", referencedColumnName = "UserID") private
+	 * UserDetail userDetail;
+	 * 
+	 * @Column(name = "UserID", insertable = false, updatable = false)
+	 */
+	@Column(name = "UserID")
 	private int userId;
 
 	@Column(name = "TransitionName")
@@ -52,12 +52,17 @@ public class Transition implements Serializable {
 	@Column(name = "ToStatus")
 	private String toStatus;
 
-	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
-	private Issue issue;
-
-	@Column(name = "IssueID", insertable = false, updatable = false)
+	/*
+	 * @JsonBackReference
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
+	 * issue;
+	 * 
+	 * @Column(name = "IssueID", insertable = false, updatable = false)
+	 */
+	@Column(name = "IssueID")
 	private Integer issueID;
 
 	@Column(name = "FromStatus")

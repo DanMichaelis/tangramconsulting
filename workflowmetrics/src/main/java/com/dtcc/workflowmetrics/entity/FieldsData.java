@@ -3,21 +3,16 @@ package com.dtcc.workflowmetrics.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity(name="fields")
+@Entity(name = "fields")
 @Table(name = "Fields")
-public class Fields implements Serializable {
+public class FieldsData implements Serializable {
 
 	/**
 	 * 
@@ -28,12 +23,17 @@ public class Fields implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer fieldId;
 
-	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
-	private Issue issue;
-
-	@Column(name = "IssueID", insertable = false, updatable = false)
+	/*
+	 * @JsonBackReference
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
+	 * issue;
+	 * 
+	 * @Column(name = "IssueID", insertable = false, updatable = false)
+	 */
+	@Column(name = "IssueID")
 	private Integer issueID;
 
 	@Column(name = "FieldName")
@@ -56,14 +56,11 @@ public class Fields implements Serializable {
 		this.fieldId = fieldId;
 	}
 
-	public Issue getIssue() {
-		return issue;
-	}
-
-	public void setIssue(Issue issue) {
-		this.issue = issue;
-	}
-
+	/*
+	 * public Issue getIssue() { return issue; }
+	 * 
+	 * public void setIssue(Issue issue) { this.issue = issue; }
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -108,7 +105,7 @@ public class Fields implements Serializable {
 		this.dt = dt;
 	}
 
-	public Fields(Integer issueID, String fieldName, String fieldValue, String fieldDatatype, Date dt) {
+	public FieldsData(Integer issueID, String fieldName, String fieldValue, String fieldDatatype, Date dt) {
 		super();
 		this.issueID = issueID;
 		this.fieldName = fieldName;
@@ -117,8 +114,7 @@ public class Fields implements Serializable {
 		this.dt = dt;
 	}
 
-	public Fields() {
+	public FieldsData() {
 	}
 
-	
 }

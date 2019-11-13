@@ -16,9 +16,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-@Entity(name="comment")
+@Entity(name = "comment")
 @Table(name = "Comment")
-public class Comment implements Serializable{
+public class Comment implements Serializable {
 	/**
 	 * 
 	 */
@@ -27,13 +27,17 @@ public class Comment implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer commentId;
-
-	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
-	private Issue issue;
-
-	@Column(name = "IssueID", insertable = false, updatable = false)
+	/*
+	 * @JsonBackReference
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
+	 * issue;
+	 * 
+	 * @Column(name = "IssueID", insertable = false, updatable = false)
+	 */
+	@Column(name = "IssueID")
 	private Integer issueID;
 
 	@Column(name = "CommentDetails")
@@ -50,7 +54,6 @@ public class Comment implements Serializable{
 	@Column(name = "UserID", insertable = false, updatable = false)
 	private int userId;
 
-	
 	public Integer getCommentId() {
 		return commentId;
 	}
@@ -59,14 +62,11 @@ public class Comment implements Serializable{
 		this.commentId = commentId;
 	}
 
-	public Issue getIssue() {
-		return issue;
-	}
-
-	public void setIssue(Issue issue) {
-		this.issue = issue;
-	}
-
+	/*
+	 * public Issue getIssue() { return issue; }
+	 * 
+	 * public void setIssue(Issue issue) { this.issue = issue; }
+	 */
 	public Date getCreationDateTime() {
 		return creationDateTime;
 	}
@@ -133,6 +133,5 @@ public class Comment implements Serializable{
 
 	public Comment() {
 	}
-	
-	
+
 }
