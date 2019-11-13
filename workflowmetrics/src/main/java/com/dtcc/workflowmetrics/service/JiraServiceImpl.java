@@ -89,7 +89,7 @@ public class JiraServiceImpl implements JiraService {
 
 		userDao.save(userdetail);
 
-		projectDetails.setProjectKey(project.getKey());
+/*		projectDetails.setProjectKey(project.getKey());
 		projectDetails.setProjectId(projectId);
 		projectDetails.setProjectName(project.getName());
 		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
@@ -112,14 +112,14 @@ public class JiraServiceImpl implements JiraService {
 		issueDetail.setIssueTypeID(webhookIssue.getFields().getIssuetype().getId());
 		issueDetail.setProjectID(projectId);
 
-		issueDao.save(issueDetail);
+		//issueDao.save(issueDetail);
 
 		comment.setIssueID(issueId);
 		comment.setUserId(userdetail.getUserID());
 		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
 		comment.setDateTime(new Date(data.getTimestamp()));
 
-		commentDao.save(comment);
+		//commentDao.save(comment);
 
 		transition.setTransitionId(webhookTransition.getTransitionId());
 		transition.setWorkflowId(webhookTransition.getWorkflowId());
@@ -131,7 +131,9 @@ public class JiraServiceImpl implements JiraService {
 		transition.setTransitionName(webhookTransition.getTransitionName());
 		transition.setTimestamp(new Date(data.getTimestamp()));
 
-		transitionDao.save(transition);
+		//transitionDao.save(transition);
+		 * 
+		 */
 
 	}
 
