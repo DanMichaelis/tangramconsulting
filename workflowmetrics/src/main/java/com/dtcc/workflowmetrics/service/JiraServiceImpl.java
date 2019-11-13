@@ -2,6 +2,7 @@ package com.dtcc.workflowmetrics.service;
 
 import java.util.Date;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,6 +73,7 @@ public class JiraServiceImpl implements JiraService {
 		Issue issueDetail = new Issue();
 		Comment comment = new Comment();
 		Transition transition = new Transition();
+//		Fields fields = 
 
 		WebhookTransition webhookTransition = data.getTransition();
 		User user = data.getUser();
@@ -82,14 +84,19 @@ public class JiraServiceImpl implements JiraService {
 		Integer issueId = webhookIssue.getId();
 		Integer projectId = project.getId();
 
-		userdetail.setSelf(user.getSelf());
-		userdetail.setUserName(user.getName());
-		userdetail.setUserKey(user.getKey());
-		userdetail.setEmailId(user.getEmailAddress());
+		try {
+			userdetail.setSelf(user.getSelf());
+			userdetail.setUserName(user.getName());
+			userdetail.setUserKey(user.getKey());
+			userdetail.setEmailId(user.getEmailAddress());
 
-		userDao.save(userdetail);
+			userDao.save(userdetail);
+		}catch(ConstraintViolationException e) {
+			System.out.println("duplicate data eliminated");
+		}
+		
 
-/*		projectDetails.setProjectKey(project.getKey());
+		projectDetails.setProjectKey(project.getKey());
 		projectDetails.setProjectId(projectId);
 		projectDetails.setProjectName(project.getName());
 		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
@@ -112,14 +119,14 @@ public class JiraServiceImpl implements JiraService {
 		issueDetail.setIssueTypeID(webhookIssue.getFields().getIssuetype().getId());
 		issueDetail.setProjectID(projectId);
 
-		//issueDao.save(issueDetail);
+		issueDao.save(issueDetail);
 
 		comment.setIssueID(issueId);
 		comment.setUserId(userdetail.getUserID());
 		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
 		comment.setDateTime(new Date(data.getTimestamp()));
 
-		//commentDao.save(comment);
+		commentDao.save(comment);
 
 		transition.setTransitionId(webhookTransition.getTransitionId());
 		transition.setWorkflowId(webhookTransition.getWorkflowId());
@@ -131,10 +138,9 @@ public class JiraServiceImpl implements JiraService {
 		transition.setTransitionName(webhookTransition.getTransitionName());
 		transition.setTimestamp(new Date(data.getTimestamp()));
 
-		//transitionDao.save(transition);
-		 * 
-		 */
+		transitionDao.save(transition);
 
+//		fields
 	}
 
 	@Override

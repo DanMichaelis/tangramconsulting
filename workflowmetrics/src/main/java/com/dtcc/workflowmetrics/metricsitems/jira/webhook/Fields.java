@@ -61,13 +61,7 @@ public class Fields {
 	private String aggregatetimeoriginalestimate;
 	private WorkLog worklog;
 
-	private Map<String, Map<String, CustomField>> customFieldArr = new LinkedHashMap<>();
 	private Map<String, CustomField> customFields = new LinkedHashMap<>();
-	private Map<String, Object> customFields1 = new LinkedHashMap<>();
-
-	public Map<String, Map<String, CustomField>> getCustomFieldArr() {
-		return customFieldArr;
-	}
 
 	/*
 	 * public void setCustomFieldArr(ArrayList<CustomField> customFieldArr) {
@@ -469,30 +463,8 @@ public class Fields {
 
 			CustomField cust = obj.convertValue(value, CustomField.class);
 
-			// CustomField cust = CustomField.class.cast(value);
 			customFields.put(key, cust);
 		}
-		//
-
-		/*
-		 * String val = new String(); try { val = value.toString(); } catch
-		 * (NullPointerException e) { customFields1.put(key, null); } if
-		 * (val.startsWith("[")) {
-		 * 
-		 * // add class cast exception ArrayList<CustomField> custArr =
-		 * (ArrayList<CustomField>) value; // add class cast exception
-		 * 
-		 * Map<String, CustomField> custMap = (Map<String, CustomField>) custArr.get(0);
-		 * 
-		 * customFieldArr.put(key, custMap); // customFields.putAll(custMap);
-		 * 
-		 * } else if (val.contains("self")) { ObjectMapper obj = new ObjectMapper();
-		 * 
-		 * CustomField cust = obj.convertValue(value, CustomField.class);
-		 * 
-		 * // CustomField cust = CustomField.class.cast(value); customFields.put(key,
-		 * cust); } else customFields1.put(key, value);
-		 */
 		return this;
 
 	}
@@ -506,10 +478,6 @@ public class Fields {
 //
 //		return this;
 //	}
-
-	public Map<String, Object> getCustomFields1() {
-		return customFields1;
-	}
 
 	@Override
 	public int hashCode() {
@@ -528,9 +496,7 @@ public class Fields {
 		result = prime * result + ((components == null) ? 0 : components.hashCode());
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
 		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
-		result = prime * result + ((customFieldArr == null) ? 0 : customFieldArr.hashCode());
 		result = prime * result + ((customFields == null) ? 0 : customFields.hashCode());
-		result = prime * result + ((customFields1 == null) ? 0 : customFields1.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((duedate == null) ? 0 : duedate.hashCode());
 		result = prime * result + ((environment == null) ? 0 : environment.hashCode());
@@ -625,20 +591,10 @@ public class Fields {
 				return false;
 		} else if (!creator.equals(other.creator))
 			return false;
-		if (customFieldArr == null) {
-			if (other.customFieldArr != null)
-				return false;
-		} else if (!customFieldArr.equals(other.customFieldArr))
-			return false;
 		if (customFields == null) {
 			if (other.customFields != null)
 				return false;
 		} else if (!customFields.equals(other.customFields))
-			return false;
-		if (customFields1 == null) {
-			if (other.customFields1 != null)
-				return false;
-		} else if (!customFields1.equals(other.customFields1))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -860,9 +816,7 @@ public class Fields {
 		builder.append(", customFields=");
 		builder.append(customFields);
 		builder.append(", customFields1=");
-		builder.append(customFields1);
 		builder.append(", customFieldArr=");
-		builder.append(customFieldArr);
 		builder.append("]");
 		return builder.toString();
 	}
