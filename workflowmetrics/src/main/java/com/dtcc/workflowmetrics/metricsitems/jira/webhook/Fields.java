@@ -60,7 +60,7 @@ public class Fields {
 	private StatusDetails status;
 	private String aggregatetimeoriginalestimate;
 	private WorkLog worklog;
-	
+
 	private Map<String, Map<String, CustomField>> customFieldArr = new LinkedHashMap<>();
 	private Map<String, CustomField> customFields = new LinkedHashMap<>();
 	private Map<String, Object> customFields1 = new LinkedHashMap<>();
@@ -447,30 +447,52 @@ public class Fields {
 	@SuppressWarnings("unchecked")
 	@JsonAnySetter
 	public Fields setCustomFields(String key, Object value) {
-		String val = new String();
-		try {
-			val = value.toString();
-		} catch (NullPointerException e) {
-			customFields1.put(key, null);
-		}
-		if (val.startsWith("[")) {
+		if (value == null) {
+			CustomField cstmFld = new CustomField();
+			cstmFld.setId(null);
+			cstmFld.setSelf(null);
+			cstmFld.setValue(null);
+			customFields.put(key, cstmFld);
+		} else if (value.getClass().equals(String.class)) {
+			CustomField cstmFld = new CustomField();
+			cstmFld.setId(null);
+			cstmFld.setSelf(null);
+			cstmFld.setValue(value.toString());
+			customFields.put(key, cstmFld);
 
-			ArrayList<CustomField> custArr = (ArrayList<CustomField>) value;
-
-			Map<String, CustomField> custMap = (Map<String, CustomField>) custArr.get(0);
-
-			customFieldArr.put(key, custMap);
-			//customFields.putAll(custMap);
-
-		} else if (val.contains("self")) {
+		} else if (value.getClass().equals(ArrayList.class)) {
+			for (Object o : (ArrayList<Object>) value) {
+				setCustomFields(key, o);
+			}
+		} else if (value.getClass().equals(LinkedHashMap.class)) {
 			ObjectMapper obj = new ObjectMapper();
 
 			CustomField cust = obj.convertValue(value, CustomField.class);
 
 			// CustomField cust = CustomField.class.cast(value);
 			customFields.put(key, cust);
-		} else
-			customFields1.put(key, value);
+		}
+		//
+
+		/*
+		 * String val = new String(); try { val = value.toString(); } catch
+		 * (NullPointerException e) { customFields1.put(key, null); } if
+		 * (val.startsWith("[")) {
+		 * 
+		 * // add class cast exception ArrayList<CustomField> custArr =
+		 * (ArrayList<CustomField>) value; // add class cast exception
+		 * 
+		 * Map<String, CustomField> custMap = (Map<String, CustomField>) custArr.get(0);
+		 * 
+		 * customFieldArr.put(key, custMap); // customFields.putAll(custMap);
+		 * 
+		 * } else if (val.contains("self")) { ObjectMapper obj = new ObjectMapper();
+		 * 
+		 * CustomField cust = obj.convertValue(value, CustomField.class);
+		 * 
+		 * // CustomField cust = CustomField.class.cast(value); customFields.put(key,
+		 * cust); } else customFields1.put(key, value);
+		 */
 		return this;
 
 	}
