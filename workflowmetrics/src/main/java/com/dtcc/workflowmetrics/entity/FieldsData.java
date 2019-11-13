@@ -39,7 +39,7 @@ public class FieldsData implements Serializable {
 	@Column(name = "FieldName")
 	private String fieldName;
 
-	@Column(name = "FieldValue")
+	@Column(name = "FieldValue", length = 5000)
 	private String fieldValue;
 
 	@Column(name = "FieldDatatype")
