@@ -1,11 +1,17 @@
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "issueType")
 @Table(name = "Issue_Type")
@@ -33,6 +39,31 @@ public class IssueType implements Serializable{
 	private Boolean subtask;
 
 	
+	@JsonManagedReference
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<Issue> issues;
+
+	
+	public String getIssueName() {
+		return issueName;
+	}
+
+	public void setIssueName(String issueName) {
+		this.issueName = issueName;
+	}
+
+	public List<Issue> getIssues() {
+		return issues;
+	}
+
+	public void setIssues(List<Issue> issues) {
+		this.issues = issues;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public Integer getIssueTypeID() {
 		return issueTypeID;
 	}
