@@ -1,10 +1,11 @@
 package com.dtcc.workflowmetrics.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -91,16 +92,17 @@ public class JiraServiceImpl implements JiraService {
 		Integer issueId = webhookIssue.getId();
 		Integer projectId = project.getId();
 
-		try {
-			userdetail.setSelf(user.getSelf());
-			userdetail.setUserName(user.getName());
-			userdetail.setUserKey(user.getKey());
-			userdetail.setEmailId(user.getEmailAddress());
+		Optional<UserDetail> searchUserDetail = userDao.findByEmailId(user.getEmailAddress());
 
-			userDao.save(userdetail);
-		} catch (ConstraintViolationException e) {
-			System.out.println("duplicate data eliminated");
+		if (searchUserDetail != null && searchUserDetail.isPresent()) {
+
+			userdetail = searchUserDetail.get();
 		}
+
+		userdetail.setSelf(user.getSelf());
+		userdetail.setUserName(user.getName());
+		userdetail.setUserKey(user.getKey());
+		userdetail.setEmailId(user.getEmailAddress());
 
 		projectDetails.setProjectKey(project.getKey());
 		projectDetails.setProjectId(projectId);
@@ -108,54 +110,65 @@ public class JiraServiceImpl implements JiraService {
 		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
 		projectDetails.setSelf(project.getSelf());
 
-		projectDao.save(projectDetails);
-
 		issueType.setIssueTypeID(issuetype.getId());
 		issueType.setSelf(issuetype.getSelf());
 		issueType.setName(issuetype.getName());
 		issueType.setDescription(issuetype.getDescription());
 		issueType.setSubtask(issuetype.getSubtask());
 
-		issueTypeDao.save(issueType);
-
 		issueDetail.setId(issueId);
 		issueDetail.setSelf(webhookIssue.getSelf());
 		issueDetail.setKey(webhookIssue.getKey());
 		issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
-		issueDetail.setIssueTypeID(webhookIssue.getFields().getIssuetype().getId());
-		issueDetail.setProjectID(projectId);
+		issueDetail.setIssueType(issueType);
+		issueDetail.setProjectDetail(projectDetails);
 
-		issueDao.save(issueDetail);
+		ArrayList<Issue> issueList = new ArrayList<Issue>();
+		issueList.add(issueDetail);
+		issueType.setIssues(issueList);
+		projectDetails.setIssues(issueList);
 
-		comment.setIssueID(issueId);
-		comment.setUserId(userdetail.getUserID());
+		/*
+		// comment.setIssueID(issueId);
+		// comment.setUserId(userdetail.getUserID());
+		comment.setIssue(issueDetail);
+		comment.setUserDetail(userdetail);
 		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
 		comment.setDateTime(new Date(data.getTimestamp()));
 
-		commentDao.save(comment);
-
-		transition.setTransitionId(webhookTransition.getTransitionId());
-		transition.setWorkflowId(webhookTransition.getWorkflowId());
-		transition.setWorkflowName(webhookTransition.getWorkflowName());
-		transition.setIssueId(issueId);
-		transition.setFromStatus(webhookTransition.getFrom_status());
-		transition.setToStatus(webhookTransition.getTo_status());
-		// transition.setUserId();
-		transition.setTransitionName(webhookTransition.getTransitionName());
-		transition.setTimestamp(new Date(data.getTimestamp()));
-
-		transitionDao.save(transition);
-
+		ArrayList<Comment> commentList = new ArrayList<Comment>();
+		commentList.add(comment);
+		userdetail.setComments(commentList);
+		issueDetail.setComments(commentList);
+*/
+		/*
+		 * transition.setTransitionId(webhookTransition.getTransitionId());
+		 * transition.setWorkflowId(webhookTransition.getWorkflowId());
+		 * transition.setWorkflowName(webhookTransition.getWorkflowName()); //
+		 * transition.setIssueId(issueId); transition.setIssue(issueDetail);
+		 * transition.setFromStatus(webhookTransition.getFrom_status());
+		 * transition.setToStatus(webhookTransition.getTo_status());
+		 * transition.setUserDetail(userdetail);
+		 * transition.setTransitionName(webhookTransition.getTransitionName());
+		 * transition.setTimestamp(new Date(data.getTimestamp()));
+		 * 
+		 * ArrayList<Transition> transitionList = new ArrayList<Transition>();
+		 * transitionList.add(transition); userdetail.setTransitions(transitionList);
+		 * //issueDetail.setTransitions(transitionList);
+		 */
 		cusMap = data.getIssue().getFields().getCustomFields();
 		ObjectMapper objectMapper = new ObjectMapper();
+		ArrayList<FieldsData> fieldsList = new ArrayList<FieldsData>();
 		for (Map.Entry<String, CustomField> cust : cusMap.entrySet()) {
 
 			FieldsData fieldsData = new FieldsData();
 			String key = cust.getKey();
 			CustomField val = cust.getValue();
-			fieldsData.setIssueID(issueId);
+			fieldsData.setIssue(issueDetail);
+			// fieldsData.setIssueID(issueId);
 			fieldsData.setFieldDatatype("CustomField");
 			fieldsData.setFieldName(key);
+
 			try {
 				fieldsData.setFieldValue(objectMapper.writeValueAsString(val));
 			} catch (JsonProcessingException e) {
@@ -163,8 +176,17 @@ public class JiraServiceImpl implements JiraService {
 			}
 			fieldsData.setDt(new Date(data.getTimestamp()));
 
-			fieldsDao.save(fieldsData);
+			fieldsList.add(fieldsData);
+
 		}
+
+		issueDetail.setFields(fieldsList);
+
+		IssueType storedIssueType = issueTypeDao.save(issueType);
+
+		ProjectDetails storedProjectDetail = projectDao.save(projectDetails);
+		
+		UserDetail storedUserDetail = userDao.save(userdetail);
 	}
 
 	@Override

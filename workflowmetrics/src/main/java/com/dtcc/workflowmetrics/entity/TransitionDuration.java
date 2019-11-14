@@ -28,17 +28,14 @@ public class TransitionDuration implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer transitionDurationId;
 
-	/*
-	 * @JsonBackReference
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
-	 * issue;
-	 * 
-	 * @Column(name = "IssueID", insertable = false, updatable = false)
-	 */
-	@Column(name = "IssueID")
+	@JsonBackReference
+
+	@OneToOne(cascade = CascadeType.MERGE)
+
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
 	private Integer issueID;
 
 	@Column(name = "Status")
@@ -48,7 +45,7 @@ public class TransitionDuration implements Serializable {
 	private String durationInStatus;
 
 	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
 	private UserDetail userDetail;
 
@@ -61,17 +58,14 @@ public class TransitionDuration implements Serializable {
 	@Column(name = "EndDateTime")
 	private Date endDateTime;
 
-	/*
-	 * @JsonBackReference
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID") private
-	 * ProjectDetails projectDetail;
-	 * 
-	 * @Column(name = "ProjectID", insertable = false, updatable = false)
-	 */
-	@Column(name = "ProjectID")
+	@JsonBackReference
+
+	@OneToOne(cascade = CascadeType.MERGE)
+
+	@JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID")
+	private ProjectDetails projectDetail;
+
+	@Column(name = "ProjectID", insertable = false, updatable = false)
 	private int projectID;
 
 	@Column(name = "SysID")
@@ -100,11 +94,14 @@ public class TransitionDuration implements Serializable {
 		this.projectID = projectID;
 	}
 
-	/*
-	 * public Issue getIssue() { return issue; }
-	 * 
-	 * public void setIssue(Issue issue) { this.issue = issue; }
-	 */
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
@@ -113,12 +110,14 @@ public class TransitionDuration implements Serializable {
 		this.userDetail = userDetail;
 	}
 
-	/*
-	 * public ProjectDetails getProjectDetail() { return projectDetail; }
-	 * 
-	 * public void setProjectDetail(ProjectDetails projectDetail) {
-	 * this.projectDetail = projectDetail; }
-	 */
+	public ProjectDetails getProjectDetail() {
+		return projectDetail;
+	}
+
+	public void setProjectDetail(ProjectDetails projectDetail) {
+		this.projectDetail = projectDetail;
+	}
+
 	public Integer getIssueID() {
 		return issueID;
 	}

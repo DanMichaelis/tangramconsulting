@@ -1,11 +1,20 @@
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "issue")
 @Table(name = "Issue")
@@ -16,7 +25,7 @@ public class Issue implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "IssueID")
+	@Column(name = "IssueID", unique = true, nullable = false)
 	private Integer issueId;
 
 	@Column(name = "Self")
@@ -25,56 +34,75 @@ public class Issue implements Serializable {
 	@Column(name = "IssueKey")
 	private String issueKey;
 
-	@Column(name = "IssueTypeID")
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "IssueTypeID", referencedColumnName = "IssueTypeID")
+
+	private IssueType issueType;
+
+	@Column(name = "IssueTypeID", insertable = false, updatable = false)
 	private Integer issueTypeID;
 
-	/*
-	 * @JsonBackReference
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID") private
-	 * ProjectDetails projectDetail;
-	 * 
-	 * @Column(name = "ProjectID", insertable = false, updatable = false)
-	 */
-	@Column(name = "ProjectID")
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID")
+	private ProjectDetails projectDetail;
+
+	@Column(name = "ProjectID", insertable = false, updatable = false)
 	private int projectID;
 
 	@Column(name = "Priority")
 	private String priority;
 
-	/*
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<Comment> comments;
-	 * 
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<Fields> fields;
-	 * 
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<IssueLink> issueLink;
-	 * 
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<Transition> transitions;
-	 * 
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<TransitionDuration> transitionDurations;
-	 * 
-	 * @JsonManagedReference
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval =
-	 * true) private List<TStatusDuration> tStatusDuration;
-	 */
+	@JsonManagedReference
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<Comment> comments;
+
+	@JsonManagedReference
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<FieldsData> fields;
+
+	@JsonManagedReference
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<IssueLink> issueLink;
+
+	@JsonManagedReference
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<Transition> transitions;
+
+	@JsonManagedReference
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<TransitionDuration> transitionDurations;
+
+	@JsonManagedReference
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<TStatusDuration> tStatusDuration;
+
+	public IssueType getIssueType() {
+		return issueType;
+	}
+
+	public void setIssueType(IssueType issueType) {
+		this.issueType = issueType;
+	}
+
+	public ProjectDetails getProjectDetail() {
+		return projectDetail;
+	}
+
+	public void setProjectDetail(ProjectDetails projectDetail) {
+		this.projectDetail = projectDetail;
+	}
+
+	public void setProjectID(int projectID) {
+		this.projectID = projectID;
+	}
+
 	public Integer getIssueId() {
 		return issueId;
 	}
@@ -91,60 +119,87 @@ public class Issue implements Serializable {
 		this.issueKey = issueKey;
 	}
 
-	/*
-	 * public List<Comment> getComments() { return comments; }
-	 * 
-	 * public void setComments(List<Comment> comments) { // this.comments =
-	 * comments; if (this.comments == null) { this.comments = comments; } else {
-	 * this.comments.retainAll(comments); this.comments.addAll(comments); }
-	 * 
-	 * }
-	 * 
-	 * public List<Fields> getFields() { return fields; }
-	 * 
-	 * public void setFields(List<Fields> fields) { // this.fields = fields; if
-	 * (this.fields == null) { this.fields = fields; } else {
-	 * this.fields.retainAll(fields); this.fields.addAll(fields); }
-	 * 
-	 * }
-	 * 
-	 * public List<IssueLink> getIssueLink() { return issueLink; }
-	 * 
-	 * public void setIssueLink(List<IssueLink> issueLink) { this.issueLink =
-	 * issueLink; }
-	 * 
-	 * public List<Transition> getTransitions() { return transitions; }
-	 * 
-	 * public void setTransitions(List<Transition> transitions) { //
-	 * this.transitions = transitions; if (this.transitions == null) {
-	 * this.transitions = transitions; } else {
-	 * this.transitions.retainAll(transitions);
-	 * this.transitions.addAll(transitions); }
-	 * 
-	 * }
-	 * 
-	 * public List<TransitionDuration> getTransitionDurations() { return
-	 * transitionDurations; }
-	 * 
-	 * public void setTransitionDurations(List<TransitionDuration>
-	 * transitionDurations) { // this.transitionDurations = transitionDurations; if
-	 * (this.transitionDurations == null) { this.transitionDurations =
-	 * transitionDurations; } else {
-	 * this.transitionDurations.retainAll(transitionDurations);
-	 * this.transitionDurations.addAll(transitionDurations); }
-	 * 
-	 * }
-	 * 
-	 * public List<TStatusDuration> gettStatusDuration() { return tStatusDuration; }
-	 * 
-	 * public void settStatusDuration(List<TStatusDuration> tStatusDuration) { //
-	 * this.tStatusDuration = tStatusDuration; if (this.tStatusDuration == null) {
-	 * this.tStatusDuration = tStatusDuration; } else {
-	 * this.tStatusDuration.retainAll(tStatusDuration);
-	 * this.tStatusDuration.addAll(tStatusDuration); }
-	 * 
-	 * }
-	 */
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		// this.comments = comments;
+		if (this.comments == null) {
+			this.comments = comments;
+		} else {
+			this.comments.retainAll(comments);
+			this.comments.addAll(comments);
+		}
+
+	}
+
+	public List<FieldsData> getFields() {
+		return fields;
+	}
+
+	public void setFields(List<FieldsData> fields) {
+		// this.fields = fields;
+		if (this.fields == null) {
+			this.fields = fields;
+		} else {
+			this.fields.retainAll(fields);
+			this.fields.addAll(fields);
+		}
+
+	}
+
+	public List<IssueLink> getIssueLink() {
+		return issueLink;
+	}
+
+	public void setIssueLink(List<IssueLink> issueLink) {
+		this.issueLink = issueLink;
+	}
+
+	public List<Transition> getTransitions() {
+		return transitions;
+	}
+
+	public void setTransitions(final List<Transition> transitions) { //
+		this.transitions = transitions;
+		/*
+		 * if (this.transitions == null) { this.transitions = transitions; } else {
+		 * this.transitions.retainAll(transitions);
+		 * this.transitions.addAll(transitions); }
+		 */
+	}
+
+	public List<TransitionDuration> getTransitionDurations() {
+		return transitionDurations;
+	}
+
+	public void setTransitionDurations(List<TransitionDuration> transitionDurations) {
+		// this.transitionDurations = transitionDurations;
+		if (this.transitionDurations == null) {
+			this.transitionDurations = transitionDurations;
+		} else {
+			this.transitionDurations.retainAll(transitionDurations);
+			this.transitionDurations.addAll(transitionDurations);
+		}
+
+	}
+
+	public List<TStatusDuration> gettStatusDuration() {
+		return tStatusDuration;
+	}
+
+	public void settStatusDuration(List<TStatusDuration> tStatusDuration) { //
+		this.tStatusDuration = tStatusDuration;
+		if (this.tStatusDuration == null) {
+			this.tStatusDuration = tStatusDuration;
+		} else {
+			this.tStatusDuration.retainAll(tStatusDuration);
+			this.tStatusDuration.addAll(tStatusDuration);
+		}
+
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -27,17 +27,15 @@ public class Comment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer commentId;
-	/*
-	 * @JsonBackReference
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
-	 * issue;
-	 * 
-	 * @Column(name = "IssueID", insertable = false, updatable = false)
-	 */
-	@Column(name = "IssueID")
+
+	@JsonBackReference
+
+	@OneToOne(cascade = CascadeType.MERGE)
+
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
 	private Integer issueID;
 
 	@Column(name = "CommentDetails")
@@ -47,7 +45,7 @@ public class Comment implements Serializable {
 	private Date creationDateTime;
 
 	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
 	private UserDetail userDetail;
 
@@ -62,11 +60,14 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	/*
-	 * public Issue getIssue() { return issue; }
-	 * 
-	 * public void setIssue(Issue issue) { this.issue = issue; }
-	 */
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
 	public Date getCreationDateTime() {
 		return creationDateTime;
 	}

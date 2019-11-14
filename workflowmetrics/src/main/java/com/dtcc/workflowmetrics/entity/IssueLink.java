@@ -2,12 +2,17 @@ package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity(name = "issueLink")
 @Table(name = "IssueLink")
@@ -22,17 +27,14 @@ public class IssueLink implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer issueLinkId;
 
-	/*
-	 * @JsonBackReference
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "IssueID", referencedColumnName = "IssueID") private Issue
-	 * issue;
-	 * 
-	 * @Column(name = "IssueID", insertable = false, updatable = false)
-	 */
-	@Column(name = "IssueID")
+	@JsonBackReference
+
+	@OneToOne(cascade = CascadeType.MERGE)
+
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
 	private Integer issueID;
 
 	@Column(name = "LinkedIssueId")
@@ -49,11 +51,14 @@ public class IssueLink implements Serializable {
 		this.issueLinkId = issueLinkId;
 	}
 
-	/*
-	 * public Issue getIssue() { return issue; }
-	 * 
-	 * public void setIssue(Issue issue) { this.issue = issue; }
-	 */
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
