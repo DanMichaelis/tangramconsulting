@@ -1,6 +1,5 @@
 package com.dtcc.workflowmetrics.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -116,56 +115,49 @@ public class JiraServiceImpl implements JiraService {
 		issueType.setDescription(issuetype.getDescription());
 		issueType.setSubtask(issuetype.getSubtask());
 
+		IssueType storedIssueType = issueTypeDao.save(issueType);
+
+		ProjectDetails storedProjectDetail = projectDao.save(projectDetails);
+
+		UserDetail storedUserDetail = userDao.save(userdetail);
+
 		issueDetail.setId(issueId);
 		issueDetail.setSelf(webhookIssue.getSelf());
 		issueDetail.setKey(webhookIssue.getKey());
 		issueDetail.setPriority(webhookIssue.getFields().getPriority().getName());
-		issueDetail.setIssueType(issueType);
-		issueDetail.setProjectDetail(projectDetails);
+		issueDetail.setIssueType(storedIssueType);
+		issueDetail.setProjectDetail(storedProjectDetail);
 
-		ArrayList<Issue> issueList = new ArrayList<Issue>();
-		issueList.add(issueDetail);
-		issueType.setIssues(issueList);
-		projectDetails.setIssues(issueList);
+		Issue storedIssue = issueDao.save(issueDetail);
 
-		/*
-		// comment.setIssueID(issueId);
-		// comment.setUserId(userdetail.getUserID());
-		comment.setIssue(issueDetail);
-		comment.setUserDetail(userdetail);
+		comment.setIssue(storedIssue);
+		comment.setUserDetail(storedUserDetail); //
 		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
 		comment.setDateTime(new Date(data.getTimestamp()));
 
-		ArrayList<Comment> commentList = new ArrayList<Comment>();
-		commentList.add(comment);
-		userdetail.setComments(commentList);
-		issueDetail.setComments(commentList);
-*/
-		/*
-		 * transition.setTransitionId(webhookTransition.getTransitionId());
-		 * transition.setWorkflowId(webhookTransition.getWorkflowId());
-		 * transition.setWorkflowName(webhookTransition.getWorkflowName()); //
-		 * transition.setIssueId(issueId); transition.setIssue(issueDetail);
-		 * transition.setFromStatus(webhookTransition.getFrom_status());
-		 * transition.setToStatus(webhookTransition.getTo_status());
-		 * transition.setUserDetail(userdetail);
-		 * transition.setTransitionName(webhookTransition.getTransitionName());
-		 * transition.setTimestamp(new Date(data.getTimestamp()));
-		 * 
-		 * ArrayList<Transition> transitionList = new ArrayList<Transition>();
-		 * transitionList.add(transition); userdetail.setTransitions(transitionList);
-		 * //issueDetail.setTransitions(transitionList);
-		 */
+		commentDao.save(comment);
+
+		transition.setTransitionId(webhookTransition.getTransitionId());
+		transition.setWorkflowId(webhookTransition.getWorkflowId());
+		transition.setWorkflowName(webhookTransition.getWorkflowName()); //
+		// transition.setIssueId(issueId);
+		transition.setIssue(storedIssue);
+		transition.setFromStatus(webhookTransition.getFrom_status());
+		transition.setToStatus(webhookTransition.getTo_status());
+		transition.setUserDetail(storedUserDetail);
+		transition.setTransitionName(webhookTransition.getTransitionName());
+		transition.setTimestamp(new Date(data.getTimestamp()));
+
+		transitionDao.save(transition);
+
 		cusMap = data.getIssue().getFields().getCustomFields();
 		ObjectMapper objectMapper = new ObjectMapper();
-		ArrayList<FieldsData> fieldsList = new ArrayList<FieldsData>();
 		for (Map.Entry<String, CustomField> cust : cusMap.entrySet()) {
 
 			FieldsData fieldsData = new FieldsData();
 			String key = cust.getKey();
 			CustomField val = cust.getValue();
-			fieldsData.setIssue(issueDetail);
-			// fieldsData.setIssueID(issueId);
+			fieldsData.setIssue(storedIssue);
 			fieldsData.setFieldDatatype("CustomField");
 			fieldsData.setFieldName(key);
 
@@ -176,17 +168,9 @@ public class JiraServiceImpl implements JiraService {
 			}
 			fieldsData.setDt(new Date(data.getTimestamp()));
 
-			fieldsList.add(fieldsData);
-
+			fieldsDao.save(fieldsData);
 		}
 
-		issueDetail.setFields(fieldsList);
-
-		IssueType storedIssueType = issueTypeDao.save(issueType);
-
-		ProjectDetails storedProjectDetail = projectDao.save(projectDetails);
-		
-		UserDetail storedUserDetail = userDao.save(userdetail);
 	}
 
 	@Override
