@@ -103,11 +103,25 @@ public class JiraServiceImpl implements JiraService {
 		userdetail.setUserKey(user.getKey());
 		userdetail.setEmailId(user.getEmailAddress());
 
+		Optional<ProjectDetails> searchProjectDetail = projectDao.findById(projectId);
+
+		if (searchProjectDetail != null && searchProjectDetail.isPresent()) {
+
+			projectDetails = searchProjectDetail.get();
+		}
+
 		projectDetails.setProjectKey(project.getKey());
 		projectDetails.setProjectId(projectId);
 		projectDetails.setProjectName(project.getName());
 		projectDetails.setProjectTypeKey(project.getProjectTypeKey());
 		projectDetails.setSelf(project.getSelf());
+
+		Optional<IssueType> searchIssueType = issueTypeDao.findById(issuetype.getId());
+
+		if (searchIssueType != null && searchIssueType.isPresent()) {
+
+			issueType = searchIssueType.get();
+		}
 
 		issueType.setIssueTypeID(issuetype.getId());
 		issueType.setSelf(issuetype.getSelf());
@@ -121,6 +135,13 @@ public class JiraServiceImpl implements JiraService {
 
 		UserDetail storedUserDetail = userDao.save(userdetail);
 
+		Optional<Issue> searchIssueDetail = issueDao.findById(issueId);
+
+		if (searchIssueDetail != null && searchIssueDetail.isPresent()) {
+
+			issueDetail = searchIssueDetail.get();
+		}
+
 		issueDetail.setId(issueId);
 		issueDetail.setSelf(webhookIssue.getSelf());
 		issueDetail.setKey(webhookIssue.getKey());
@@ -131,12 +152,18 @@ public class JiraServiceImpl implements JiraService {
 		Issue storedIssue = issueDao.save(issueDetail);
 
 		comment.setIssue(storedIssue);
-		comment.setUserDetail(storedUserDetail); //
+		comment.setUserDetail(storedUserDetail);
 		// comment.setCommentDetails(webhookIssue.getFields().getComment().getComments().get(0));
 		comment.setDateTime(new Date(data.getTimestamp()));
 
 		commentDao.save(comment);
 
+		Optional<Transition> searchTransitionDetail = transitionDao.findById(webhookTransition.getTransitionId());
+
+		if (searchTransitionDetail != null && searchTransitionDetail.isPresent()) {
+
+			transition = searchTransitionDetail.get();
+		}
 		transition.setTransitionId(webhookTransition.getTransitionId());
 		transition.setWorkflowId(webhookTransition.getWorkflowId());
 		transition.setWorkflowName(webhookTransition.getWorkflowName()); //
@@ -157,6 +184,12 @@ public class JiraServiceImpl implements JiraService {
 			FieldsData fieldsData = new FieldsData();
 			String key = cust.getKey();
 			CustomField val = cust.getValue();
+
+			Optional<FieldsData> searchFieldsData = fieldsDao.findByIssueIDAndFieldName(issueId, key);
+			if (searchFieldsData != null && searchFieldsData.isPresent()) {
+
+				fieldsData = searchFieldsData.get();
+			}
 			fieldsData.setIssue(storedIssue);
 			fieldsData.setFieldDatatype("CustomField");
 			fieldsData.setFieldName(key);
