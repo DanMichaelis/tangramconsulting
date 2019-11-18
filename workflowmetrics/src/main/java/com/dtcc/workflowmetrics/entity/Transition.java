@@ -1,18 +1,21 @@
-package com.dtcc.workflowmetrics.pojo;
+package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TransitionTable")
-public class Transition implements Serializable{
+public class Transition implements Serializable {
 
 	/**
 	 * 
@@ -20,36 +23,79 @@ public class Transition implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "TransitionId")
+	private Integer transitionId;
+
 	@Column(name = "WorkflowId")
 	private Integer workflowId;
 
 	@Column(name = "workflowName")
 	private String workflowName;
-	
+
 	@Column(name = "WebhookId")
 	private Integer webhookId;
-	
-	@Column(name = "UserId")
-	private Integer userId;
+
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "UserID", referencedColumnName = "UserID")
+	private UserDetail userDetail;
+
+	@Column(name = "UserID", insertable = false, updatable = false)
+	private int userId;
 
 	@Column(name = "TransitionName")
 	private String transitionName;
-	
-	@Column(name = "TransitionId")
-	private Integer transitionId;
+
 
 	@Column(name = "ToStatus")
 	private String toStatus;
-	
-	@Column(name = "IssueId")
-	private Integer issueId;
-	
+
+	@JsonBackReference
+
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
+	private Issue issue;
+
+	@Column(name = "IssueID", insertable = false, updatable = false)
+	private Integer issueID;
+
 	@Column(name = "FromStatus")
 	private String fromStatus;
-	
+
 	@Column(name = "Timestamp")
 	private Date Timestamp;
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
+	public Integer getIssueID() {
+		return issueID;
+	}
+
+	public void setIssueID(Integer issueID) {
+		this.issueID = issueID;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public String getWorkflowName() {
 		return workflowName;
@@ -108,11 +154,11 @@ public class Transition implements Serializable{
 	}
 
 	public Integer getIssueId() {
-		return issueId;
+		return issueID;
 	}
 
 	public void setIssueId(Integer issueId) {
-		this.issueId = issueId;
+		this.issueID = issueId;
 	}
 
 	public String getFromStatus() {
@@ -131,9 +177,6 @@ public class Transition implements Serializable{
 		Timestamp = timestamp;
 	}
 
-	public Transition() {
-	}
-
 	public Transition(String workflowName, Integer workflowId, Integer webhookId, Integer userId, String transitionName,
 			Integer transitionId, String toStatus, Integer issueId, String fromStatus, Date timestamp) {
 		super();
@@ -144,9 +187,13 @@ public class Transition implements Serializable{
 		this.transitionName = transitionName;
 		this.transitionId = transitionId;
 		this.toStatus = toStatus;
-		this.issueId = issueId;
+		this.issueID = issueId;
 		this.fromStatus = fromStatus;
 		Timestamp = timestamp;
+	}
+
+	public Transition() {
+		super();
 	}
 
 	

@@ -1,12 +1,10 @@
 package com.dtcc.workflowmetrics.dao;
 
-import com.dtcc.workflowmetrics.pojo.TStatusDuration;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TStatusDurationDao {
+import com.dtcc.workflowmetrics.entity.TStatusDuration;
 
-	public void addTStatusDuration(TStatusDuration durationDetails);
-	
-	public void getTStatusById(Integer issueId);
+public interface TStatusDurationDao extends CrudRepository<TStatusDuration, Integer>{
 
 
 }

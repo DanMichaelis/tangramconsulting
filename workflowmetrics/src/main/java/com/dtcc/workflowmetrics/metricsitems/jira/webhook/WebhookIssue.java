@@ -1,7 +1,5 @@
 package com.dtcc.workflowmetrics.metricsitems.jira.webhook;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
-
 public class WebhookIssue {
     private Integer id;
     private String self;
