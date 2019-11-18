@@ -53,7 +53,6 @@ public class Transition implements Serializable {
 	@JsonBackReference
 
 	@OneToOne(cascade = CascadeType.MERGE)
-
 	@JoinColumn(name = "IssueID", referencedColumnName = "IssueID")
 	private Issue issue;
 
