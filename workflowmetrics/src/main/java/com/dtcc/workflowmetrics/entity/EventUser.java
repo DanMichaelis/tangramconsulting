@@ -18,7 +18,7 @@ public class EventUser implements Serializable{
 		private Integer userID;
 
 		@Column(name = "SourceSystem")
-		private String sourceSystem;
+		private int sourceSystem;
 
 		@Column(name = "UserName")
 		private String userName;
@@ -37,11 +37,11 @@ public class EventUser implements Serializable{
 			this.userID = userID;
 		}
 
-		public String getSourceSystem() {
+		public int getSourceSystem() {
 			return sourceSystem;
 		}
 
-		public void setSourceSystem(String sourceSystem) {
+		public void setSourceSystem(int sourceSystem) {
 			this.sourceSystem = sourceSystem;
 		}
 
@@ -73,7 +73,7 @@ public class EventUser implements Serializable{
 			return serialVersionUID;
 		}
 
-		public EventUser(Integer userID, String sourceSystem, String userName, String emailId, Long lastUpdateDate) {
+		public EventUser(Integer userID, int sourceSystem, String userName, String emailId, Long lastUpdateDate) {
 			super();
 			this.userID = userID;
 			this.sourceSystem = sourceSystem;
@@ -92,7 +92,7 @@ public class EventUser implements Serializable{
 			int result = 1;
 			result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
 			result = prime * result + ((lastUpdateDate == null) ? 0 : lastUpdateDate.hashCode());
-			result = prime * result + ((sourceSystem == null) ? 0 : sourceSystem.hashCode());
+			result = prime * result + sourceSystem;
 			result = prime * result + ((userID == null) ? 0 : userID.hashCode());
 			result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 			return result;
@@ -117,10 +117,7 @@ public class EventUser implements Serializable{
 					return false;
 			} else if (!lastUpdateDate.equals(other.lastUpdateDate))
 				return false;
-			if (sourceSystem == null) {
-				if (other.sourceSystem != null)
-					return false;
-			} else if (!sourceSystem.equals(other.sourceSystem))
+			if (sourceSystem != other.sourceSystem)
 				return false;
 			if (userID == null) {
 				if (other.userID != null)

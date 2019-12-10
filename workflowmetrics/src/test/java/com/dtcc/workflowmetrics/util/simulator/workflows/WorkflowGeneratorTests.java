@@ -53,7 +53,7 @@ public class WorkflowGeneratorTests {
     	eventUser.setUserID(1011);
     	eventUser.setEmailId("jiniya.ghosh@perficient.com");
     	eventUser.setUserName("Jiniya");
-    	eventUser.setSourceSystem("Jira");
+    	eventUser.setSourceSystem(12);
     	Date dt = new Date();
     	eventUser.setLastUpdateDate(dt.getTime());
     	
