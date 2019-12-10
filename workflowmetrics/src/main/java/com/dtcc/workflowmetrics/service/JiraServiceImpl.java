@@ -1,5 +1,6 @@
 package com.dtcc.workflowmetrics.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,7 +25,9 @@ import com.dtcc.workflowmetrics.entity.FieldsData;
 import com.dtcc.workflowmetrics.entity.Issue;
 import com.dtcc.workflowmetrics.entity.IssueType;
 import com.dtcc.workflowmetrics.entity.ProjectDetails;
+import com.dtcc.workflowmetrics.entity.TStatusDuration;
 import com.dtcc.workflowmetrics.entity.Transition;
+import com.dtcc.workflowmetrics.entity.TransitionDuration;
 import com.dtcc.workflowmetrics.entity.UserDetail;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
 import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
@@ -81,6 +84,7 @@ public class JiraServiceImpl implements JiraService {
 		Issue issueDetail = new Issue();
 		Comment comment = new Comment();
 		Transition transition = new Transition();
+		TransitionDuration transDuration = new TransitionDuration();
 
 		WebhookTransition webhookTransition = data.getTransition();
 		User user = data.getUser();
@@ -202,6 +206,43 @@ public class JiraServiceImpl implements JiraService {
 			fieldsData.setDt(new Date(data.getTimestamp()));
 
 			fieldsDao.save(fieldsData);
+		}
+		
+		ArrayList<Transition> transDetails = transitionDao.findByIssueID(issueId);
+		for (Transition tran : transDetails) {
+			Optional<Transition> tranToStatus = transitionDao.findByIssueIDAndToStatus(issueId, tran.getToStatus());
+			Optional<Transition> tranFromStatus = transitionDao.findByIssueIDAndFromStatus(issueId, tran.getToStatus());
+			
+			if (tranToStatus != null && tranToStatus.isPresent() && tranFromStatus != null && tranFromStatus.isPresent()) {
+				
+				Transition toStatusData = tranToStatus.get();
+				Transition fromStatusData = tranFromStatus.get();
+				transDuration.setIssueID(issueId);
+				transDuration.setStatus(tran.getToStatus());
+				transDuration.setUserDetail(storedUserDetail);
+				transDuration.setStartDateTime(toStatusData.getTimestamp());
+				transDuration.setEndDateTime(fromStatusData.getTimestamp());
+				
+				long diffInMillies = Math.abs(toStatusData.getTimestamp().getTime() - fromStatusData.getTimestamp().getTime());
+			    long days = (diffInMillies / (60*60*24*1000));
+			    
+			    transDuration.setDurationInStatus(Long.toString(days));
+			    transDuration.setProjectDetail(storedProjectDetail);
+			    
+			    
+			    transitionDurationDao.save(transDuration);
+			    
+			    TStatusDuration tStatusDuration = new TStatusDuration();
+			    
+			    tStatusDuration.setIssueID(issueId);
+			    tStatusDuration.setDurationInStatus(Long.toString(days));
+			    tStatusDuration.setTStatus(tran.getToStatus());
+			    tStatusDuration.setProjectDetail(storedProjectDetail);
+			    
+			    tStatusDurationDao.save(tStatusDuration);
+			    
+			}
+			
 		}
 
 	}

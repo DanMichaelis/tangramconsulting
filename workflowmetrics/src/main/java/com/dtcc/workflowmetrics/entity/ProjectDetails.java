@@ -1,17 +1,11 @@
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Project")
@@ -37,7 +31,7 @@ public class ProjectDetails implements Serializable {
 
 	@Column(name = "ProjectTypeKey")
 	private String projectTypeKey;
-
+/*
 	@JsonManagedReference
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Issue> issues;
@@ -51,7 +45,7 @@ public class ProjectDetails implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<TStatusDuration> tStatusDuration;
-
+*/
 	public Integer getProjectId() {
 		return projectId;
 	}
@@ -71,7 +65,7 @@ public class ProjectDetails implements Serializable {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-
+/*
 	public List<Issue> getIssues() {
 		return issues;
 	}
@@ -114,7 +108,7 @@ public class ProjectDetails implements Serializable {
 			this.tStatusDuration.addAll(tStatusDuration);
 		}
 	}
-
+*/
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

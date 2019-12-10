@@ -43,7 +43,7 @@ public class Issue implements Serializable {
 	@Column(name = "IssueTypeID", insertable = false, updatable = false)
 	private Integer issueTypeID;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ProjectID", referencedColumnName = "ProjectID")
 	private ProjectDetails projectDetail;
