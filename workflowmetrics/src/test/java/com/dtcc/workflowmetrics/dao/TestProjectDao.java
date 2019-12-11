@@ -24,11 +24,11 @@ public class TestProjectDao {
     ProjectDao dao;
 
     private static Project CM = (new Project()).setId("CM").setKey("CM").setLast_update_date(System.currentTimeMillis())
-            .setName("Company Management").setSourceSystemId(1);
+            .setName("Company Management").setSourceSystemId(1).setChecksum("");
     private static Project METRICS = (new Project()).setId("METRICS").setKey("METRICS").setLast_update_date(System.currentTimeMillis())
-            .setName("Metrics KPIs and Displays").setSourceSystemId(1);
+            .setName("Metrics KPIs and Displays").setSourceSystemId(1).setChecksum("");
     private static Project DEVELOPMENT = (new Project()).setId("DEVELOPMENT").setKey("DEVELOPMENT").setLast_update_date(System.currentTimeMillis())
-            .setName("Software Application Development").setSourceSystemId(1);
+            .setName("Software Application Development").setSourceSystemId(1).setChecksum("");
     private ArrayList<Project> projects = new ArrayList<Project>();
     
     @BeforeClass
@@ -56,6 +56,7 @@ public class TestProjectDao {
     public void testSave() {
         Project savedProject = dao.save(CM);
         assertEquals(CM, savedProject);
+        System.out.println(CM.getChecksum());
     }
 
     @Test

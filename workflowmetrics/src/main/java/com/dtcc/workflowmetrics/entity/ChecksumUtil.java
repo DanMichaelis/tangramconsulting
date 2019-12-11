@@ -10,6 +10,10 @@ import com.dtcc.workflowmetrics.exception.MetricsLogicException;
 
 public class ChecksumUtil {
     
+    private ChecksumUtil() {
+        
+    }
+    
     public static final String getChecksum(String s) {
         StringBuilder sb = new StringBuilder();
         try {
