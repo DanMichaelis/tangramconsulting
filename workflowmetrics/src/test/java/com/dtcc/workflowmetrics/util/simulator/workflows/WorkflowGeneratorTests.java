@@ -50,7 +50,7 @@ public class WorkflowGeneratorTests {
 			
     	EventUser eventUser = new EventUser();
     	
-    	eventUser.setUserID(1011);
+    	eventUser.setId("jiniya.ghosh@perficient.com");
     	eventUser.setEmailId("jiniya.ghosh@perficient.com");
     	eventUser.setUserName("Jiniya");
     	eventUser.setSourceSystem(12);
@@ -59,7 +59,7 @@ public class WorkflowGeneratorTests {
     	
     	EventUser storedEventUser = eventUserDao.save(eventUser);
     	
-    	assertEquals(storedEventUser.getUserID(), eventUser.getUserID());
+    	assertEquals(storedEventUser.getId(), eventUser.getId());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class WorkflowGeneratorTests {
 			
     	EventUserCustomField eventUserCustFld = new EventUserCustomField();
     	
-    	eventUserCustFld.setUserID(1011);
+    	eventUserCustFld.setUserID("jiniya.ghosh@perficient.com");
     	eventUserCustFld.setSourceSystem(1);
     	eventUserCustFld.setFieldName("ABC");
     	eventUserCustFld.setFieldDatatype("String");
@@ -77,6 +77,20 @@ public class WorkflowGeneratorTests {
     	eventUserCustFld.setCreateDate(dt.getTime());
     	
     	EventUserCustomField storedEventUserCustFld = eventUserCustomFieldDao.save(eventUserCustFld);
+    	
+    	assertEquals(storedEventUserCustFld.getUserID(), eventUserCustFld.getUserID());
+
+    	eventUserCustFld = new EventUserCustomField();
+    	
+    	eventUserCustFld.setUserID("jiniya.ghosh@perficient.com");
+    	eventUserCustFld.setSourceSystem(1);
+    	eventUserCustFld.setFieldName("ABC");
+    	eventUserCustFld.setFieldDatatype("String");
+       	eventUserCustFld.setFieldValue("BCDValue");
+        dt = new Date();
+    	eventUserCustFld.setCreateDate(dt.getTime());
+    	
+    	storedEventUserCustFld = eventUserCustomFieldDao.save(eventUserCustFld);
     	
     	assertEquals(storedEventUserCustFld.getUserID(), eventUserCustFld.getUserID());
     }

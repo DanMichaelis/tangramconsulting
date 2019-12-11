@@ -5,10 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity(name = "eventUserCustomField")
 @Table(name = "EventUserCustomField")
+@IdClass(EventUserCustomFieldId.class)
 public class EventUserCustomField implements Serializable{
 	
 	/**
@@ -18,14 +20,17 @@ public class EventUserCustomField implements Serializable{
 
 	@Id
 	@Column(name = "UserID")
-	private Integer userID;
+	private String userID;
 
+	@Id
 	@Column(name = "SourceSystem")
 	private int sourceSystem;
 
+	@Id
 	@Column(name = "CreateDate")
 	private Long createDate;
 
+	@Id
 	@Column(name = "FieldName")
 	private String fieldName;
 
@@ -35,11 +40,11 @@ public class EventUserCustomField implements Serializable{
 	@Column(name = "FieldValue")
 	private String fieldValue;
 
-	public Integer getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(Integer userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 
@@ -83,7 +88,7 @@ public class EventUserCustomField implements Serializable{
 		this.fieldValue = fieldValue;
 	}
 
-	public EventUserCustomField(Integer userID, int sourceSystem, Long createDate, String fieldName,
+	public EventUserCustomField(String userID, int sourceSystem, Long createDate, String fieldName,
 			String fieldDatatype, String fieldValue) {
 		super();
 		this.userID = userID;

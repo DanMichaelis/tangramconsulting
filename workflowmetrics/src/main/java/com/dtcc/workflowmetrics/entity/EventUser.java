@@ -1,22 +1,25 @@
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity(name = "eventUser")
 @Table(name = "EventUser")
+@IdClass(EventUserId.class)
 public class EventUser implements Serializable{
 
 		private static final long serialVersionUID = 1L;
 
 		@Id
-		@Column(name = "UserID")
-		private Integer userID;
+		private String id;
 
+		@Id
 		@Column(name = "SourceSystem")
 		private int sourceSystem;
 
@@ -29,12 +32,52 @@ public class EventUser implements Serializable{
 		@Column(name = "LastUpdateDate")
 		private Long lastUpdateDate;
 
-		public Integer getUserID() {
-			return userID;
+		
+		private ArrayList<EventUserCustomField> eventUserCustomField;
+		
+		public ArrayList<EventUserCustomField> addCustomField(EventUserCustomField field){
+			
+			if (null == eventUserCustomField) {
+				eventUserCustomField = new ArrayList<EventUserCustomField>();
+			}
+			
+			if(null!= field) {
+				if(!(field.getUserID().equals(this.getId()))) {
+					throw new RuntimeException("FieldUserId doesnot match");
+				}
+				else {
+					Boolean fieldPresent = false;
+					for (EventUserCustomField f: eventUserCustomField) {
+						if(f.getFieldName().equals(field.getFieldName())) {
+							fieldPresent = true;
+							f.setFieldValue(field.getFieldValue());
+						}
+					}
+					
+					if (!fieldPresent) {
+						eventUserCustomField.add(field);
+					}
+				}
+			}
+			
+			return eventUserCustomField;
+		}
+		
+		
+		public ArrayList<EventUserCustomField> getEventUserCustomField() {
+			return eventUserCustomField;
 		}
 
-		public void setUserID(Integer userID) {
-			this.userID = userID;
+		public void setEventUserCustomField(ArrayList<EventUserCustomField> eventUserCustomField) {
+			this.eventUserCustomField = eventUserCustomField;
+		}
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
 		}
 
 		public int getSourceSystem() {
@@ -73,9 +116,9 @@ public class EventUser implements Serializable{
 			return serialVersionUID;
 		}
 
-		public EventUser(Integer userID, int sourceSystem, String userName, String emailId, Long lastUpdateDate) {
+		public EventUser(String id, int sourceSystem, String userName, String emailId, Long lastUpdateDate) {
 			super();
-			this.userID = userID;
+			this.id = id;
 			this.sourceSystem = sourceSystem;
 			this.userName = userName;
 			this.emailId = emailId;
@@ -93,7 +136,7 @@ public class EventUser implements Serializable{
 			result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
 			result = prime * result + ((lastUpdateDate == null) ? 0 : lastUpdateDate.hashCode());
 			result = prime * result + sourceSystem;
-			result = prime * result + ((userID == null) ? 0 : userID.hashCode());
+			result = prime * result + ((id == null) ? 0 : id.hashCode());
 			result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 			return result;
 		}
@@ -119,10 +162,10 @@ public class EventUser implements Serializable{
 				return false;
 			if (sourceSystem != other.sourceSystem)
 				return false;
-			if (userID == null) {
-				if (other.userID != null)
+			if (id == null) {
+				if (other.id != null)
 					return false;
-			} else if (!userID.equals(other.userID))
+			} else if (!id.equals(other.id))
 				return false;
 			if (userName == null) {
 				if (other.userName != null)
