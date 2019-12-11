@@ -15,7 +15,7 @@ import com.dtcc.workflowmetrics.dao.FieldsDao;
 import com.dtcc.workflowmetrics.dao.IssueDao;
 import com.dtcc.workflowmetrics.dao.IssueLinkDao;
 import com.dtcc.workflowmetrics.dao.IssueTypeDao;
-import com.dtcc.workflowmetrics.dao.ProjectDao;
+import com.dtcc.workflowmetrics.dao.ProjectDetailsDao;
 import com.dtcc.workflowmetrics.dao.TStatusDurationDao;
 import com.dtcc.workflowmetrics.dao.TransitionDao;
 import com.dtcc.workflowmetrics.dao.TransitionDurationDao;
@@ -58,7 +58,7 @@ public class JiraServiceImpl implements JiraService {
 	IssueTypeDao issueTypeDao;
 
 	@Autowired
-	ProjectDao projectDao;
+	ProjectDetailsDao projectDao;
 
 	@Autowired
 	TransitionDao transitionDao;

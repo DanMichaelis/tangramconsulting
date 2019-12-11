@@ -10,13 +10,12 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.dtcc.workflowmetrics.exception.MetricsLogicException;
+
 @Entity(name = "project")
 @Table(name = "Project")
 @IdClass(ProjectId.class)
 public class Project {
-    
-    @Autowired
-    ChecksumUtil checksumUtil;
 
     @Id
     private String id;
@@ -37,11 +36,19 @@ public class Project {
 
     @Column
     private String checksum;
-    
-    public Project(Project p) {
-        
+
+    private Project(Project p) {
+        this.id = p.getId();
+        this.key = p.getKey();
+        this.last_update_date = p.getLast_update_date();
+        this.name = p.getName();
+        this.sourceSystemId = p.getSourceSystemId();
+        projectCustomFields = new ArrayList<ProjectCustomField>();
+        for (ProjectCustomField cf : p.getProjectCustomFields()) {
+            projectCustomFields.add(cf.clone());
+        }
     }
-    
+
     public Project(String id, int sourceSystemId, String key, String name, long last_update_date,
             ArrayList<ProjectCustomField> projectCustomFields, String checksum) {
         super();
@@ -53,7 +60,7 @@ public class Project {
         this.projectCustomFields = projectCustomFields;
         this.checksum = calculateChecksum();
     }
-    
+
     public Project(String id, int sourceSystemId, String key, String name, long last_update_date,
             ArrayList<ProjectCustomField> projectCustomFields) {
         super();
@@ -67,17 +74,7 @@ public class Project {
     }
 
     public Project() {
-        
-    }
-    
-    public final ChecksumUtil getChecksumUtil() {
-        return checksumUtil;
-    }
 
-    public final Project setChecksumUtil(ChecksumUtil checksumUtil) {
-        this.checksumUtil = checksumUtil;
-    
-        return this;
     }
 
     public final String getId() {
@@ -86,7 +83,7 @@ public class Project {
 
     public final Project setId(String id) {
         this.id = id;
-    
+
         return this;
     }
 
@@ -96,7 +93,7 @@ public class Project {
 
     public final Project setSourceSystemId(int sourceSystemId) {
         this.sourceSystemId = sourceSystemId;
-    
+
         return this;
     }
 
@@ -106,7 +103,7 @@ public class Project {
 
     public final Project setKey(String key) {
         this.key = key;
-    
+
         return this;
     }
 
@@ -116,7 +113,7 @@ public class Project {
 
     public final Project setName(String name) {
         this.name = name;
-    
+
         return this;
     }
 
@@ -126,7 +123,7 @@ public class Project {
 
     public final Project setLast_update_date(long last_update_date) {
         this.last_update_date = last_update_date;
-    
+
         return this;
     }
 
@@ -136,7 +133,7 @@ public class Project {
 
     public final Project setProjectCustomFields(ArrayList<ProjectCustomField> projectCustomFields) {
         this.projectCustomFields = projectCustomFields;
-    
+
         return this;
     }
 
@@ -146,7 +143,7 @@ public class Project {
 
     public final Project setChecksum(String checksum) {
         this.checksum = checksum;
-    
+
         return this;
     }
 
@@ -157,9 +154,9 @@ public class Project {
         for (ProjectCustomField f : projectCustomFields) {
             sb.append(f.toStringWithoutCreateDate());
         }
-        return checksumUtil.getChecksum(sb.toString());      
+        return ChecksumUtil.getChecksum(sb.toString());
     }
-    
+
     public ArrayList<ProjectCustomField> addCustomField(ProjectCustomField field) {
 
         if (null == projectCustomFields) {
@@ -168,7 +165,8 @@ public class Project {
 
         if (null != field) {
             if (!(field.getProjectId().equals(this.getId()))) {
-                throw new RuntimeException("FieldUserId doesnot match");
+                throw new MetricsLogicException("The field " + field.toString()
+                        + " does not appear to be associated with project " + this.getName());
             } else {
                 Boolean fieldPresent = false;
                 for (ProjectCustomField f : projectCustomFields) {
@@ -291,5 +289,8 @@ public class Project {
         }
         return true;
     }
-
+    
+    public Project clone() {
+        return new Project(this);
+    }
 }

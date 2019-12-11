@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.dtcc.workflowmetrics.exception.MetricsLogicException;
 
-@Service
 public class ChecksumUtil {
     
-    public String getChecksum(String s) {
+    public static final String getChecksum(String s) {
         StringBuilder sb = new StringBuilder();
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -29,7 +28,7 @@ public class ChecksumUtil {
      * @param hash
      * @return 
      */
-    private String  bytesToHex(byte[] hash) {
+    private static final String bytesToHex(byte[] hash) {
         return DatatypeConverter.printHexBinary(hash).toLowerCase();
     }
 }
