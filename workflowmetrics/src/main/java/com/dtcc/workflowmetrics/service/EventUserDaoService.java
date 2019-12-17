@@ -14,28 +14,34 @@ public class EventUserDaoService {
 
 	@Autowired
 	EventUserDao userDao;
-	
+
 	@Autowired
 	EventUserCustomFieldDao customFieldDao;
-	
+
 	@Transactional
-	public EventUser save(final EventUser user) {
-		
-		EventUser storedUserDetail = userDao.save(user);
-		
-		Iterable<EventUserCustomField> storedFields = customFieldDao.saveAll(user.getEventUserCustomField());
-		
-		for(EventUserCustomField sField:storedFields) {
-			storedUserDetail.addCustomField(sField);
-			
+	public EventUser save(EventUser user) {
+
+		EventUser storedUserDetail = user;
+
+		boolean checkData = userDao.existsEventUserByCheckSum(user.getCheckSum());
+
+		if (!checkData) {
+			EventUser userCopy = user.clone();
+
+			userCopy.setLastUpdateDate(System.currentTimeMillis());
+
+			storedUserDetail = userDao.save(userCopy);
+
+			for (EventUserCustomField sField : userCopy.getEventUserCustomField()) {
+				sField.setCreateDate(userCopy.getLastUpdateDate());
+			}
+
+			Iterable<EventUserCustomField> storedFields = customFieldDao.saveAll(userCopy.getEventUserCustomField());
+
 		}
 		
 		return storedUserDetail;
-		
-		
+
 	}
-	
-	
-	
-	
+
 }

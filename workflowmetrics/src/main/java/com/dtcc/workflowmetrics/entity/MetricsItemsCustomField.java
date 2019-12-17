@@ -1,30 +1,23 @@
 package com.dtcc.workflowmetrics.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-@Entity(name = "eventUserCustomField")
-@Table(name = "EventUserCustomField")
-@IdClass(EventUserCustomFieldId.class)
-public class EventUserCustomField implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity(name = "metricsItemsCustomField")
+@Table(name = "MetricsItemsCustomField")
+@IdClass(MetricsItemsCustomFieldId.class)
+public class MetricsItemsCustomField {
 
 	@Id
-	@Column(name = "UserID")
-	private String userID;
+	@Column(name = "ItemId")
+	private String itemId;
 
 	@Id
-	@Column(name = "SourceSystem")
-	private int sourceSystem;
+	@Column(name = "SourceSystemId")
+	private int sourceSystemId;
 
 	@Id
 	@Column(name = "CreateDate")
@@ -40,20 +33,20 @@ public class EventUserCustomField implements Serializable {
 	@Column(name = "FieldValue")
 	private String fieldValue;
 
-	public String getUserID() {
-		return userID;
+	public String getItemId() {
+		return itemId;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
-	public int getSourceSystem() {
-		return sourceSystem;
+	public int getSourceSystemId() {
+		return sourceSystemId;
 	}
 
-	public void setSourceSystem(int sourceSystem) {
-		this.sourceSystem = sourceSystem;
+	public void setSourceSystemId(int sourceSystemId) {
+		this.sourceSystemId = sourceSystemId;
 	}
 
 	public Long getCreateDate() {
@@ -88,40 +81,42 @@ public class EventUserCustomField implements Serializable {
 		this.fieldValue = fieldValue;
 	}
 
-	public EventUserCustomField(String userID, int sourceSystem, Long createDate, String fieldName,
+
+	public MetricsItemsCustomField(String itemId, int sourceSystemId, Long createDate, String fieldName,
 			String fieldDatatype, String fieldValue) {
 		super();
-		this.userID = userID;
-		this.sourceSystem = sourceSystem;
+		this.itemId = itemId;
+		this.sourceSystemId = sourceSystemId;
 		this.createDate = createDate;
 		this.fieldName = fieldName;
 		this.fieldDatatype = fieldDatatype;
 		this.fieldValue = fieldValue;
 	}
 
-	public EventUserCustomField() {
+	
+	public MetricsItemsCustomField() {
 		super();
 	}
 
-	public EventUserCustomField(EventUserCustomField e) {
-		this.userID = e.userID;
-		this.sourceSystem = e.sourceSystem;
-		this.createDate = e.createDate;
-		this.fieldName = e.fieldName;
-		this.fieldDatatype = e.fieldDatatype;
-		this.fieldValue = e.fieldValue;
-	}
+	public MetricsItemsCustomField(MetricsItemsCustomField cf) {
+		this.itemId = cf.itemId;
+		this.sourceSystemId = cf.sourceSystemId;
+		this.createDate = cf.createDate;
+		this.fieldName = cf.fieldName;
+		this.fieldDatatype = cf.fieldDatatype;
+		this.fieldValue = cf.fieldValue;
+    }
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
 		result = prime * result + ((fieldDatatype == null) ? 0 : fieldDatatype.hashCode());
 		result = prime * result + ((fieldName == null) ? 0 : fieldName.hashCode());
 		result = prime * result + ((fieldValue == null) ? 0 : fieldValue.hashCode());
-		result = prime * result + sourceSystem;
-		result = prime * result + ((userID == null) ? 0 : userID.hashCode());
+		result = prime * result + sourceSystemId;
 		return result;
 	}
 
@@ -133,7 +128,12 @@ public class EventUserCustomField implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EventUserCustomField other = (EventUserCustomField) obj;
+		MetricsItemsCustomField other = (MetricsItemsCustomField) obj;
+		if (itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
 		if (createDate == null) {
 			if (other.createDate != null)
 				return false;
@@ -154,26 +154,20 @@ public class EventUserCustomField implements Serializable {
 				return false;
 		} else if (!fieldValue.equals(other.fieldValue))
 			return false;
-		if (sourceSystem != other.sourceSystem)
-			return false;
-		if (userID == null) {
-			if (other.userID != null)
-				return false;
-		} else if (!userID.equals(other.userID))
+		if (sourceSystemId != other.sourceSystemId)
 			return false;
 		return true;
 	}
 
-    public EventUserCustomField clone() {
-        return new EventUserCustomField(this);
-    }
-    
-    public String toStringWithoutCreateDate() {
+    @Override
+    public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("EventUserCustomField [userID=");
-        builder.append(userID);
-        builder.append(", sourceSystem=");
-        builder.append(sourceSystem);
+        builder.append("MetricsItemsCustomField [itemId=");
+        builder.append(itemId);
+        builder.append(", sourceSystemId=");
+        builder.append(sourceSystemId);
+        builder.append(", createDate=");
+        builder.append(createDate);
         builder.append(", fieldName=");
         builder.append(fieldName);
         builder.append(", fieldDatatype=");
@@ -183,6 +177,25 @@ public class EventUserCustomField implements Serializable {
         builder.append("]");
         return builder.toString();
     }
-  
+
+    public String toStringWithoutCreateDate() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("MetricsItemsCustomField [itemId=");
+        builder.append(itemId);
+        builder.append(", sourceSystemId=");
+        builder.append(sourceSystemId);
+        builder.append(", fieldName=");
+        builder.append(fieldName);
+        builder.append(", fieldDatatype=");
+        builder.append(fieldDatatype);
+        builder.append(", fieldValue=");
+        builder.append(fieldValue);
+        builder.append("]");
+        return builder.toString();
+    }
+
+    public MetricsItemsCustomField clone() {
+        return new MetricsItemsCustomField(this);
+    }
 
 }

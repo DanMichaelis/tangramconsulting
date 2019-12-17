@@ -1,6 +1,7 @@
 package com.dtcc.workflowmetrics.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -14,23 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.entity.Project;
+import com.dtcc.workflowmetrics.entity.Status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestProjectDao {
+public class TestStatusDao {
 
     @Autowired
-    ProjectDao dao;
+    StatusDao dao;
 
-    private static Project CM = (new Project()).setId("CM").setKey("CM").setLast_update_date(System.currentTimeMillis())
-            .setName("Company Management").setSourceSystemId(1).setChecksum("");
-    private static Project METRICS = (new Project()).setId("METRICS").setKey("METRICS").setLast_update_date(System.currentTimeMillis())
-            .setName("Metrics KPIs and Displays").setSourceSystemId(1).setChecksum("");
-    private static Project DEVELOPMENT = (new Project()).setId("DEVELOPMENT").setKey("DEVELOPMENT").setLast_update_date(System.currentTimeMillis())
-            .setName("Software Application Development").setSourceSystemId(1).setChecksum("");
-    private ArrayList<Project> projects = new ArrayList<Project>();
-
+    private static Status st1 = (new Status()).setStatusId("statusId1").setSourceSystemId(12).setDescription("description1").setCheckSum("").setName("name1").setLastUpdateDate(System.currentTimeMillis());
+    private static Status st2 = (new Status()).setStatusId("statusId2").setSourceSystemId(12).setDescription("description2").setCheckSum("").setName("name2").setLastUpdateDate(System.currentTimeMillis());
+    private static Status st3 = (new Status()).setStatusId("statusId3").setSourceSystemId(12).setDescription("description3").setCheckSum("").setName("name3").setLastUpdateDate(System.currentTimeMillis());
+    private ArrayList<Status> status = new ArrayList<Status>();
+    
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -42,10 +40,10 @@ public class TestProjectDao {
     @Before
     public void setUp() throws Exception {
         dao.deleteAll();
-        projects.removeAll(projects);
-        projects.add(CM);
-        projects.add(METRICS);
-        projects.add(DEVELOPMENT);
+        status.removeAll(status);
+        status.add(st1);
+        status.add(st2);
+        status.add(st3);
     }
 
     @After
@@ -54,9 +52,9 @@ public class TestProjectDao {
 
     @Test
     public void testSave() {
-        Project savedProject = dao.save(CM);
-        assertEquals(CM, savedProject);
-        System.out.println(CM.getChecksum());
+        Status savedStatus = dao.save(st1);
+        assertEquals(st1, savedStatus);
+        System.out.println(st1.getCheckSum());
     }
 
     @Test

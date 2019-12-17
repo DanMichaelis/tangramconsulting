@@ -4,8 +4,6 @@ import java.security.MessageDigest;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.springframework.stereotype.Service;
-
 import com.dtcc.workflowmetrics.exception.MetricsLogicException;
 
 public class ChecksumUtil {

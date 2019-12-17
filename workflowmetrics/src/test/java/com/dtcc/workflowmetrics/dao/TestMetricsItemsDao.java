@@ -1,6 +1,7 @@
 package com.dtcc.workflowmetrics.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -14,23 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.entity.Project;
+import com.dtcc.workflowmetrics.entity.MetricsItems;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestProjectDao {
+public class TestMetricsItemsDao {
 
     @Autowired
-    ProjectDao dao;
+    MetricsItemsDao dao;
 
-    private static Project CM = (new Project()).setId("CM").setKey("CM").setLast_update_date(System.currentTimeMillis())
-            .setName("Company Management").setSourceSystemId(1).setChecksum("");
-    private static Project METRICS = (new Project()).setId("METRICS").setKey("METRICS").setLast_update_date(System.currentTimeMillis())
-            .setName("Metrics KPIs and Displays").setSourceSystemId(1).setChecksum("");
-    private static Project DEVELOPMENT = (new Project()).setId("DEVELOPMENT").setKey("DEVELOPMENT").setLast_update_date(System.currentTimeMillis())
-            .setName("Software Application Development").setSourceSystemId(1).setChecksum("");
-    private ArrayList<Project> projects = new ArrayList<Project>();
-
+    private static MetricsItems mi1 = (new MetricsItems()).setItemId("Item1").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator1")
+    		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary1").setCheckSum("").setItemKey("itemKey1").setLastUpdateUser("user1");
+    private static MetricsItems mi2 = (new MetricsItems()).setItemId("Item2").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator2")
+    		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary2").setCheckSum("").setItemKey("itemKey2").setLastUpdateUser("user2");
+    private static MetricsItems mi3 = (new MetricsItems()).setItemId("Item3").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator3")
+    		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary3").setCheckSum("").setItemKey("itemKey3").setLastUpdateUser("user3");
+    private ArrayList<MetricsItems> metricsItems = new ArrayList<MetricsItems>();
+    
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -42,10 +43,10 @@ public class TestProjectDao {
     @Before
     public void setUp() throws Exception {
         dao.deleteAll();
-        projects.removeAll(projects);
-        projects.add(CM);
-        projects.add(METRICS);
-        projects.add(DEVELOPMENT);
+        metricsItems.removeAll(metricsItems);
+        metricsItems.add(mi1);
+        metricsItems.add(mi2);
+        metricsItems.add(mi3);
     }
 
     @After
@@ -54,9 +55,9 @@ public class TestProjectDao {
 
     @Test
     public void testSave() {
-        Project savedProject = dao.save(CM);
-        assertEquals(CM, savedProject);
-        System.out.println(CM.getChecksum());
+    	MetricsItems savedMetricsItems = dao.save(mi1);
+        assertEquals(mi1, savedMetricsItems);
+        System.out.println(mi1.getCheckSum());
     }
 
     @Test

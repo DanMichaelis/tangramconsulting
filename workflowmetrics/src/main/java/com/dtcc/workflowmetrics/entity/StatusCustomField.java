@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-@Entity(name = "eventUserCustomField")
-@Table(name = "EventUserCustomField")
-@IdClass(EventUserCustomFieldId.class)
-public class EventUserCustomField implements Serializable {
+@Entity(name = "statusCustomField")
+@Table(name = "StatusCustomField")
+@IdClass(StatusCustomFieldId.class)
+public class StatusCustomField implements Serializable {
 
 	/**
 	 * 
@@ -19,12 +19,12 @@ public class EventUserCustomField implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "UserID")
-	private String userID;
+	@Column(name = "StatusId")
+	private String statusId;
 
 	@Id
-	@Column(name = "SourceSystem")
-	private int sourceSystem;
+	@Column(name = "SourceSystemId")
+	private int sourceSystemId;
 
 	@Id
 	@Column(name = "CreateDate")
@@ -40,20 +40,20 @@ public class EventUserCustomField implements Serializable {
 	@Column(name = "FieldValue")
 	private String fieldValue;
 
-	public String getUserID() {
-		return userID;
+	public String getStatusId() {
+		return statusId;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setStatusId(String statusId) {
+		this.statusId = statusId;
 	}
 
-	public int getSourceSystem() {
-		return sourceSystem;
+	public int getSourceSystemId() {
+		return sourceSystemId;
 	}
 
-	public void setSourceSystem(int sourceSystem) {
-		this.sourceSystem = sourceSystem;
+	public void setSourceSystemId(int sourceSystemId) {
+		this.sourceSystemId = sourceSystemId;
 	}
 
 	public Long getCreateDate() {
@@ -88,28 +88,29 @@ public class EventUserCustomField implements Serializable {
 		this.fieldValue = fieldValue;
 	}
 
-	public EventUserCustomField(String userID, int sourceSystem, Long createDate, String fieldName,
+	public StatusCustomField(String statusId, int sourceSystemId, Long createDate, String fieldName,
 			String fieldDatatype, String fieldValue) {
 		super();
-		this.userID = userID;
-		this.sourceSystem = sourceSystem;
+		this.statusId = statusId;
+		this.sourceSystemId = sourceSystemId;
 		this.createDate = createDate;
 		this.fieldName = fieldName;
 		this.fieldDatatype = fieldDatatype;
 		this.fieldValue = fieldValue;
 	}
 
-	public EventUserCustomField() {
+	public StatusCustomField() {
 		super();
 	}
 
-	public EventUserCustomField(EventUserCustomField e) {
-		this.userID = e.userID;
-		this.sourceSystem = e.sourceSystem;
-		this.createDate = e.createDate;
-		this.fieldName = e.fieldName;
-		this.fieldDatatype = e.fieldDatatype;
-		this.fieldValue = e.fieldValue;
+	public StatusCustomField(StatusCustomField s) {
+		super();
+		this.statusId = s.statusId;
+		this.sourceSystemId = s.sourceSystemId;
+		this.createDate = s.createDate;
+		this.fieldName = s.fieldName;
+		this.fieldDatatype = s.fieldDatatype;
+		this.fieldValue = s.fieldValue;
 	}
 
 	@Override
@@ -120,8 +121,8 @@ public class EventUserCustomField implements Serializable {
 		result = prime * result + ((fieldDatatype == null) ? 0 : fieldDatatype.hashCode());
 		result = prime * result + ((fieldName == null) ? 0 : fieldName.hashCode());
 		result = prime * result + ((fieldValue == null) ? 0 : fieldValue.hashCode());
-		result = prime * result + sourceSystem;
-		result = prime * result + ((userID == null) ? 0 : userID.hashCode());
+		result = prime * result + sourceSystemId;
+		result = prime * result + ((statusId == null) ? 0 : statusId.hashCode());
 		return result;
 	}
 
@@ -133,7 +134,7 @@ public class EventUserCustomField implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EventUserCustomField other = (EventUserCustomField) obj;
+		StatusCustomField other = (StatusCustomField) obj;
 		if (createDate == null) {
 			if (other.createDate != null)
 				return false;
@@ -154,35 +155,53 @@ public class EventUserCustomField implements Serializable {
 				return false;
 		} else if (!fieldValue.equals(other.fieldValue))
 			return false;
-		if (sourceSystem != other.sourceSystem)
+		if (sourceSystemId != other.sourceSystemId)
 			return false;
-		if (userID == null) {
-			if (other.userID != null)
+		if (statusId == null) {
+			if (other.statusId != null)
 				return false;
-		} else if (!userID.equals(other.userID))
+		} else if (!statusId.equals(other.statusId))
 			return false;
 		return true;
 	}
 
-    public EventUserCustomField clone() {
-        return new EventUserCustomField(this);
-    }
-    
-    public String toStringWithoutCreateDate() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("EventUserCustomField [userID=");
-        builder.append(userID);
-        builder.append(", sourceSystem=");
-        builder.append(sourceSystem);
-        builder.append(", fieldName=");
-        builder.append(fieldName);
-        builder.append(", fieldDatatype=");
-        builder.append(fieldDatatype);
-        builder.append(", fieldValue=");
-        builder.append(fieldValue);
-        builder.append("]");
-        return builder.toString();
-    }
-  
+	public StatusCustomField clone() {
+		return new StatusCustomField(this);
+	}
+
+	public String toStringWithoutCreateDate() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("StatusCustomField [StatusId=");
+		builder.append(statusId);
+		builder.append(", sourceSystemId=");
+		builder.append(sourceSystemId);
+		builder.append(", fieldName=");
+		builder.append(fieldName);
+		builder.append(", fieldDatatype=");
+		builder.append(fieldDatatype);
+		builder.append(", fieldValue=");
+		builder.append(fieldValue);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("StatusCustomField [StatusId=");
+		builder.append(statusId);
+		builder.append(", sourceSystemId=");
+		builder.append(sourceSystemId);
+		builder.append(", createDate=");
+		builder.append(createDate);
+		builder.append(", fieldName=");
+		builder.append(fieldName);
+		builder.append(", fieldDatatype=");
+		builder.append(fieldDatatype);
+		builder.append(", fieldValue=");
+		builder.append(fieldValue);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
