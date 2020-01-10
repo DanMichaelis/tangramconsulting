@@ -7,4 +7,5 @@ import com.dtcc.workflowmetrics.entity.StatusTValueId;
 
 public interface StatusTValueDao extends CrudRepository<StatusTValue, StatusTValueId>{
 
+
 }

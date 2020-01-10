@@ -7,4 +7,6 @@ import com.dtcc.workflowmetrics.entity.MetricsItemsId;
 
 public interface MetricsItemsDao extends CrudRepository<MetricsItems, MetricsItemsId> {
 
+	boolean existsMetricsItemsByCheckSum(String checksum) ;
+
 }

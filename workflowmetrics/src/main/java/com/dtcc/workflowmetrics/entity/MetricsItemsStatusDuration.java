@@ -32,7 +32,7 @@ public class MetricsItemsStatusDuration implements Serializable {
 
 	@Id
 	@Column(name = "Status")
-	private int status;
+	private String status;
 
 	@Column(name = "Duration")
 	private Long duration;
@@ -61,11 +61,11 @@ public class MetricsItemsStatusDuration implements Serializable {
 		this.sourceSystemId = sourceSystemId;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -81,7 +81,7 @@ public class MetricsItemsStatusDuration implements Serializable {
 		return serialVersionUID;
 	}
 
-	public MetricsItemsStatusDuration(String itemId, String projectId, int sourceSystemId, int status, Long duration) {
+	public MetricsItemsStatusDuration(String itemId, String projectId, int sourceSystemId, String status, Long duration) {
 		super();
 		this.itemId = itemId;
 		this.projectId = projectId;
@@ -111,7 +111,7 @@ public class MetricsItemsStatusDuration implements Serializable {
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
 		result = prime * result + sourceSystemId;
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -141,7 +141,10 @@ public class MetricsItemsStatusDuration implements Serializable {
 			return false;
 		if (sourceSystemId != other.sourceSystemId)
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}

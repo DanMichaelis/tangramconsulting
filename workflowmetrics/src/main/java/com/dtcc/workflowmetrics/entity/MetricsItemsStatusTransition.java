@@ -32,11 +32,11 @@ public class MetricsItemsStatusTransition implements Serializable {
 
 	@Id
 	@Column(name = "FromStatus")
-	private int fromStatus;
+	private String fromStatus;
 
 	@Id
 	@Column(name = "ToStatus")
-	private int toStatus;
+	private String toStatus;
 
 	@Column(name = "TransitionDate")
 	private Long transitionDate;
@@ -65,19 +65,19 @@ public class MetricsItemsStatusTransition implements Serializable {
 		this.sourceSystemId = sourceSystemId;
 	}
 
-	public int getFromStatus() {
+	public String getFromStatus() {
 		return fromStatus;
 	}
 
-	public void setFromStatus(int fromStatus) {
+	public void setFromStatus(String fromStatus) {
 		this.fromStatus = fromStatus;
 	}
 
-	public int getToStatus() {
+	public String getToStatus() {
 		return toStatus;
 	}
 
-	public void setToStatus(int toStatus) {
+	public void setToStatus(String toStatus) {
 		this.toStatus = toStatus;
 	}
 
@@ -93,8 +93,8 @@ public class MetricsItemsStatusTransition implements Serializable {
 		return serialVersionUID;
 	}
 
-	public MetricsItemsStatusTransition(String itemId, String projectId, int sourceSystemId, int fromStatus,
-			int toStatus, Long transitionDate) {
+	public MetricsItemsStatusTransition(String itemId, String projectId, int sourceSystemId, String fromStatus,
+			String toStatus, Long transitionDate) {
 		super();
 		this.itemId = itemId;
 		this.projectId = projectId;
@@ -122,11 +122,11 @@ public class MetricsItemsStatusTransition implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + fromStatus;
+		result = prime * result + ((fromStatus == null) ? 0 : fromStatus.hashCode());
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
 		result = prime * result + sourceSystemId;
-		result = prime * result + toStatus;
+		result = prime * result + ((toStatus == null) ? 0 : toStatus.hashCode());
 		result = prime * result + ((transitionDate == null) ? 0 : transitionDate.hashCode());
 		return result;
 	}
