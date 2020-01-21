@@ -10,4 +10,8 @@ public class TempClassUnderTest {
     public TempClassUnderTest(int firstArgument) {
         
     }
+    
+    public TempClassUnderTest(int firstArgument, String secondArgument) {
+        
+    }
 }

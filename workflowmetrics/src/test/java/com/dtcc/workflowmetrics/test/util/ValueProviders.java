@@ -58,6 +58,10 @@ public class ValueProviders {
         if (null == provider) {
             provider = defaultValueProviders.get(c);
         }
+        
+        if (null == provider) {
+            throw new RuntimeException("Class " + c.getCanonicalName() + " does not have a supported provider, and can't be supplied by the object test framework");
+        }
         return provider;
     }
 

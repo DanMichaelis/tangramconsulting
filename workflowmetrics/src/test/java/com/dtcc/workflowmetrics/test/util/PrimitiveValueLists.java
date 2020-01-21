@@ -16,8 +16,8 @@ public class PrimitiveValueLists {
             0, 1, (1 / 7), (double) Math.PI, Double.MAX_VALUE };
     public static final String[] strings = new String[] { StringValueProviderHelper.generateStringOfLength(-1),
             StringValueProviderHelper.generateStringOfLength(0), StringValueProviderHelper.generateStringOfLength(1000),
-            StringValueProviderHelper.generateStringOfLength(10000),
-            StringValueProviderHelper.generateStringOfLength(1073741824 / 2) 
+            StringValueProviderHelper.generateStringOfLength(10000)
+            // StringValueProviderHelper.generateStringOfLength(1073741824 / 2) 
             };
 
 }

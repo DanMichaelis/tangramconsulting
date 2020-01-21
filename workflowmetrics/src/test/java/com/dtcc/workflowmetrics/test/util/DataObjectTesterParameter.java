@@ -13,16 +13,16 @@ import antlr.collections.List;
 public class DataObjectTesterParameter {
     private Class objectClass;
     private Object value;
-    
+
     public DataObjectTesterParameter(Class clazz, Object value) {
         this.objectClass = clazz;
         this.value = value;
     }
-    
+
     public Class getObjectClass() {
         return this.objectClass;
     }
-    
+
     public Object getValue() {
         return this.value;
     }
@@ -77,16 +77,14 @@ public class DataObjectTesterParameter {
     }
 
     private String valueToString(Object o) {
-        
-        System.out.println("Object class:  " + o.getClass().getCanonicalName());
-       
+
         StringBuilder sb = new StringBuilder();
-        
+
         if (o instanceof Iterable) {
             Iterator<Object> i = ((Iterable<Object>) o).iterator();
             return iterableToString(i);
         }
-        
+
         if (o instanceof Map) {
             Map map = (Map) o;
             sb.append("[");
@@ -107,30 +105,41 @@ public class DataObjectTesterParameter {
             sb.append("]");
             return sb.toString();
         }
-        
+
         if (null != o && o.getClass().isArray()) {
-            System.out.println("Got Here!");
-           ArrayList l = new ArrayList(Arrays.asList(o));
-           Iterator<Object> i = l.iterator();
-           return iterableToString(i);
+            ArrayList l = new ArrayList(Arrays.asList(o));
+            Iterator<Object> i = l.iterator();
+            if (null != i) {
+                return iterableToString(i);
+            }
         }
-        
+
+        if (null != o) {
+            sb.append(o.toString());
+        }
+
         return sb.toString();
     }
-    
+
     private String iterableToString(Iterator i) {
-        
+
         StringBuilder sb = new StringBuilder();
-        sb.append("[");        
+        sb.append("[");
+        Object o;
         
         if (i.hasNext()) {
-            sb.append(i.next().toString());
+            o= i.next();
+            if (null != o) {
+                sb.append(o.toString());
+            } else {
+                sb.append("null");
+            }
         }
         while (i.hasNext()) {
             sb.append(", " + i.next().toString());
         }
         sb.append("]");
-        
-        return sb.toString();   
+
+        return sb.toString();
     }
 }

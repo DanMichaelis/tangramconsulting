@@ -42,7 +42,6 @@ public class DataObjectTester {
                     // For the list of parameters, construct a list of hashmaps of DataObjectTesterParameters to be used to test the constructor
                     HashMap<Integer, DataObjectTesterParameter> parameterMap = buildParameterHashmap(parameters);
                     
-                    System.out.println("Constructor parameter count:  " + c.getParameterCount());
                     System.out.println("Parameter Map:  " + parameterMap.toString());
                 }
             } catch (Exception e) {
