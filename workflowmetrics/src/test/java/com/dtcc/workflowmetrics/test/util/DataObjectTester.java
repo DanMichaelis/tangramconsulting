@@ -51,15 +51,11 @@ public class DataObjectTester {
             HashMap<Constructor<?>, HashMap<Integer, DataObjectTesterParameterList>> constructorsAndParameters = getConstructorAndParameterHashMap(
                     constructors);
 
-            // For each constructor, instantiate the class
-            for (Constructor<?> c : constructors) {
+            Object[] objects = instantiateObjectsFromConstructorAndParameterMap(constructorsAndParameters);
 
-                Object[] objects = instantiateObjectsFromConstructorAndParameterMap(constructorsAndParameters);
-
-                for (Object o : objects) {
-                    System.out.println(o);
-                    assertEquals(className.toUpperCase(), o.getClass().getCanonicalName().toUpperCase());
-                }
+            for (Object o : objects) {
+                System.out.println(o);
+                assertEquals(className.toUpperCase(), o.getClass().getCanonicalName().toUpperCase());
             }
         }
     }
@@ -177,12 +173,6 @@ public class DataObjectTester {
 
             // Get the parameters for the current parameterIndexes
             fillParameterArray(parameters, testValueArrayPositions, parameterPositionsAndTestValues);
-
-            System.out.print("Lowest parameter adjusted:  " + lowestParameterAdjusted + " ");
-            System.out.print("Current Parameter Index:  " + currentParameterIndex + " ");
-            System.out.print("Test Value Array Positions:  " + Arrays.toString(testValueArrayPositions) + " ");
-//            System.out.print("Test Parameters:  " + Arrays.deepToString(parameters) + " ");
-            System.out.println("");
 
             testValueArrayPositions[currentParameterIndex]++;
 
