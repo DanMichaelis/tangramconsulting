@@ -1,30 +1,31 @@
 package com.dtcc.workflowmetrics.test.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
-
+import java.util.List;
 import java.util.Set;
 
-import org.assertj.core.util.Arrays;
-
-import antlr.collections.List;
-
-public class DataObjectTesterParameter {
+public class DataObjectTesterParameterList {
     private Class objectClass;
-    private Object value;
+    private Object[] values;;
 
-    public DataObjectTesterParameter(Class clazz, Object value) {
+    public DataObjectTesterParameterList(Class clazz, List<Object> values) {
         this.objectClass = clazz;
-        this.value = value;
+
+        if (null != values && ! values.isEmpty()) {
+            this.values = new Object[values.size()];
+            values.toArray(this.values);
+        }
     }
 
     public Class getObjectClass() {
         return this.objectClass;
     }
 
-    public Object getValue() {
-        return this.value;
+    public Object[] getValue() {
+        return this.values;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class DataObjectTesterParameter {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((objectClass == null) ? 0 : objectClass.hashCode());
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        result = prime * result + java.util.Arrays.deepHashCode(values);
         return result;
     }
 
@@ -47,19 +48,15 @@ public class DataObjectTesterParameter {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        DataObjectTesterParameter other = (DataObjectTesterParameter) obj;
+        DataObjectTesterParameterList other = (DataObjectTesterParameterList) obj;
         if (objectClass == null) {
             if (other.objectClass != null) {
                 return false;
             }
-        } else if (!objectClass.getCanonicalName().equals(other.objectClass.getCanonicalName())) {
+        } else if (!objectClass.equals(other.objectClass)) {
             return false;
         }
-        if (value == null) {
-            if (other.value != null) {
-                return false;
-            }
-        } else if (!value.equals(other.value)) {
+        if (!java.util.Arrays.deepEquals(values, other.values)) {
             return false;
         }
         return true;
@@ -70,8 +67,9 @@ public class DataObjectTesterParameter {
         StringBuilder builder = new StringBuilder();
         builder.append("DataObjectTesterParameter [objectClass=");
         builder.append(objectClass);
-        builder.append(", value=");
-        builder.append(valueToString(value));
+        builder.append(", values=");
+        builder.append(Arrays.deepToString(values));
+        // builder.append(valueToString(values));
         builder.append("]");
         return builder.toString();
     }
@@ -126,9 +124,9 @@ public class DataObjectTesterParameter {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         Object o;
-        
+
         if (i.hasNext()) {
-            o= i.next();
+            o = i.next();
             if (null != o) {
                 sb.append(o.toString());
             } else {
