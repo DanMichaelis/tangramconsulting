@@ -1,7 +1,10 @@
 package com.dtcc.workflowmetrics.test.util;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Supplier;
+
+import org.assertj.core.util.Arrays;
 
 /**
  * This class provides a set of value generators for Java primitives and some
@@ -13,48 +16,48 @@ import java.util.function.Supplier;
  */
 public class ValueProviders {
 
-    private static HashMap<Class<?>, Supplier<?>> defaultValueProviders = new HashMap<Class<?>, Supplier<?>>();
-    private HashMap<Class<?>, Supplier<?>> customValueProviders = new HashMap<Class<?>, Supplier<?>>();
+    private static HashMap<Class<?>, Supplier<List<Object>>> defaultValueProviders = new HashMap<Class<?>, Supplier<List<Object>>>();
+    private HashMap<Class<?>, Supplier<List<Object>>> customValueProviders = new HashMap<Class<?>, Supplier<List<Object>>>();
 
     public ValueProviders() {
         if (defaultValueProviders.isEmpty()) {
             defaultValueProviders.put(byte.class, () -> {
-                return PrimitiveValueLists.bytes;
+                return Arrays.asList(PrimitiveValueLists.bytes);
             });
             defaultValueProviders.put(char.class, () -> {
-                return PrimitiveValueLists.chars;
+                return Arrays.asList(PrimitiveValueLists.chars);
             });
             defaultValueProviders.put(short.class, () -> {
-                return PrimitiveValueLists.shorts;
+                return Arrays.asList(PrimitiveValueLists.shorts);
             });
             defaultValueProviders.put(int.class, () -> {
-                return PrimitiveValueLists.integers;
+                return Arrays.asList(PrimitiveValueLists.integers);
             });
             defaultValueProviders.put(long.class, () -> {
-                return PrimitiveValueLists.longs;
+                return Arrays.asList(PrimitiveValueLists.longs);
             });
             defaultValueProviders.put(float.class, () -> {
-                return PrimitiveValueLists.floats;
+                return Arrays.asList(PrimitiveValueLists.floats);
             });
             defaultValueProviders.put(double.class, () -> {
-                return PrimitiveValueLists.doubles;
+                return Arrays.asList(PrimitiveValueLists.doubles);
             });
             defaultValueProviders.put(String.class, () -> {
-                return PrimitiveValueLists.strings;
+                return Arrays.asList(PrimitiveValueLists.strings);
             });
         }
     }
 
-    public void addCustomProvider(Class<?> clazz, Supplier<?> supplier) {
+    public void addCustomProvider(Class<?> clazz, Supplier<List<Object>> supplier) {
         customValueProviders.put(clazz, supplier);
     }
 
-    public void setCustomProviders(HashMap<Class<?>, Supplier<?>> providers) {
+    public void setCustomProviders(HashMap<Class<?>, Supplier<List<Object>>> providers) {
         this.customValueProviders = providers;
     }
 
-    public Supplier<?> getProvider(Class c) {
-        Supplier<?> provider = customValueProviders.get(c);
+    public Supplier<List<Object>> getProvider(Class c) {
+        Supplier<List<Object>> provider = customValueProviders.get(c);
         if (null == provider) {
             provider = defaultValueProviders.get(c);
         }

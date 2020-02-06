@@ -44,7 +44,7 @@ public class TempDataObjectTesterTest {
 
     @Test
     public void WorkingTest() {
-
+        System.out.println (int[].class);
     }
 
 }

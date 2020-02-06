@@ -14,4 +14,8 @@ public class TempClassUnderTest {
     public TempClassUnderTest(int firstArgument, String secondArgument) {
         
     }
+    
+    public TempClassUnderTest(int firstArgument, String secondArgument, int thirdArgument) {
+        
+    }
 }
