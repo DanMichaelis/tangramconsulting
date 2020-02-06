@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-
 @Entity(name = "metricsItems")
 @Table(name = "MetricsItems")
 @IdClass(MetricsItemsId.class)
@@ -79,7 +78,7 @@ public class MetricsItems implements Serializable {
 
 	public final MetricsItems setSourceSystemId(int sourceSystemId) {
 		this.sourceSystemId = sourceSystemId;
-		
+
 		return this;
 	}
 
@@ -187,7 +186,8 @@ public class MetricsItems implements Serializable {
 		return metricsItemsStatusTransition;
 	}
 
-	public final MetricsItems setMetricsItemsStatusTransition(ArrayList<MetricsItemsStatusTransition> metricsItemsStatusTransition) {
+	public final MetricsItems setMetricsItemsStatusTransition(
+			ArrayList<MetricsItemsStatusTransition> metricsItemsStatusTransition) {
 		this.metricsItemsStatusTransition = metricsItemsStatusTransition;
 		return this;
 	}
@@ -196,7 +196,8 @@ public class MetricsItems implements Serializable {
 		return metricsItemsStatusDuration;
 	}
 
-	public final MetricsItems setMetricsItemsStatusDuration(ArrayList<MetricsItemsStatusDuration> metricsItemsStatusDuration) {
+	public final MetricsItems setMetricsItemsStatusDuration(
+			ArrayList<MetricsItemsStatusDuration> metricsItemsStatusDuration) {
 		this.metricsItemsStatusDuration = metricsItemsStatusDuration;
 		return this;
 	}
@@ -205,7 +206,8 @@ public class MetricsItems implements Serializable {
 		return metricsItemsTStatusDuration;
 	}
 
-	public final MetricsItems setMetricsItemsTStatusDuration(ArrayList<MetricsItemsTStatusDuration> metricsItemsTStatusDuration) {
+	public final MetricsItems setMetricsItemsTStatusDuration(
+			ArrayList<MetricsItemsTStatusDuration> metricsItemsTStatusDuration) {
 		this.metricsItemsTStatusDuration = metricsItemsTStatusDuration;
 		return this;
 	}
@@ -339,6 +341,7 @@ public class MetricsItems implements Serializable {
 		clone.setLastUpdateDate(this.lastUpdateDate);
 		clone.setLastUpdateUser(this.lastUpdateUser);
 
+		
 		ArrayList<MetricsItemsCustomField> custFldArr = new ArrayList<MetricsItemsCustomField>();
 
 		for (MetricsItemsCustomField e : this.metricsItemsCustomField) {
@@ -347,6 +350,7 @@ public class MetricsItems implements Serializable {
 
 		}
 		clone.setMetricsItemsCustomField(custFldArr);
+		
 
 		ArrayList<MetricsItemsTStatusTransition> mTranSrr = new ArrayList<MetricsItemsTStatusTransition>();
 
@@ -356,7 +360,7 @@ public class MetricsItems implements Serializable {
 
 		}
 		clone.setMetricsItemsTStatusTransition(mTranSrr);
-		
+
 		ArrayList<MetricsItemsStatusTransition> tran = new ArrayList<MetricsItemsStatusTransition>();
 
 		for (MetricsItemsStatusTransition t : this.metricsItemsStatusTransition) {
@@ -365,29 +369,35 @@ public class MetricsItems implements Serializable {
 
 		}
 		clone.setMetricsItemsStatusTransition(tran);
-		
-		ArrayList<MetricsItemsStatusDuration> dur = new ArrayList<MetricsItemsStatusDuration>();
 
-		for (MetricsItemsStatusDuration d : this.metricsItemsStatusDuration) {
+		if (this.metricsItemsStatusDuration != null) {
 
-			dur.add(new MetricsItemsStatusDuration(d));
+			ArrayList<MetricsItemsStatusDuration> dur = new ArrayList<MetricsItemsStatusDuration>();
 
-		}
-		clone.setMetricsItemsStatusDuration(dur);
-		
-		ArrayList<MetricsItemsTStatusDuration> tDur = new ArrayList<MetricsItemsTStatusDuration>();
+			for (MetricsItemsStatusDuration d : this.metricsItemsStatusDuration) {
 
-		for (MetricsItemsTStatusDuration d : this.metricsItemsTStatusDuration) {
+				dur.add(new MetricsItemsStatusDuration(d));
 
-			tDur.add(new MetricsItemsTStatusDuration(d));
-
+			}
+			clone.setMetricsItemsStatusDuration(dur);
 		}
 
-		clone.setMetricsItemsTStatusDuration(tDur);
+		if (this.metricsItemsTStatusDuration != null) {
+
+			ArrayList<MetricsItemsTStatusDuration> tDur = new ArrayList<MetricsItemsTStatusDuration>();
+
+			for (MetricsItemsTStatusDuration d : this.metricsItemsTStatusDuration) {
+
+				tDur.add(new MetricsItemsTStatusDuration(d));
+
+			}
+
+			clone.setMetricsItemsTStatusDuration(tDur);
+		}
 
 		return clone;
 	}
-	
+
 	public ArrayList<MetricsItemsCustomField> addCustomField(MetricsItemsCustomField field) {
 
 		if (null == metricsItemsCustomField) {
@@ -454,7 +464,7 @@ public class MetricsItems implements Serializable {
 			} else {
 				Boolean fieldPresent = false;
 				for (MetricsItemsStatusTransition t : metricsItemsStatusTransition) {
-					if ((t.getFromStatus() == sTran.getFromStatus()) && (t.getToStatus() == sTran.getToStatus()))  {
+					if ((t.getFromStatus() == sTran.getFromStatus()) && (t.getToStatus() == sTran.getToStatus())) {
 						fieldPresent = true;
 						t.setFromStatus(sTran.getFromStatus());
 						t.setToStatus(sTran.getToStatus());
@@ -523,7 +533,6 @@ public class MetricsItems implements Serializable {
 
 		return metricsItemsTStatusDuration;
 	}
-
 
 	@Override
 	public String toString() {
@@ -706,5 +715,4 @@ public class MetricsItems implements Serializable {
 		return true;
 	}
 
-	
 }

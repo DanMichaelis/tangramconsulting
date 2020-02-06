@@ -1,5 +1,7 @@
 package com.dtcc.workflowmetrics.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 @Entity(name = "metricsItemsCustomField")
 @Table(name = "MetricsItemsCustomField")
 @IdClass(MetricsItemsCustomFieldId.class)
-public class MetricsItemsCustomField {
+public class MetricsItemsCustomField implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "ItemId")
@@ -30,7 +37,7 @@ public class MetricsItemsCustomField {
 	@Column(name = "FieldDatatype")
 	private String fieldDatatype;
 
-	@Column(name = "FieldValue")
+	@Column(name = "FieldValue", length = 5000)
 	private String fieldValue;
 
 	public String getItemId() {

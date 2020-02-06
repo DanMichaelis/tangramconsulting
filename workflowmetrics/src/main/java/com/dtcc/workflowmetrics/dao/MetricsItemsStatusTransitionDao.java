@@ -1,5 +1,6 @@
 package com.dtcc.workflowmetrics.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,4 +12,6 @@ public interface MetricsItemsStatusTransitionDao extends CrudRepository<MetricsI
 
 	Optional<MetricsItemsStatusTransition> findByItemIdAndProjectIdAndSourceSystemIdAndToStatus(String itemId, String projectId, int sourceSystemId, String toStatus);
 
+	List<MetricsItemsStatusTransition> findByOrderByTransitionDateDesc();
+	
 }

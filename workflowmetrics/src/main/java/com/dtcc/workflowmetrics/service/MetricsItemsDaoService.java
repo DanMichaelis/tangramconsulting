@@ -1,10 +1,10 @@
 package com.dtcc.workflowmetrics.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,10 +63,10 @@ public class MetricsItemsDaoService {
 
 		MetricsItems storedItemDetail = item;
 
-		//check if data already exists in Metrics Items table
+		// check if data already exists in Metrics Items table
 		boolean checkData = metricsItemsDao.existsMetricsItemsByCheckSum(item.getCheckSum());
 
-		//if data is not present, add data
+		// if data is not present, add data
 		if (!checkData) {
 			MetricsItems itemCopy = item.clone();
 
@@ -79,20 +79,18 @@ public class MetricsItemsDaoService {
 			storedItemDetail = metricsItemsDao.save(itemCopy);
 
 			// MetricsItemsCustomField
-			for (MetricsItemsCustomField cField : itemCopy.getMetricsItemsCustomField()) {
+			for (MetricsItemsCustomField cField : storedItemDetail.getMetricsItemsCustomField()) {
 				cField.setCreateDate(itemCopy.getLastUpdateDate());
 			}
 
 			Iterable<MetricsItemsCustomField> storedFields = metricsItemsCustomFieldDao
-					.saveAll(itemCopy.getMetricsItemsCustomField());
-			
+					.saveAll(storedItemDetail.getMetricsItemsCustomField());
 
 			// MetricsItemsStatusTransition table population
-			//check if data is present in table
-			String statusQuery = "FROM MetricsItemsStatusTransition st ORDER BY st.TransitionDate DESC where ;";
-			Query query = entityManager.createQuery(statusQuery);
-			query.setMaxResults(1);
-			MetricsItemsStatusTransition result = (MetricsItemsStatusTransition) query.getResultList().get(1);
+			// check if data is present in table
+
+			List<MetricsItemsStatusTransition> resultDetails = metricsItemsStatusTransitionDao
+					.findByOrderByTransitionDateDesc();
 
 			String fromStatus = null;
 			String toStatus = null;
@@ -103,7 +101,8 @@ public class MetricsItemsDaoService {
 				fromStatus = sTrans.getFromStatus();
 				toStatus = sTrans.getToStatus();
 
-				if (result != null) {
+				if (resultDetails.size() > 0) {
+					MetricsItemsStatusTransition result = resultDetails.get(1);
 					mist.setItemId(result.getItemId());
 					mist.setProjectId(result.getProjectId());
 					mist.setSourceSystemId(result.getSourceSystemId());
@@ -120,7 +119,7 @@ public class MetricsItemsDaoService {
 					mist.setToStatus(sTrans.getToStatus());
 
 				}
-				
+
 				MetricsItemsStatusTransition storedStatusTrans = metricsItemsStatusTransitionDao.save(mist);
 				storedItemDetail.addStatusTransition(storedStatusTrans);
 
@@ -130,17 +129,21 @@ public class MetricsItemsDaoService {
 
 			MetricsItemsStatusTransition statusDetail = null;
 
-			//find if data is present in table for from status
+			// find if data is present in table for from status
 			Optional<MetricsItemsStatusTransition> data = metricsItemsStatusTransitionDao
 					.findByItemIdAndProjectIdAndSourceSystemIdAndToStatus(itemCopy.getItemId(), itemCopy.getProjectId(),
 							itemCopy.getSourceSystemId(), fromStatus);
 
+			Long dur;
+
 			if (data != null && data.isPresent()) {
 
 				statusDetail = data.get();
+				dur = createDt - statusDetail.getTransitionDate();
 			}
 
-			Long dur = createDt - statusDetail.getTransitionDate();
+			else
+				dur = Long.valueOf("0");
 
 			MetricsItemsStatusDuration misd = new MetricsItemsStatusDuration();
 
@@ -174,14 +177,17 @@ public class MetricsItemsDaoService {
 				fromStatustValueDetail = fromStatusTValue.get();
 			}
 
-			//find if data already exists in table
-			MetricsItemsTStatusTransitionId toStatustStatusTransId = new MetricsItemsTStatusTransitionId(
-					itemCopy.getItemId(), itemCopy.getProjectId(), itemCopy.getSourceSystemId(),
-					toStatustValueDetail.getTValue());
-			Optional<MetricsItemsTStatusTransition> tStatusTransDetail = metricsItemsTStatusTransitionDao
-					.findById(toStatustStatusTransId);
+			// find if data already exists in table
+			Optional<MetricsItemsTStatusTransition> tStatusTransDetail = null;
 
-			//if data not present, insert data, else ignore
+			if (toStatustValueDetail != null && fromStatustValueDetail != null) {
+				MetricsItemsTStatusTransitionId toStatustStatusTransId = new MetricsItemsTStatusTransitionId(
+						itemCopy.getItemId(), itemCopy.getProjectId(), itemCopy.getSourceSystemId(),
+						toStatustValueDetail.getTValue());
+				tStatusTransDetail = metricsItemsTStatusTransitionDao.findById(toStatustStatusTransId);
+			}
+			
+			// if data not present, insert data, else ignore
 			if (tStatusTransDetail == null || !(tStatusTransDetail.isPresent())) {
 
 				MetricsItemsTStatusTransition mitst = new MetricsItemsTStatusTransition();
@@ -197,16 +203,16 @@ public class MetricsItemsDaoService {
 
 				// MetricsItemsTStatusDuration data population
 
-				if (toStatustValueDetail.getTValue() != fromStatustValueDetail.getTValue()) {
+				if (toStatustValueDetail != null && fromStatustValueDetail != null && toStatustValueDetail.getTValue() != fromStatustValueDetail.getTValue()) {
 
-					//find if data for previous status exists
+					// find if data for previous status exists
 					MetricsItemsTStatusTransitionId fromStatustStatusTransId = new MetricsItemsTStatusTransitionId(
 							itemCopy.getItemId(), itemCopy.getProjectId(), itemCopy.getSourceSystemId(),
 							fromStatustValueDetail.getTValue());
 					Optional<MetricsItemsTStatusTransition> prevTStatusTransDetail = metricsItemsTStatusTransitionDao
 							.findById(fromStatustStatusTransId);
 
-					//if data for previous status exists, find duration, else ignore
+					// if data for previous status exists, find duration, else ignore
 					if (prevTStatusTransDetail != null && prevTStatusTransDetail.isPresent()) {
 
 						Long tStatusDur = createDt - prevTStatusTransDetail.get().getTransitionDate();
@@ -221,7 +227,7 @@ public class MetricsItemsDaoService {
 
 						MetricsItemsTStatusDuration storedTSDuration = metricsItemsTStatusDurationDao.save(mitsd);
 						storedItemDetail.addTStatusDuration(storedTSDuration);
-						
+
 					}
 
 				}
@@ -231,6 +237,15 @@ public class MetricsItemsDaoService {
 		}
 
 		return storedItemDetail;
+	}
+
+	public void deleteAll() {
+		metricsItemsCustomFieldDao.deleteAll();
+		metricsItemsStatusDurationDao.deleteAll();
+		metricsItemsStatusTransitionDao.deleteAll();
+		metricsItemsTStatusDurationDao.deleteAll();
+		metricsItemsTStatusDurationDao.deleteAll();
+		metricsItemsDao.deleteAll();
 	}
 
 }

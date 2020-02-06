@@ -15,9 +15,9 @@ public class MetricsItemsStatusDurationId implements Serializable {
 
 	private int sourceSystemId;
 
-	private int status;
+	private String status;
 
-	public MetricsItemsStatusDurationId(String itemId, String projectId, int sourceSystemId, int status) {
+	public MetricsItemsStatusDurationId(String itemId, String projectId, int sourceSystemId, String status) {
 		super();
 		this.itemId = itemId;
 		this.projectId = projectId;
@@ -36,7 +36,7 @@ public class MetricsItemsStatusDurationId implements Serializable {
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
 		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
 		result = prime * result + sourceSystemId;
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
