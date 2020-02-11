@@ -147,12 +147,12 @@ public class Status implements Serializable {
 		for (StatusCustomField cf : s.getStatusCustomField()) {
 			statusCustomField.add(cf.clone());
 		}
-		
+
 		statusTValue = new ArrayList<StatusTValue>();
 		for (StatusTValue tv : s.getStatusTValue()) {
 			statusTValue.add(tv.clone());
 		}
-		
+
 	}
 
 	public Status() {
@@ -249,14 +249,16 @@ public class Status implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.toStringWithoutCustomFieldsAndLastUpdateDate());
 
-		for (StatusCustomField f : statusCustomField) {
-			sb.append(f.toStringWithoutCreateDate());
+		if (statusCustomField != null) {
+			for (StatusCustomField f : statusCustomField) {
+				sb.append(f.toStringWithoutCreateDate());
+			}
 		}
-
-		for (StatusTValue v : statusTValue) {
-			sb.append(v.toStringWithoutCreateDate());
+		if (statusTValue != null) {
+			for (StatusTValue v : statusTValue) {
+				sb.append(v.toStringWithoutCreateDate());
+			}
 		}
-
 		return ChecksumUtil.getChecksum(sb.toString());
 	}
 
@@ -363,5 +365,4 @@ public class Status implements Serializable {
 		return true;
 	}
 
-	
 }

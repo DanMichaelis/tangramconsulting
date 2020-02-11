@@ -3,9 +3,6 @@ package com.dtcc.workflowmetrics.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +22,8 @@ import com.dtcc.workflowmetrics.entity.MetricsItemsStatusTransition;
 import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusDuration;
 import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransition;
 import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransitionId;
+import com.dtcc.workflowmetrics.entity.Status;
+import com.dtcc.workflowmetrics.entity.StatusId;
 import com.dtcc.workflowmetrics.entity.StatusTValue;
 import com.dtcc.workflowmetrics.entity.StatusTValueId;
 
@@ -54,9 +53,6 @@ public class MetricsItemsDaoService {
 
 	@Autowired
 	StatusTValueDao statusTValueDao;
-
-	@PersistenceContext
-	private EntityManager entityManager;
 
 	@Transactional
 	public MetricsItems save(MetricsItems item) {
@@ -95,6 +91,9 @@ public class MetricsItemsDaoService {
 			String fromStatus = null;
 			String toStatus = null;
 
+			Boolean fromStatusPresent = true;
+			Boolean toStatusPresent = true;
+
 			MetricsItemsStatusTransition mist = new MetricsItemsStatusTransition();
 
 			for (MetricsItemsStatusTransition sTrans : itemCopy.getMetricsItemsStatusTransition()) {
@@ -103,6 +102,32 @@ public class MetricsItemsDaoService {
 
 				if (resultDetails.size() > 0) {
 					MetricsItemsStatusTransition result = resultDetails.get(1);
+
+					StatusId si1 = new StatusId(fromStatus, result.getSourceSystemId());
+					Optional<Status> st1 = statusDao.findById(si1);
+
+					if (st1 == null || st1.isPresent() == false) {
+						fromStatusPresent = false;
+						Status status1 = new Status(fromStatus, result.getSourceSystemId(), fromStatus, fromStatus,
+								createDt, null, null, null);
+						Status storedStatus1 = statusDao.save(status1);
+						System.out.println("No Data in TValue table and StatusTValue table for status " + fromStatus
+								+ ", hence no data in MetricsItemsTStatusTransition table and MetricsItemsTStatusDuration. Please insert data to see detailed data");
+					}
+
+					StatusId si2 = new StatusId(fromStatus, result.getSourceSystemId());
+					Optional<Status> st2 = statusDao.findById(si2);
+
+					if (st2 == null || st2.isPresent() == false) {
+						toStatusPresent = false;
+						Status status2 = new Status(toStatus, result.getSourceSystemId(), toStatus, toStatus, createDt,
+								null, null, null);
+						Status storedStatus2 = statusDao.save(status2);
+						System.out.println("No Data in TValue table and StatusTValue table for status " + toStatus
+								+ ", hence no data in MetricsItemsTStatusTransition table and MetricsItemsTStatusDuration. Please insert data to see detailed data");
+
+					}
+
 					mist.setItemId(result.getItemId());
 					mist.setProjectId(result.getProjectId());
 					mist.setSourceSystemId(result.getSourceSystemId());
@@ -111,12 +136,38 @@ public class MetricsItemsDaoService {
 					mist.setTransitionDate(createDt);
 
 				} else {
+
+					StatusId si1 = new StatusId(fromStatus, itemCopy.getSourceSystemId());
+					Optional<Status> st1 = statusDao.findById(si1);
+
+					if (st1 == null || st1.isPresent() == false) {
+						fromStatusPresent = false;
+						Status status1 = new Status(fromStatus, itemCopy.getSourceSystemId(), fromStatus, fromStatus,
+								createDt, null, null);
+						Status storedStatus1 = statusDao.save(status1);
+						System.out.println("No Data in TValue table and StatusTValue table for status " + fromStatus
+								+ ", hence no data in MetricsItemsTStatusTransition table and MetricsItemsTStatusDuration. Please insert data to see detailed data");
+					}
+
+					StatusId si2 = new StatusId(fromStatus, itemCopy.getSourceSystemId());
+					Optional<Status> st2 = statusDao.findById(si2);
+
+					if (st2 == null || st2.isPresent() == false) {
+						toStatusPresent = false;
+						Status status2 = new Status(toStatus, itemCopy.getSourceSystemId(), toStatus, toStatus,
+								createDt, null, null);
+						Status storedStatus2 = statusDao.save(status2);
+						System.out.println("No Data in TValue table and StatusTValue table for status " + toStatus
+								+ ", hence no data in MetricsItemsTStatusTransition table and MetricsItemsTStatusDuration. Please insert data to see detailed data");
+
+					}
+
 					mist.setItemId(itemCopy.getItemId());
 					mist.setProjectId(itemCopy.getProjectId());
 					mist.setSourceSystemId(itemCopy.getSourceSystemId());
-					mist.setFromStatus(sTrans.getFromStatus());
+					mist.setFromStatus(fromStatus);
 					mist.setTransitionDate(createDt);
-					mist.setToStatus(sTrans.getToStatus());
+					mist.setToStatus(toStatus);
 
 				}
 
@@ -158,37 +209,44 @@ public class MetricsItemsDaoService {
 
 			// MetricsItemsTStatusTransition data population
 			// get tvalue to for the from and to status values
-			StatusTValueId toStatusTValueId = new StatusTValueId(toStatus, itemCopy.getSourceSystemId());
-			Optional<StatusTValue> toStatusTValue = statusTValueDao.findById(toStatusTValueId);
-
-			StatusTValueId fromStatusTValueId = new StatusTValueId(fromStatus, itemCopy.getSourceSystemId());
-			Optional<StatusTValue> fromStatusTValue = statusTValueDao.findById(fromStatusTValueId);
 
 			StatusTValue toStatustValueDetail = null;
 			StatusTValue fromStatustValueDetail = null;
 
-			if (toStatusTValue != null && toStatusTValue.isPresent()) {
+			if (toStatusPresent) {
+				StatusTValueId toStatusTValueId = new StatusTValueId(toStatus, itemCopy.getSourceSystemId());
+				Optional<StatusTValue> toStatusTValue = statusTValueDao.findById(toStatusTValueId);
 
-				toStatustValueDetail = toStatusTValue.get();
+				if (toStatusTValue != null && toStatusTValue.isPresent()) {
+
+					toStatustValueDetail = toStatusTValue.get();
+				}
 			}
 
-			if (fromStatusTValue != null && fromStatusTValue.isPresent()) {
+			if (fromStatusPresent) {
+				StatusTValueId fromStatusTValueId = new StatusTValueId(fromStatus, itemCopy.getSourceSystemId());
+				Optional<StatusTValue> fromStatusTValue = statusTValueDao.findById(fromStatusTValueId);
 
-				fromStatustValueDetail = fromStatusTValue.get();
+				if (fromStatusTValue != null && fromStatusTValue.isPresent()) {
+
+					fromStatustValueDetail = fromStatusTValue.get();
+				}
 			}
 
 			// find if data already exists in table
 			Optional<MetricsItemsTStatusTransition> tStatusTransDetail = null;
 
-			if (toStatustValueDetail != null && fromStatustValueDetail != null) {
+			if (toStatustValueDetail != null && fromStatustValueDetail != null && fromStatusPresent
+					&& toStatusPresent) {
 				MetricsItemsTStatusTransitionId toStatustStatusTransId = new MetricsItemsTStatusTransitionId(
 						itemCopy.getItemId(), itemCopy.getProjectId(), itemCopy.getSourceSystemId(),
 						toStatustValueDetail.getTValue());
 				tStatusTransDetail = metricsItemsTStatusTransitionDao.findById(toStatustStatusTransId);
 			}
-			
+
 			// if data not present, insert data, else ignore
-			if (tStatusTransDetail == null || !(tStatusTransDetail.isPresent())) {
+			if ((tStatusTransDetail == null || !(tStatusTransDetail.isPresent())) && fromStatusPresent
+					&& toStatusPresent) {
 
 				MetricsItemsTStatusTransition mitst = new MetricsItemsTStatusTransition();
 
@@ -203,7 +261,8 @@ public class MetricsItemsDaoService {
 
 				// MetricsItemsTStatusDuration data population
 
-				if (toStatustValueDetail != null && fromStatustValueDetail != null && toStatustValueDetail.getTValue() != fromStatustValueDetail.getTValue()) {
+				if (toStatustValueDetail != null && fromStatustValueDetail != null
+						&& toStatustValueDetail.getTValue() != fromStatustValueDetail.getTValue()) {
 
 					// find if data for previous status exists
 					MetricsItemsTStatusTransitionId fromStatustStatusTransId = new MetricsItemsTStatusTransitionId(
