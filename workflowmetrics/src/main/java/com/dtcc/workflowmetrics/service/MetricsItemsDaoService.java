@@ -101,7 +101,7 @@ public class MetricsItemsDaoService {
 				toStatus = sTrans.getToStatus();
 
 				if (resultDetails.size() > 0) {
-					MetricsItemsStatusTransition result = resultDetails.get(1);
+					MetricsItemsStatusTransition result = resultDetails.get(0);
 
 					StatusId si1 = new StatusId(fromStatus, result.getSourceSystemId());
 					Optional<Status> st1 = statusDao.findById(si1);
@@ -149,7 +149,7 @@ public class MetricsItemsDaoService {
 								+ ", hence no data in MetricsItemsTStatusTransition table and MetricsItemsTStatusDuration. Please insert data to see detailed data");
 					}
 
-					StatusId si2 = new StatusId(fromStatus, itemCopy.getSourceSystemId());
+					StatusId si2 = new StatusId(toStatus, itemCopy.getSourceSystemId());
 					Optional<Status> st2 = statusDao.findById(si2);
 
 					if (st2 == null || st2.isPresent() == false) {
@@ -253,7 +253,7 @@ public class MetricsItemsDaoService {
 				mitst.setItemId(itemCopy.getItemId());
 				mitst.setProjectId(itemCopy.getProjectId());
 				mitst.setSourceSystemId(itemCopy.getSourceSystemId());
-				mitst.setStatus(toStatustValueDetail.getTValue());
+				mitst.setStatus(fromStatustValueDetail.getTValue());
 				mitst.setTransitionDate(createDt);
 
 				MetricsItemsTStatusTransition storedTTrans = metricsItemsTStatusTransitionDao.save(mitst);
