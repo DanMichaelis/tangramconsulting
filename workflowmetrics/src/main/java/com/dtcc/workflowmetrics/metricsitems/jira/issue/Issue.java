@@ -1,7 +1,5 @@
 package com.dtcc.workflowmetrics.metricsitems.jira.issue;
 
-import java.util.ArrayList;
-
 public class Issue {
     private String expand;
     private String id;

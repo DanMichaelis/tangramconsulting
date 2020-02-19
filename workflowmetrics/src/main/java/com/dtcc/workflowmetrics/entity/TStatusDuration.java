@@ -56,6 +56,31 @@ public class TStatusDuration implements Serializable {
 	@Column(name = "TStatus")
 	private String TStatus;
 
+	
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
+	public ProjectDetails getProjectDetail() {
+		return projectDetail;
+	}
+
+	public void setProjectDetail(ProjectDetails projectDetail) {
+		this.projectDetail = projectDetail;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setProjectID(int projectID) {
+		this.projectID = projectID;
+	}
+
 	public Integer gettStatusDurationId() {
 		return tStatusDurationId;
 	}

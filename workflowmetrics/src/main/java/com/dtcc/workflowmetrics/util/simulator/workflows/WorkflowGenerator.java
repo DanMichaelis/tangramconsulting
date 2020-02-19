@@ -1,6 +1,5 @@
 package com.dtcc.workflowmetrics.util.simulator.workflows;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
