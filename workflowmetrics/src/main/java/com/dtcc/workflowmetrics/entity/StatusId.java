@@ -9,14 +9,14 @@ public class StatusId implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String statusId;
-
 	private int sourceSystemId;
 
-	public StatusId(String statusId, int sourceSystemId) {
+	private String name;
+
+	public StatusId(int sourceSystemId, String name) {
 		super();
-		this.statusId = statusId;
 		this.sourceSystemId = sourceSystemId;
+		this.name = name;
 	}
 
 	public StatusId() {
@@ -28,7 +28,7 @@ public class StatusId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + sourceSystemId;
-		result = prime * result + ((statusId == null) ? 0 : statusId.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -43,10 +43,10 @@ public class StatusId implements Serializable {
 		StatusId other = (StatusId) obj;
 		if (sourceSystemId != other.sourceSystemId)
 			return false;
-		if (statusId == null) {
-			if (other.statusId != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!statusId.equals(other.statusId))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}

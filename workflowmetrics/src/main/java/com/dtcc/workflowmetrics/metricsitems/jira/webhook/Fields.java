@@ -459,11 +459,25 @@ public class Fields {
 				setCustomFields(key, o);
 			}
 		} else if (value.getClass().equals(LinkedHashMap.class)) {
+
+			LinkedHashMap val = (LinkedHashMap) value;
+
 			ObjectMapper obj = new ObjectMapper();
 
-			CustomField cust = obj.convertValue(value, CustomField.class);
+			if (val.containsKey("emailAddress")) {
+				User user = obj.convertValue(value, User.class);
+				CustomField cstmFld = new CustomField();
+				cstmFld.setId(null);
+				cstmFld.setSelf(user.getSelf());
+				cstmFld.setValue(user.getName());
+				
+				customFields.put(key, cstmFld);
+			} else {
 
-			customFields.put(key, cust);
+				CustomField cust = obj.convertValue(value, CustomField.class);
+				customFields.put(key, cust);
+			}
+			
 		}
 		return this;
 

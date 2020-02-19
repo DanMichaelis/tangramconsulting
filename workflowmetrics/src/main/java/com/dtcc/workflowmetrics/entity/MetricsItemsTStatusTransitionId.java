@@ -11,18 +11,12 @@ public class MetricsItemsTStatusTransitionId implements Serializable {
 
 	private String itemId;
 
-	private String projectId;
+	private Long transitionDate;
 
-	private int sourceSystemId;
-
-	private int status;
-
-	public MetricsItemsTStatusTransitionId(String itemId, String projectId, int sourceSystemId, int status) {
+	public MetricsItemsTStatusTransitionId(String itemId, Long transitionDate) {
 		super();
 		this.itemId = itemId;
-		this.projectId = projectId;
-		this.sourceSystemId = sourceSystemId;
-		this.status = status;
+		this.transitionDate = transitionDate;
 	}
 
 	public MetricsItemsTStatusTransitionId() {
@@ -34,9 +28,7 @@ public class MetricsItemsTStatusTransitionId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
-		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
-		result = prime * result + sourceSystemId;
-		result = prime * result + status;
+		result = prime * result + ((transitionDate == null) ? 0 : transitionDate.hashCode());
 		return result;
 	}
 
@@ -54,14 +46,10 @@ public class MetricsItemsTStatusTransitionId implements Serializable {
 				return false;
 		} else if (!itemId.equals(other.itemId))
 			return false;
-		if (projectId == null) {
-			if (other.projectId != null)
+		if (transitionDate == null) {
+			if (other.transitionDate != null)
 				return false;
-		} else if (!projectId.equals(other.projectId))
-			return false;
-		if (sourceSystemId != other.sourceSystemId)
-			return false;
-		if (status != other.status)
+		} else if (!transitionDate.equals(other.transitionDate))
 			return false;
 		return true;
 	}

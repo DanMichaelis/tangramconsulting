@@ -19,13 +19,14 @@ public class MetricsItems implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	
 	private String itemId;
 
 	@Id
 	@Column(name = "SourceSystemId")
 	private int sourceSystemId;
 
+	@Id
 	@Column(name = "ItemKey")
 	private String itemKey;
 
@@ -159,7 +160,7 @@ public class MetricsItems implements Serializable {
 	}
 
 	public final MetricsItems setCheckSum(String checkSum) {
-		this.checkSum = checkSum;
+		this.checkSum = calculateChecksum();
 		return this;
 	}
 
@@ -274,6 +275,7 @@ public class MetricsItems implements Serializable {
 		this.metricsItemsStatusTransition = metricsItemsStatusTransition;
 		this.metricsItemsStatusDuration = metricsItemsStatusDuration;
 		this.metricsItemsTStatusDuration = metricsItemsTStatusDuration;
+		
 	}
 
 	public MetricsItems(String itemId, int sourceSystemId, String itemKey, String projectId, String itemSummary,
@@ -300,15 +302,16 @@ public class MetricsItems implements Serializable {
 		this.metricsItemsStatusTransition = metricsItemsStatusTransition;
 		this.metricsItemsStatusDuration = metricsItemsStatusDuration;
 		this.metricsItemsTStatusDuration = metricsItemsTStatusDuration;
+		
 	}
 
 	public MetricsItems() {
 		super();
 	}
-
+	
 	private String calculateChecksum() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.toStringWithoutCustomFieldsAndDates());
+		sb.append(this.buildCheckSum());
 
 		for (MetricsItemsCustomField f : metricsItemsCustomField) {
 			sb.append(f.toStringWithoutCreateDate());
@@ -398,6 +401,7 @@ public class MetricsItems implements Serializable {
 		return clone;
 	}
 
+
 	public ArrayList<MetricsItemsCustomField> addCustomField(MetricsItemsCustomField field) {
 
 		if (null == metricsItemsCustomField) {
@@ -405,21 +409,23 @@ public class MetricsItems implements Serializable {
 		}
 
 		if (null != field) {
-			if (!(field.getItemId().equals(this.getItemId()))) {
-				throw new RuntimeException("FieldItemId doesnot match");
-			} else {
+			/*
+			 * if (!(field.getItemId().equals(this.getItemId()))) { throw new
+			 * RuntimeException("FieldItemId "+ field.getItemId()
+			 * +" does not match parent "+ this.getItemId()); } else {
+			 
 				Boolean fieldPresent = false;
 				for (MetricsItemsCustomField f : metricsItemsCustomField) {
 					if (f.getFieldName().equals(field.getFieldName())) {
 						fieldPresent = true;
 						f.setFieldValue(field.getFieldValue());
 					}
-				}
+				//}
 
-				if (!fieldPresent) {
+				if (!fieldPresent) {*/
 					metricsItemsCustomField.add(field);
-				}
-			}
+				//}
+			//}
 		}
 
 		return metricsItemsCustomField;
@@ -432,21 +438,22 @@ public class MetricsItems implements Serializable {
 		}
 
 		if (null != trans) {
-			if (!(trans.getItemId().equals(this.getItemId()))) {
-				throw new RuntimeException("FieldItemId doesnot match");
-			} else {
-				Boolean fieldPresent = false;
+			/*
+			 * if (!(trans.getItemId().equals(this.getItemId()))) { throw new
+			 * RuntimeException("FieldItemId "+ trans.getItemId()
+			 * +" does not match parent "+ this.getItemId()); } else {
+			 				Boolean fieldPresent = false;
 				for (MetricsItemsTStatusTransition t : metricsItemsTStatusTransition) {
 					if (t.getStatus() == trans.getStatus()) {
 						fieldPresent = true;
 						t.setStatus(trans.getStatus());
 					}
-				}
+			//	}
 
-				if (!fieldPresent) {
+				if (!fieldPresent) {*/
 					metricsItemsTStatusTransition.add(trans);
-				}
-			}
+				//}
+			//}
 		}
 
 		return metricsItemsTStatusTransition;
@@ -459,22 +466,23 @@ public class MetricsItems implements Serializable {
 		}
 
 		if (null != sTran) {
-			if (!(sTran.getItemId().equals(this.getItemId()))) {
-				throw new RuntimeException("FieldItemId doesnot match");
-			} else {
-				Boolean fieldPresent = false;
+			/*
+			 * if (!(sTran.getItemId().equals(this.getItemId()))) { throw new
+			 * RuntimeException("FieldItemId "+ sTran.getItemId()
+			 * +" does not match parent "+ this.getItemId()); } else {
+			 Boolean fieldPresent = false;
 				for (MetricsItemsStatusTransition t : metricsItemsStatusTransition) {
 					if ((t.getFromStatus() == sTran.getFromStatus()) && (t.getToStatus() == sTran.getToStatus())) {
 						fieldPresent = true;
 						t.setFromStatus(sTran.getFromStatus());
 						t.setToStatus(sTran.getToStatus());
 					}
-				}
+			//	}
 
-				if (!fieldPresent) {
+				if (!fieldPresent) {*/
 					metricsItemsStatusTransition.add(sTran);
-				}
-			}
+				//}
+			//}
 		}
 
 		return metricsItemsStatusTransition;
@@ -487,21 +495,22 @@ public class MetricsItems implements Serializable {
 		}
 
 		if (null != dur) {
-			if (!(dur.getItemId().equals(this.getItemId()))) {
-				throw new RuntimeException("FieldItemId doesnot match");
-			} else {
-				Boolean fieldPresent = false;
+			/*
+			 * if (!(dur.getItemId().equals(this.getItemId()))) { throw new
+			 * RuntimeException("FieldItemId "+ dur.getItemId() +" does not match parent "+
+			 * this.getItemId()); } else {
+			 		Boolean fieldPresent = false;
 				for (MetricsItemsStatusDuration d : metricsItemsStatusDuration) {
 					if (d.getStatus() == dur.getStatus()) {
 						fieldPresent = true;
 						d.setStatus(dur.getStatus());
 					}
-				}
+			//	}
 
-				if (!fieldPresent) {
+				if (!fieldPresent) {*/
 					metricsItemsStatusDuration.add(dur);
-				}
-			}
+				//}
+			//}
 		}
 
 		return metricsItemsStatusDuration;
@@ -514,21 +523,22 @@ public class MetricsItems implements Serializable {
 		}
 
 		if (null != tDur) {
-			if (!(tDur.getItemId().equals(this.getItemId()))) {
-				throw new RuntimeException("FieldItemId doesnot match");
-			} else {
-				Boolean fieldPresent = false;
+			/*
+			 * if (!(tDur.getItemId().equals(this.getItemId()))) { throw new
+			 * RuntimeException("FieldItemId "+ tDur.getItemId() +" does not match parent "+
+			 * this.getItemId()); } else {
+			 		Boolean fieldPresent = false;
 				for (MetricsItemsTStatusDuration d : metricsItemsTStatusDuration) {
 					if (d.getStatus() == tDur.getStatus()) {
 						fieldPresent = true;
 						d.setStatus(tDur.getStatus());
 					}
-				}
+			//	}
 
-				if (!fieldPresent) {
+				if (!fieldPresent) {*/
 					metricsItemsTStatusDuration.add(tDur);
-				}
-			}
+				//}
+			//}
 		}
 
 		return metricsItemsTStatusDuration;
@@ -575,28 +585,12 @@ public class MetricsItems implements Serializable {
 		return builder.toString();
 	}
 
-	public String toStringWithoutCustomFieldsAndDates() {
+	private String buildCheckSum() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MetricsItems [itemId=");
-		builder.append(itemId);
+		builder.append("MetricsItems [itemKey=");
+		builder.append(itemKey);
 		builder.append(", sourceSystemId=");
 		builder.append(sourceSystemId);
-		builder.append(", itemKey=");
-		builder.append(itemKey);
-		builder.append(", projectId=");
-		builder.append(projectId);
-		builder.append(", itemSummary=");
-		builder.append(itemSummary);
-		builder.append(", itemDescription=");
-		builder.append(itemDescription);
-		builder.append(", itemSummary=");
-		builder.append(itemSummary);
-		builder.append(", itemCreator=");
-		builder.append(itemCreator);
-		builder.append(", lastUpdateUser=");
-		builder.append(lastUpdateUser);
-		builder.append(", CheckSum=");
-		builder.append(checkSum);
 		builder.append("]");
 		return builder.toString();
 	}

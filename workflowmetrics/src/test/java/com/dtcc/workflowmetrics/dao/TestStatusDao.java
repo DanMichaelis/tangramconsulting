@@ -24,9 +24,9 @@ public class TestStatusDao {
     @Autowired
     StatusDao dao;
 
-    private static Status st1 = (new Status()).setStatusId("statusId1").setSourceSystemId(12).setDescription("description1").setCheckSum("").setName("name1").setLastUpdateDate(System.currentTimeMillis());
-    private static Status st2 = (new Status()).setStatusId("statusId2").setSourceSystemId(12).setDescription("description2").setCheckSum("").setName("name2").setLastUpdateDate(System.currentTimeMillis());
-    private static Status st3 = (new Status()).setStatusId("statusId3").setSourceSystemId(12).setDescription("description3").setCheckSum("").setName("name3").setLastUpdateDate(System.currentTimeMillis());
+    private static Status st1 = (new Status()).setStatusId("statusId1").setSourceSystemId(12).setDescription("description1").setName("name1").setLastUpdateDate(System.currentTimeMillis());
+    private static Status st2 = (new Status()).setStatusId("statusId2").setSourceSystemId(12).setDescription("description2").setName("name2").setLastUpdateDate(System.currentTimeMillis());
+    private static Status st3 = (new Status()).setStatusId("statusId3").setSourceSystemId(12).setDescription("description3").setName("name3").setLastUpdateDate(System.currentTimeMillis());
     private ArrayList<Status> status = new ArrayList<Status>();
     
     @BeforeClass
@@ -54,7 +54,6 @@ public class TestStatusDao {
     public void testSave() {
         Status savedStatus = dao.save(st1);
         assertEquals(st1, savedStatus);
-        System.out.println(st1.getCheckSum());
     }
 
     @Test

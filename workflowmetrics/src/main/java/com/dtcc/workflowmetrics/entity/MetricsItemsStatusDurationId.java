@@ -11,18 +11,12 @@ public class MetricsItemsStatusDurationId implements Serializable {
 
 	private String itemId;
 
-	private String projectId;
+	private Long startDate;
 
-	private int sourceSystemId;
-
-	private String status;
-
-	public MetricsItemsStatusDurationId(String itemId, String projectId, int sourceSystemId, String status) {
+	public MetricsItemsStatusDurationId(String itemId, Long startDate) {
 		super();
 		this.itemId = itemId;
-		this.projectId = projectId;
-		this.sourceSystemId = sourceSystemId;
-		this.status = status;
+		this.startDate = startDate;
 	}
 
 	public MetricsItemsStatusDurationId() {
@@ -34,9 +28,7 @@ public class MetricsItemsStatusDurationId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
-		result = prime * result + ((projectId == null) ? 0 : projectId.hashCode());
-		result = prime * result + sourceSystemId;
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
 
@@ -54,14 +46,10 @@ public class MetricsItemsStatusDurationId implements Serializable {
 				return false;
 		} else if (!itemId.equals(other.itemId))
 			return false;
-		if (projectId == null) {
-			if (other.projectId != null)
+		if (startDate == null) {
+			if (other.startDate != null)
 				return false;
-		} else if (!projectId.equals(other.projectId))
-			return false;
-		if (sourceSystemId != other.sourceSystemId)
-			return false;
-		if (status != other.status)
+		} else if (!startDate.equals(other.startDate))
 			return false;
 		return true;
 	}

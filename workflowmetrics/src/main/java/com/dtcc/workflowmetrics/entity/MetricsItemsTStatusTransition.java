@@ -22,18 +22,16 @@ public class MetricsItemsTStatusTransition implements Serializable {
 	@Column(name = "ItemId")
 	private String itemId;
 
-	@Id
 	@Column(name = "ProjectId")
 	private String projectId;
 
-	@Id
 	@Column(name = "SourceSystemId")
 	private int sourceSystemId;
 
-	@Id
 	@Column(name = "Status")
 	private int status;
 
+	@Id
 	@Column(name = "TransitionDate")
 	private Long transitionDate;
 

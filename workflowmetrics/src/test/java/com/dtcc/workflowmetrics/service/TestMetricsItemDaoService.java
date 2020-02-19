@@ -50,9 +50,9 @@ public class TestMetricsItemDaoService {
 	private static final ArrayList<MetricsItemsStatusTransition> statusTransitions = new ArrayList<MetricsItemsStatusTransition>();
 
 	private static final MetricsItemsStatusDuration misd1 = new MetricsItemsStatusDuration("1", "JIRA1", 1, "new",
-			Long.valueOf("2"));
+			Long.valueOf("2"), dt);
 	private static final MetricsItemsStatusDuration misd2 = new MetricsItemsStatusDuration("1", "JIRA1", 1, "new",
-			Long.valueOf("2"));
+			Long.valueOf("2"), dt);
 
 	private static final ArrayList<MetricsItemsStatusDuration> statusDurations = new ArrayList<MetricsItemsStatusDuration>();
 
@@ -64,9 +64,9 @@ public class TestMetricsItemDaoService {
 	private static final ArrayList<MetricsItemsTStatusTransition> tStatusTransitions = new ArrayList<MetricsItemsTStatusTransition>();
 
 	private static final MetricsItemsTStatusDuration mitsd1 = new MetricsItemsTStatusDuration("1", "JIRA1", 1, 0,
-			Long.valueOf("2"));
+			Long.valueOf("2"),dt);
 	private static final MetricsItemsTStatusDuration mitsd2 = new MetricsItemsTStatusDuration("1", "JIRA1", 1, 1,
-			Long.valueOf("3"));
+			Long.valueOf("3"), dt);
 
 	private static final ArrayList<MetricsItemsTStatusDuration> tStatusDurations = new ArrayList<MetricsItemsTStatusDuration>();
 

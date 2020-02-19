@@ -22,11 +22,11 @@ public class MetricsItemsCustomField implements Serializable{
 	@Column(name = "ItemId")
 	private String itemId;
 
-	@Id
+	
 	@Column(name = "SourceSystemId")
 	private int sourceSystemId;
 
-	@Id
+	
 	@Column(name = "CreateDate")
 	private Long createDate;
 
