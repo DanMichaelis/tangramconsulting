@@ -14,13 +14,14 @@ import javax.persistence.Table;
 @IdClass(StatusId.class)
 public class Status implements Serializable {
 
-	@Id
+	
 	private String statusId;
 
 	@Id
 	@Column(name = "SourceSystemId")
 	private int sourceSystemId;
 
+	@Id
 	@Column(name = "Name")
 	private String name;
 
@@ -29,9 +30,6 @@ public class Status implements Serializable {
 
 	@Column(name = "LastUpdateDate")
 	private Long lastUpdateDate;
-
-	@Column(name = "CheckSum", length = 5000)
-	private String checkSum;
 
 	private ArrayList<StatusCustomField> statusCustomField;
 
@@ -82,15 +80,6 @@ public class Status implements Serializable {
 		return this;
 	}
 
-	public final String getCheckSum() {
-		return checkSum;
-	}
-
-	public final Status setCheckSum(String checkSum) {
-		this.checkSum = checkSum;
-		return this;
-	}
-
 	public final ArrayList<StatusCustomField> getStatusCustomField() {
 		return statusCustomField;
 	}
@@ -117,7 +106,6 @@ public class Status implements Serializable {
 		this.name = name;
 		this.description = description;
 		this.lastUpdateDate = lastUpdateDate;
-		this.checkSum = calculateChecksum();
 		this.statusCustomField = statusCustomField;
 		this.statusTValue = statusTValue;
 	}
@@ -130,7 +118,6 @@ public class Status implements Serializable {
 		this.name = name;
 		this.description = description;
 		this.lastUpdateDate = lastUpdateDate;
-		this.checkSum = calculateChecksum();
 		this.statusCustomField = statusCustomField;
 		this.statusTValue = statusTValue;
 	}
@@ -142,7 +129,6 @@ public class Status implements Serializable {
 		this.name = s.name;
 		this.description = s.description;
 		this.lastUpdateDate = s.lastUpdateDate;
-		this.checkSum = s.checkSum;
 		statusCustomField = new ArrayList<StatusCustomField>();
 		for (StatusCustomField cf : s.getStatusCustomField()) {
 			statusCustomField.add(cf.clone());
@@ -220,7 +206,6 @@ public class Status implements Serializable {
 		clone.setName(this.name);
 		clone.setDescription(this.description);
 		clone.setLastUpdateDate(this.lastUpdateDate);
-		clone.setCheckSum(this.checkSum);
 
 		ArrayList<StatusCustomField> arr = new ArrayList<StatusCustomField>();
 
@@ -278,7 +263,6 @@ public class Status implements Serializable {
 		builder.append(", statusTValue=");
 		builder.append(statusTValue);
 		builder.append(", checkSum=");
-		builder.append(checkSum);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -294,7 +278,6 @@ public class Status implements Serializable {
 		builder.append(", description=");
 		builder.append(description);
 		builder.append(", checkSum=");
-		builder.append(checkSum);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -303,7 +286,6 @@ public class Status implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((checkSum == null) ? 0 : checkSum.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((lastUpdateDate == null) ? 0 : lastUpdateDate.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -323,11 +305,6 @@ public class Status implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Status other = (Status) obj;
-		if (checkSum == null) {
-			if (other.checkSum != null)
-				return false;
-		} else if (!checkSum.equals(other.checkSum))
-			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;

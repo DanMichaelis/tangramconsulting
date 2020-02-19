@@ -1,5 +1,8 @@
 package com.dtcc.workflowmetrics.service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,10 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dtcc.workflowmetrics.dao.StatusCustomFieldDao;
 import com.dtcc.workflowmetrics.dao.StatusDao;
 import com.dtcc.workflowmetrics.dao.StatusTValueDao;
-import com.dtcc.workflowmetrics.entity.EventUser;
-import com.dtcc.workflowmetrics.entity.EventUserCustomField;
 import com.dtcc.workflowmetrics.entity.Status;
 import com.dtcc.workflowmetrics.entity.StatusCustomField;
+import com.dtcc.workflowmetrics.entity.StatusId;
 import com.dtcc.workflowmetrics.entity.StatusTValue;
 
 @Service
@@ -30,27 +32,41 @@ public class StatusDaoService {
 		
 		Status storedStatusDetail = status;
 		
-		boolean checkData = statusDao.existsStatusByCheckSum(status.getCheckSum());
+//		boolean checkData = statusDao.existsStatusByCheckSum(status.getCheckSum());
 
-		if (!checkData) {
-			Status statusCopy = status.clone();
+//		if (!checkData) {
+		
+		Long createDt = System.currentTimeMillis();
 
-			statusCopy.setLastUpdateDate(System.currentTimeMillis());
+		StatusId siData = new StatusId(status.getSourceSystemId(), status.getName());
 
-			storedStatusDetail = statusDao.save(statusCopy);
+		Optional<Status> statusData = statusDao.findById(siData);
 
-			for (StatusCustomField sField : statusCopy.getStatusCustomField()) {
-				sField.setCreateDate(statusCopy.getLastUpdateDate());
-			}
+		if (statusData == null || !statusData.isPresent()) {
 
-			Iterable<StatusCustomField> storedFields = statusCustomFieldDao.saveAll(statusCopy.getStatusCustomField());
+			Status st = new Status();
+			st.setName(status.getName());
+			st.setLastUpdateDate(createDt);
+			st.setSourceSystemId(status.getSourceSystemId());
+			st.setDescription("Added missing status");
+			st.setStatusId(UUID.randomUUID().toString());
 
-			for (StatusTValue sField : statusCopy.getStatusTValue()) {
-				sField.setCreateDate(statusCopy.getLastUpdateDate());
-			}
-
-			Iterable<StatusTValue> storedTValues = statusTValueDao.saveAll(statusCopy.getStatusTValue());
+			statusDao.save(st);
 		}
+
+		
+			for (StatusCustomField sField : status.getStatusCustomField()) {
+				sField.setCreateDate(status.getLastUpdateDate());
+			}
+
+			Iterable<StatusCustomField> storedFields = statusCustomFieldDao.saveAll(status.getStatusCustomField());
+
+			for (StatusTValue sField : status.getStatusTValue()) {
+				sField.setCreateDate(status.getLastUpdateDate());
+			}
+
+			Iterable<StatusTValue> storedTValues = statusTValueDao.saveAll(status.getStatusTValue());
+//		}
 
 		return storedStatusDetail;
 	}

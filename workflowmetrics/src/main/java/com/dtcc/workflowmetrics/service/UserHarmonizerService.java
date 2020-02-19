@@ -1,6 +1,12 @@
 package com.dtcc.workflowmetrics.service;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -18,8 +24,6 @@ import com.dtcc.workflowmetrics.metricsitems.jira.issue.Issue;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookIssue;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookTransition;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class UserHarmonizerService {
@@ -40,13 +44,23 @@ public class UserHarmonizerService {
 		int source = 12;
 		MetricsItems item = new MetricsItems();
 
-		item.setItemId(issue.getId());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+		Date ctTime = new Date(0);
+		try {
+			ctTime = sdf.parse(issue.getFields().getCreated());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		long createTime = ctTime.getTime();
+
 		item.setSourceSystemId(source);
 		item.setProjectId(issue.getKey());
 		item.setItemKey(issue.getKey());
 		item.setItemSummary(null);
 		item.setItemDescription(issue.getFields().getDescription());
-		item.setItemCreateDate(Long.getLong(issue.getFields().getCreated()));
+		item.setItemCreateDate(createTime);
 		item.setItemCreator(issue.getFields().getUser().getName());
 		item.setLastUpdateDate(null);
 		item.setLastUpdateUser(issue.getFields().getLastViewed());
@@ -89,7 +103,7 @@ public class UserHarmonizerService {
 			metricCustomField.setFieldName(cust.getSelf());
 			metricCustomField.setFieldDatatype("CustomField");
 			metricCustomField.setFieldValue(cust.getValue());
-			metricCustomField.setCreateDate(Long.getLong(issue.getFields().getCreated()));
+			metricCustomField.setCreateDate(createTime);
 
 			item.addCustomField(metricCustomField);
 		}
@@ -103,55 +117,79 @@ public class UserHarmonizerService {
 		int source = 12;
 		MetricsItems item = new MetricsItems();
 
-		item.setItemId(transition.getTransitionId().toString());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+		Date ctTime = new Date(0);
+		try {
+			ctTime = sdf.parse(issue.getFields().getCreated());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		long createTime = ctTime.getTime();
+
+		Date ltTime = new Date(0);
+
+		long lastUpdateTime;
+
+		if (issue.getFields().getLastViewed() != null) {
+			try {
+				ltTime = (Date) sdf.parseObject(issue.getFields().getLastViewed());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			lastUpdateTime = ltTime.getTime();
+		} else {
+			lastUpdateTime = createTime;
+		}
+
 		item.setSourceSystemId(source);
-		item.setProjectId(issue.getFields().getProject().getId().toString());
-		item.setItemKey(issue.getFields().getCreator().getKey());
+		item.setProjectId(issue.getFields().getProject().getKey().toString());
+		item.setItemKey(issue.getKey());
 		item.setItemSummary(issue.getFields().getSummary());
 		item.setItemDescription(issue.getFields().getDescription());
-		item.setItemCreateDate(Long.getLong(issue.getFields().getCreated()));
+		item.setItemCreateDate(createTime);
 		item.setItemCreator(issue.getFields().getCreator().getName());
-		item.setLastUpdateDate(null);
-		item.setLastUpdateUser(issue.getFields().getLastViewed());
+		item.setLastUpdateDate(lastUpdateTime);
+
+		item.setLastUpdateUser(issue.getFields().getCreator().getName()); // TODO check for value
 
 		MetricsItemsTStatusTransition tStatusTransition = new MetricsItemsTStatusTransition();
 
-		tStatusTransition.setItemId(transition.getTransitionId().toString());
-		tStatusTransition.setProjectId(issue.getFields().getProject().getId().toString());
+		tStatusTransition.setItemId(item.getItemId());
+		tStatusTransition.setProjectId(issue.getFields().getProject().getKey().toString());
 		tStatusTransition.setSourceSystemId(source);
-		tStatusTransition.setStatus(0);//Integer.getInteger(issue.getFields().getStatus().getId()));
-		tStatusTransition.setTransitionDate(Long.getLong(issue.getFields().getCreated()));
+		tStatusTransition.setStatus(0);// Integer.getInteger(issue.getFields().getStatus().getId()));
+		tStatusTransition.setTransitionDate(lastUpdateTime);
 
 		item.addTStatusTransition(tStatusTransition);
 
 		MetricsItemsStatusTransition statusTransition = new MetricsItemsStatusTransition();
 
-		statusTransition.setItemId(transition.getTransitionId().toString());
-		statusTransition.setProjectId(issue.getFields().getProject().getId().toString());
+		statusTransition.setItemId(item.getItemId());
+		statusTransition.setProjectId(issue.getFields().getProject().getKey().toString());
 		statusTransition.setSourceSystemId(source);
 		statusTransition.setFromStatus(transition.getFrom_status());
 		statusTransition.setToStatus(transition.getTo_status());
-		statusTransition.setTransitionDate(Long.getLong(issue.getFields().getCreated()));
+		statusTransition.setTransitionDate(lastUpdateTime);
 
 		item.addStatusTransition(statusTransition);
 
 		Map<String, CustomField> custField = issue.getFields().getCustomFields();
 
-		ObjectMapper objectMapper = new ObjectMapper();
 		for (Map.Entry<String, CustomField> cust : custField.entrySet()) {
 
 			MetricsItemsCustomField metricCustomField = new MetricsItemsCustomField();
 
-			metricCustomField.setItemId(transition.getTransitionId().toString());
+			metricCustomField.setItemId(item.getItemId());
 			metricCustomField.setSourceSystemId(source);
 			metricCustomField.setFieldName(cust.getKey());
 			metricCustomField.setFieldDatatype("CustomField");
-			try {
-				metricCustomField.setFieldValue(objectMapper.writeValueAsString(cust.getValue()));
-			} catch (JsonProcessingException e) {
-				System.out.println("JSON writing error");
-			}
-			metricCustomField.setCreateDate(Long.getLong(issue.getFields().getCreated()));
+			metricCustomField.setFieldValue(cust.getValue().getValue());
+
+			metricCustomField.setCreateDate(lastUpdateTime);
 
 			item.addCustomField(metricCustomField);
 		}

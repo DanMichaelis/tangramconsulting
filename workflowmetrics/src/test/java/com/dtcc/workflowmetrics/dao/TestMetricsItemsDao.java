@@ -24,11 +24,11 @@ public class TestMetricsItemsDao {
     @Autowired
     MetricsItemsDao dao;
 
-    private static MetricsItems mi1 = (new MetricsItems()).setItemId("Item1").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator1")
+    private static MetricsItems mi1 = (new MetricsItems()).setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator1")
     		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary1").setCheckSum("").setItemKey("itemKey1").setLastUpdateUser("user1");
-    private static MetricsItems mi2 = (new MetricsItems()).setItemId("Item2").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator2")
+    private static MetricsItems mi2 = (new MetricsItems()).setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator2")
     		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary2").setCheckSum("").setItemKey("itemKey2").setLastUpdateUser("user2");
-    private static MetricsItems mi3 = (new MetricsItems()).setItemId("Item3").setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator3")
+    private static MetricsItems mi3 = (new MetricsItems()).setLastUpdateDate(System.currentTimeMillis()).setItemCreator("itemCreator3")
     		.setItemCreateDate(System.currentTimeMillis()).setItemSummary("itemSummary3").setCheckSum("").setItemKey("itemKey3").setLastUpdateUser("user3");
     private ArrayList<MetricsItems> metricsItems = new ArrayList<MetricsItems>();
     
