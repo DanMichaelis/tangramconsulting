@@ -11,4 +11,6 @@ public interface MetricsItemsStatusTransitionDao extends CrudRepository<MetricsI
 
 	List<MetricsItemsStatusTransition> findByItemIdAndToStatusOrderByTransitionDateDesc(String itemId, String toStatus);
 
+	List<MetricsItemsStatusTransition> findByItemIdAndFromStatusOrderByTransitionDateAsc(String itemId, String fromStatus);
+
 }

@@ -26,8 +26,13 @@ import com.dtcc.workflowmetrics.entity.MetricsItemsId;
 import com.dtcc.workflowmetrics.entity.MetricsItemsStatusDuration;
 import com.dtcc.workflowmetrics.entity.MetricsItemsStatusTransition;
 import com.dtcc.workflowmetrics.entity.MetricsItemsStatusTransitionId;
+import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusDuration;
+import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransition;
+import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransitionId;
 import com.dtcc.workflowmetrics.entity.Status;
 import com.dtcc.workflowmetrics.entity.StatusId;
+import com.dtcc.workflowmetrics.entity.StatusTValue;
+import com.dtcc.workflowmetrics.entity.StatusTValueId;
 
 @Service
 public class MetricsItemsDaoService {
@@ -71,7 +76,7 @@ public class MetricsItemsDaoService {
 		Optional<MetricsItems> storedData = metricsItemsDao.findById(mid);
 
 		Long createDt = System.currentTimeMillis();
-		
+
 		if (webhookItem.getItemCreateDate() != null) {
 			createDt = webhookItem.getItemCreateDate();
 		}
@@ -161,10 +166,15 @@ public class MetricsItemsDaoService {
 
 		// check is from and to status are present in status table, if not, add data
 
+		String fromStatusId = null;
+		String toStatusId = null;
+
 		if (fromStatus.length() > 0) {
 			StatusId siFromData = new StatusId(storedItemDetail.getSourceSystemId(), fromStatus);
 			Optional<Status> fromStatusData = statusDao.findById(siFromData);
-			if (fromStatusData == null || !fromStatusData.isPresent()) {
+			if (fromStatusData != null && fromStatusData.isPresent()) {
+				fromStatusId = fromStatusData.get().getStatusId();
+			} else {
 
 				Status st = new Status();
 				st.setName(fromStatus);
@@ -180,8 +190,9 @@ public class MetricsItemsDaoService {
 		if (toStatus.length() > 0) {
 			StatusId siToData = new StatusId(storedItemDetail.getSourceSystemId(), toStatus);
 			Optional<Status> toStatusData = statusDao.findById(siToData);
-			if (toStatusData == null || !toStatusData.isPresent()) {
-
+			if (toStatusData != null && toStatusData.isPresent()) {
+				toStatusId = toStatusData.get().getStatusId();
+			} else {
 				Status st = new Status();
 				st.setName(toStatus);
 				st.setLastUpdateDate(createDt);
@@ -206,15 +217,15 @@ public class MetricsItemsDaoService {
 			List<MetricsItemsStatusTransition> data = metricsItemsStatusTransitionDao
 					.findByItemIdAndToStatusOrderByTransitionDateDesc(itemId, fromStatus);
 
-			if (data != null && data.size()>0) {
+			if (data != null && data.size() > 0) {
 
 				statusDetail = data.get(0);
 				prevDt = statusDetail.getTransitionDate();
-				
+
 			}
 
 			Long dur = trnsDt - prevDt;
-			
+
 			MetricsItemsStatusDuration misd = new MetricsItemsStatusDuration();
 
 			misd.setItemId(itemId);
@@ -231,84 +242,87 @@ public class MetricsItemsDaoService {
 		// MetricsItemsTStatusTransition data population
 		// get tvalue to for the from and to status values
 
-		/*
-		 * StatusTValueId toStatusTValueId = new StatusTValueId(toStatus,
-		 * webhookItem.getSourceSystemId()); Optional<StatusTValue> toStatusTValue =
-		 * statusTValueDao.findById(toStatusTValueId);
-		 * 
-		 * StatusTValueId fromStatusTValueId = new StatusTValueId(fromStatus,
-		 * webhookItem.getSourceSystemId()); Optional<StatusTValue> fromStatusTValue =
-		 * statusTValueDao.findById(fromStatusTValueId);
-		 * 
-		 * StatusTValue toStatustValueDetail = null; StatusTValue fromStatustValueDetail
-		 * = null;
-		 * 
-		 * if (toStatusTValue != null && toStatusTValue.isPresent()) {
-		 * 
-		 * toStatustValueDetail = toStatusTValue.get(); }
-		 * 
-		 * if (fromStatusTValue != null && fromStatusTValue.isPresent()) {
-		 * 
-		 * fromStatustValueDetail = fromStatusTValue.get(); }
-		 * 
-		 * // find if data already exists in table
-		 * Optional<MetricsItemsTStatusTransition> tStatusTransDetail = null;
-		 * 
-		 * if (toStatustValueDetail != null && fromStatustValueDetail != null) {
-		 * MetricsItemsTStatusTransitionId toStatustStatusTransId = new
-		 * MetricsItemsTStatusTransitionId( itemId,
-		 * toStatustValueDetail.getCreateDate()); tStatusTransDetail =
-		 * metricsItemsTStatusTransitionDao.findById(toStatustStatusTransId); }
-		 * 
-		 * // if data not present, insert data, else ignore if ((tStatusTransDetail ==
-		 * null || !(tStatusTransDetail.isPresent())) && toStatustValueDetail != null &&
-		 * fromStatustValueDetail != null) {
-		 * 
-		 * MetricsItemsTStatusTransition mitst = new MetricsItemsTStatusTransition();
-		 * 
-		 * mitst.setItemId(itemId); mitst.setProjectId(webhookItem.getProjectId());
-		 * mitst.setSourceSystemId(webhookItem.getSourceSystemId());
-		 * mitst.setStatus(toStatustValueDetail.getTValue());
-		 * mitst.setTransitionDate(createDt);
-		 * 
-		 * MetricsItemsTStatusTransition storedTTrans =
-		 * metricsItemsTStatusTransitionDao.save(mitst);
-		 * storedItemDetail.addTStatusTransition(storedTTrans);
-		 * 
-		 * // MetricsItemsTStatusDuration data population
-		 * 
-		 * if (toStatustValueDetail.getTValue() != fromStatustValueDetail.getTValue()) {
-		 * 
-		 * // find if data for previous status exists MetricsItemsTStatusTransitionId
-		 * fromStatustStatusTransId = new MetricsItemsTStatusTransitionId( itemId,
-		 * fromStatustValueDetail.getCreateDate());
-		 * 
-		 * Optional<MetricsItemsTStatusTransition> prevTStatusTransDetail =
-		 * metricsItemsTStatusTransitionDao .findById(fromStatustStatusTransId);
-		 * 
-		 * // if data for previous status exists, find duration, else ignore if
-		 * (prevTStatusTransDetail != null && prevTStatusTransDetail.isPresent()) {
-		 * 
-		 * Long tStatusDur = createDt -
-		 * prevTStatusTransDetail.get().getTransitionDate();
-		 * 
-		 * MetricsItemsTStatusDuration mitsd = new MetricsItemsTStatusDuration();
-		 * 
-		 * mitsd.setItemId(itemId); mitsd.setProjectId(webhookItem.getProjectId());
-		 * mitsd.setSourceSystemId(webhookItem.getSourceSystemId());
-		 * mitsd.setStatus(fromStatustValueDetail.getTValue());
-		 * mitsd.setDuration(tStatusDur);
-		 * 
-		 * MetricsItemsTStatusDuration storedTSDuration =
-		 * metricsItemsTStatusDurationDao.save(mitsd);
-		 * storedItemDetail.addTStatusDuration(storedTSDuration);
-		 * 
-		 * }
-		 * 
-		 * }
-		 * 
-		 * }
-		 */
+		StatusTValueId toStatusTValueId = new StatusTValueId(toStatusId, webhookItem.getSourceSystemId());
+		Optional<StatusTValue> toStatusTValue = statusTValueDao.findById(toStatusTValueId);
+
+		StatusTValueId fromStatusTValueId = new StatusTValueId(fromStatusId, webhookItem.getSourceSystemId());
+		Optional<StatusTValue> fromStatusTValue = statusTValueDao.findById(fromStatusTValueId);
+
+		int toStatustValueDetail = 0;
+		int fromStatustValueDetail = -1;
+
+		if (toStatusTValue != null && toStatusTValue.isPresent()) {
+
+			toStatustValueDetail = toStatusTValue.get().getTValue();
+		}
+
+		if (fromStatusTValue != null && fromStatusTValue.isPresent()) {
+
+			fromStatustValueDetail = fromStatusTValue.get().getTValue();
+		}
+
+		if (toStatustValueDetail != fromStatustValueDetail) {
+			// find if data already exists in table
+			Optional<MetricsItemsTStatusTransition> tStatusTransDetail = null;
+
+			MetricsItemsTStatusTransitionId tStatusTransId = new MetricsItemsTStatusTransitionId(itemId,
+					transitionTime);
+			tStatusTransDetail = metricsItemsTStatusTransitionDao.findById(tStatusTransId);
+
+			// if data not present, insert data, else ignore
+			if (tStatusTransDetail == null || !tStatusTransDetail.isPresent()) {
+
+				MetricsItemsTStatusTransition mitst = new MetricsItemsTStatusTransition();
+
+				if (fromStatustValueDetail == -1) {
+					fromStatustValueDetail = 0;
+				}
+				mitst.setItemId(itemId);
+				mitst.setProjectId(webhookItem.getProjectId());
+				mitst.setSourceSystemId(webhookItem.getSourceSystemId());
+				mitst.setStatus(toStatustValueDetail);
+				mitst.setTransitionDate(transitionTime);
+
+				MetricsItemsTStatusTransition storedTTrans = metricsItemsTStatusTransitionDao.save(mitst);
+				storedItemDetail.addTStatusTransition(storedTTrans);
+
+				// MetricsItemsTStatusDuration data population
+
+				// find if data for previous status exists
+
+				if (fromStatus.length() > 0) {
+
+					List<MetricsItemsTStatusTransition> prevTStatusTransDetail = metricsItemsTStatusTransitionDao
+							.findByItemIdAndStatusOrderByTransitionDateDesc(itemId, fromStatustValueDetail);
+
+					Long trnsDt = storedItemDetail.getLastUpdateDate();
+					Long prevDt = storedItemDetail.getLastUpdateDate();
+
+					// if data for previous status exists, find duration, else ignore
+					if (prevTStatusTransDetail != null && prevTStatusTransDetail.size() > 0) {
+
+						prevDt = prevTStatusTransDetail.get(0).getTransitionDate();
+
+						Long tStatusDur = trnsDt - prevDt;
+
+						MetricsItemsTStatusDuration mitsd = new MetricsItemsTStatusDuration();
+
+						mitsd.setItemId(itemId);
+						mitsd.setProjectId(webhookItem.getProjectId());
+						mitsd.setSourceSystemId(webhookItem.getSourceSystemId());
+						mitsd.setStatus(fromStatustValueDetail);
+						mitsd.setDuration(tStatusDur);
+						mitsd.setStartDate(prevDt);
+
+						MetricsItemsTStatusDuration storedTSDuration = metricsItemsTStatusDurationDao.save(mitsd);
+						storedItemDetail.addTStatusDuration(storedTSDuration);
+
+					}
+				}
+
+			}
+
+		}
 
 		return storedItemDetail;
 	}
