@@ -1,3 +1,4 @@
+
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
@@ -5,8 +6,8 @@ import java.io.Serializable;
 public class EventUserId implements Serializable {
 
 	/**
-	 * 
-	 */
+	* 
+	*/
 
 	private static final long serialVersionUID = 1L;
 

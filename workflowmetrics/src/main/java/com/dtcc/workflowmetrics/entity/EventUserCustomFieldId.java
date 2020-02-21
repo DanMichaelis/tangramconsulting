@@ -1,3 +1,4 @@
+
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
@@ -5,16 +6,16 @@ import java.io.Serializable;
 public class EventUserCustomFieldId implements Serializable {
 
 	/**
-	 * 
-	 */
+	* 
+	*/
 	private static final long serialVersionUID = 1L;
 
 	private String userID;
-	
+
 	private int sourceSystem;
-	
+
 	private Long createDate;
-	
+
 	private String fieldName;
 
 	public EventUserCustomFieldId(String userID, int sourceSystem, Long createDate, String fieldName) {
@@ -25,11 +26,9 @@ public class EventUserCustomFieldId implements Serializable {
 		this.fieldName = fieldName;
 	}
 
-	
 	public EventUserCustomFieldId() {
 		super();
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -41,7 +40,6 @@ public class EventUserCustomFieldId implements Serializable {
 		result = prime * result + ((userID == null) ? 0 : userID.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -72,6 +70,4 @@ public class EventUserCustomFieldId implements Serializable {
 		return true;
 	}
 
-
-	
 }

@@ -1,3 +1,4 @@
+
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
@@ -9,28 +10,34 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity(name = "eventUserCustomField")
+
 @Table(name = "EventUserCustomField")
+
 @IdClass(EventUserCustomFieldId.class)
 public class EventUserCustomField implements Serializable {
 
 	/**
-	 * 
-	 */
+	* 
+	*/
 	private static final long serialVersionUID = 1L;
 
 	@Id
+
 	@Column(name = "UserID")
 	private String userID;
 
 	@Id
+
 	@Column(name = "SourceSystem")
 	private int sourceSystem;
 
 	@Id
+
 	@Column(name = "CreateDate")
 	private Long createDate;
 
 	@Id
+
 	@Column(name = "FieldName")
 	private String fieldName;
 
@@ -164,25 +171,24 @@ public class EventUserCustomField implements Serializable {
 		return true;
 	}
 
-    public EventUserCustomField clone() {
-        return new EventUserCustomField(this);
-    }
-    
-    public String toStringWithoutCreateDate() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("EventUserCustomField [userID=");
-        builder.append(userID);
-        builder.append(", sourceSystem=");
-        builder.append(sourceSystem);
-        builder.append(", fieldName=");
-        builder.append(fieldName);
-        builder.append(", fieldDatatype=");
-        builder.append(fieldDatatype);
-        builder.append(", fieldValue=");
-        builder.append(fieldValue);
-        builder.append("]");
-        return builder.toString();
-    }
-  
+	public EventUserCustomField clone() {
+		return new EventUserCustomField(this);
+	}
+
+	public String toStringWithoutCreateDate() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("EventUserCustomField [userID=");
+		builder.append(userID);
+		builder.append(", sourceSystem=");
+		builder.append(sourceSystem);
+		builder.append(", fieldName=");
+		builder.append(fieldName);
+		builder.append(", fieldDatatype=");
+		builder.append(fieldDatatype);
+		builder.append(", fieldValue=");
+		builder.append(fieldValue);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
