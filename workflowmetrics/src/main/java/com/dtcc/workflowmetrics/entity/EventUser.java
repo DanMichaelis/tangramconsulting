@@ -1,3 +1,4 @@
+
 package com.dtcc.workflowmetrics.entity;
 
 import java.io.Serializable;
@@ -10,7 +11,9 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity(name = "eventUser")
+
 @Table(name = "EventUser")
+
 @IdClass(EventUserId.class)
 public class EventUser implements Serializable {
 
@@ -20,6 +23,7 @@ public class EventUser implements Serializable {
 	private String id;
 
 	@Id
+
 	@Column(name = "SourceSystem")
 	private int sourceSystem;
 
@@ -215,7 +219,6 @@ public class EventUser implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-
 
 	public String toStringWithoutCustomFieldsAndLastUpdateDate() {
 		StringBuilder builder = new StringBuilder();
