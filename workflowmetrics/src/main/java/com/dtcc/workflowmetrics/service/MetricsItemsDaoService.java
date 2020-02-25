@@ -266,7 +266,7 @@ public class MetricsItemsDaoService {
 		StatusTValueId fromStatusTValueId = new StatusTValueId(fromStatusId, webhookItem.getSourceSystemId());
 		Optional<StatusTValue> fromStatusTValue = statusTValueDao.findById(fromStatusTValueId);
 
-		int toStatustValueDetail = 0;
+		int toStatustValueDetail = -1;
 		int fromStatustValueDetail = -1;
 
 		if (toStatusTValue != null && toStatusTValue.isPresent()) {
@@ -309,6 +309,9 @@ public class MetricsItemsDaoService {
 			if (fromStatustValueDetail == -1) {
 				fromStatustValueDetail = 0;
 			}
+			
+			if (toStatustValueDetail >=0){
+			
 			mitst.setItemId(storedItemDetail.getItemId());
 			mitst.setProjectId(storedItemDetail.getProjectId());
 			mitst.setSourceSystemId(storedItemDetail.getSourceSystemId());
@@ -317,7 +320,8 @@ public class MetricsItemsDaoService {
 
 			MetricsItemsTStatusTransition storedTTrans = metricsItemsTStatusTransitionDao.save(mitst);
 			storedItemDetail.addTStatusTransition(storedTTrans);
-
+			}
+			
 			if (fromStatus.length() > 0) {
 
 				// call method to save MetricsItemsTStatusDuration data
