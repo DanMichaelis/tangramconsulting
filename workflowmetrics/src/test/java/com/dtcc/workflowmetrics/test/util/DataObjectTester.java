@@ -122,7 +122,6 @@ public class DataObjectTester {
             HashMap<Constructor<?>, HashMap<Integer, DataObjectTesterParameterList>> constructorsAndParameters) {
 
         ArrayList<Object> objects = new ArrayList<Object>();
-
         for (Constructor<?> c : constructorsAndParameters.keySet()) {
 
             for (Object o : instantiateObjectsFromParameterLists(c, constructorsAndParameters.get(c))) {
