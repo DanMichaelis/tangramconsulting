@@ -19,11 +19,11 @@ export class MetricsCollectionInteractionService {
         '/parsePulledIssueData?loadDirectory=' +
         projectToParse).subscribe(
           data => {
-            let l_data = <{ status: string }>data;
+            const l_data = <{ status: string }>data;
             this.userMessageList.addSimpleMessage(l_data.status);
           },
           error => {
-            let l_error = <HttpErrorResponse>error;
+            const l_error = <HttpErrorResponse>error;
             this.userMessageList.addMessage(new UserMessage(l_error.message, 9999, 'ERROR', 'ERROR'));
           }
         )
