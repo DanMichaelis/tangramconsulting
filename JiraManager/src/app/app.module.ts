@@ -28,6 +28,7 @@ import { UserMessageComponent } from './components/application-message-box-compo
         UserMessageComponent
     ],
     imports: [
+        NgModule,
         BrowserModule,
         FormsModule,
         HttpClientModule

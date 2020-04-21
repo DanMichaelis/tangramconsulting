@@ -1,11 +1,11 @@
-package com.dtcc.workflowmetrics.dao;
-
-import com.dtcc.workflowmetrics.pojo.Comment;
-
-public interface CommentDao {
-
-	public void addComment(Comment comment);
-	
-	public void getCommentById(Integer issueId);
-
-}
+/*
+ * package com.dtcc.workflowmetrics.dao;
+ * 
+ * import org.springframework.data.repository.CrudRepository;
+ * 
+ * import com.dtcc.workflowmetrics.entity.Comment;
+ * 
+ * public interface CommentDao extends CrudRepository<Comment, Integer> {
+ * 
+ * }
+ */

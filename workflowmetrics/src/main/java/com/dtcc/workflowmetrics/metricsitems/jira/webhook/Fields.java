@@ -60,14 +60,8 @@ public class Fields {
 	private StatusDetails status;
 	private String aggregatetimeoriginalestimate;
 	private WorkLog worklog;
-	
-	private Map<String, Map<String, CustomField>> customFieldArr = new LinkedHashMap<>();
-	private Map<String, CustomField> customFields = new LinkedHashMap<>();
-	private Map<String, Object> customFields1 = new LinkedHashMap<>();
 
-	public Map<String, Map<String, CustomField>> getCustomFieldArr() {
-		return customFieldArr;
-	}
+	private Map<String, CustomField> customFields = new LinkedHashMap<>();
 
 	/*
 	 * public void setCustomFieldArr(ArrayList<CustomField> customFieldArr) {
@@ -447,30 +441,44 @@ public class Fields {
 	@SuppressWarnings("unchecked")
 	@JsonAnySetter
 	public Fields setCustomFields(String key, Object value) {
-		String val = new String();
-		try {
-			val = value.toString();
-		} catch (NullPointerException e) {
-			customFields1.put(key, null);
-		}
-		if (val.startsWith("[")) {
+		if (value == null) {
+			CustomField cstmFld = new CustomField();
+			cstmFld.setId(null);
+			cstmFld.setSelf(null);
+			cstmFld.setValue(null);
+			customFields.put(key, cstmFld);
+		} else if (value.getClass().equals(String.class)) {
+			CustomField cstmFld = new CustomField();
+			cstmFld.setId(null);
+			cstmFld.setSelf(null);
+			cstmFld.setValue(value.toString());
+			customFields.put(key, cstmFld);
 
-			ArrayList<CustomField> custArr = (ArrayList<CustomField>) value;
+		} else if (value.getClass().equals(ArrayList.class)) {
+			for (Object o : (ArrayList<Object>) value) {
+				setCustomFields(key, o);
+			}
+		} else if (value.getClass().equals(LinkedHashMap.class)) {
 
-			Map<String, CustomField> custMap = (Map<String, CustomField>) custArr.get(0);
+			LinkedHashMap val = (LinkedHashMap) value;
 
-			customFieldArr.put(key, custMap);
-			//customFields.putAll(custMap);
-
-		} else if (val.contains("self")) {
 			ObjectMapper obj = new ObjectMapper();
 
-			CustomField cust = obj.convertValue(value, CustomField.class);
+			if (val.containsKey("emailAddress")) {
+				User user = obj.convertValue(value, User.class);
+				CustomField cstmFld = new CustomField();
+				cstmFld.setId(null);
+				cstmFld.setSelf(user.getSelf());
+				cstmFld.setValue(user.getName());
+				
+				customFields.put(key, cstmFld);
+			} else {
 
-			// CustomField cust = CustomField.class.cast(value);
-			customFields.put(key, cust);
-		} else
-			customFields1.put(key, value);
+				CustomField cust = obj.convertValue(value, CustomField.class);
+				customFields.put(key, cust);
+			}
+			
+		}
 		return this;
 
 	}
@@ -484,10 +492,6 @@ public class Fields {
 //
 //		return this;
 //	}
-
-	public Map<String, Object> getCustomFields1() {
-		return customFields1;
-	}
 
 	@Override
 	public int hashCode() {
@@ -506,9 +510,7 @@ public class Fields {
 		result = prime * result + ((components == null) ? 0 : components.hashCode());
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
 		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
-		result = prime * result + ((customFieldArr == null) ? 0 : customFieldArr.hashCode());
 		result = prime * result + ((customFields == null) ? 0 : customFields.hashCode());
-		result = prime * result + ((customFields1 == null) ? 0 : customFields1.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((duedate == null) ? 0 : duedate.hashCode());
 		result = prime * result + ((environment == null) ? 0 : environment.hashCode());
@@ -603,20 +605,10 @@ public class Fields {
 				return false;
 		} else if (!creator.equals(other.creator))
 			return false;
-		if (customFieldArr == null) {
-			if (other.customFieldArr != null)
-				return false;
-		} else if (!customFieldArr.equals(other.customFieldArr))
-			return false;
 		if (customFields == null) {
 			if (other.customFields != null)
 				return false;
 		} else if (!customFields.equals(other.customFields))
-			return false;
-		if (customFields1 == null) {
-			if (other.customFields1 != null)
-				return false;
-		} else if (!customFields1.equals(other.customFields1))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -838,9 +830,7 @@ public class Fields {
 		builder.append(", customFields=");
 		builder.append(customFields);
 		builder.append(", customFields1=");
-		builder.append(customFields1);
 		builder.append(", customFieldArr=");
-		builder.append(customFieldArr);
 		builder.append("]");
 		return builder.toString();
 	}

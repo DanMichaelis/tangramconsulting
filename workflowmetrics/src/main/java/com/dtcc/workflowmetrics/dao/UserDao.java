@@ -1,11 +1,13 @@
-package com.dtcc.workflowmetrics.dao;
-
-import com.dtcc.workflowmetrics.pojo.UserDetail;
-
-public interface UserDao {
-
-	public void addUser(UserDetail user);
-	
-	public void getUserById(Integer userId);
-
-}
+/*
+ * package com.dtcc.workflowmetrics.dao;
+ * 
+ * import java.util.Optional;
+ * 
+ * import org.springframework.data.repository.CrudRepository;
+ * 
+ * import com.dtcc.workflowmetrics.entity.UserDetail;
+ * 
+ * public interface UserDao extends CrudRepository<UserDetail, Integer>{
+ * 
+ * Optional<UserDetail> findByEmailId(String emailId); }
+ */
