@@ -1,12 +1,11 @@
-package com.dtcc.workflowmetrics.dao;
-
-import com.dtcc.workflowmetrics.pojo.IssueLink;
-
-public interface IssueLinkDao {
-
-	public void addIssueLink(IssueLink issueLink);
-	
-	public void getIssueLinkById(Integer issueId);
-
-
-}
+/*
+ * package com.dtcc.workflowmetrics.dao;
+ * 
+ * import org.springframework.data.repository.CrudRepository;
+ * 
+ * import com.dtcc.workflowmetrics.entity.IssueLink;
+ * 
+ * public interface IssueLinkDao extends CrudRepository<IssueLink, Integer>{
+ * 
+ * }
+ */

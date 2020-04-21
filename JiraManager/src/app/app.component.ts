@@ -20,7 +20,7 @@ export class AppComponent {
 	@ViewChild(NavbarComponent)
 	private navbarComponent: NavbarComponent;
 
-	getSelectedComponent(): String {
+	getSelectedComponent(): string {
 		return this.navbarComponent.selectedOperation;
 	}
 

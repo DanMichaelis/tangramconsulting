@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dtcc.workflowmetrics.dataaccess.rest.IssueRESTDAO;
+import com.dtcc.workflowmetrics.entity.MetricsItems;
 import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
 import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
 import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
-import com.dtcc.workflowmetrics.service.JiraService;
+import com.dtcc.workflowmetrics.service.MetricsItemsDaoService;
+import com.dtcc.workflowmetrics.service.UserHarmonizerService;
 import com.dtcc.workflowmetrics.util.simulator.workflows.WorkflowGenerator;
 
 @CrossOrigin(origins = "*")
@@ -26,15 +28,22 @@ public class JiraController {
     private int counter = 0;
 
     @Autowired
-	private JiraService jiraService;
+	//private JiraService jiraService;
+    private UserHarmonizerService userHarmonizerService;
+    
+    @Autowired
+    private MetricsItemsDaoService metricsItemsDaoService;
 
     @RequestMapping("/jira/addIssue")
     public void jiraMessage(@RequestHeader MultiValueMap<String, String> headers, @RequestBody String inboundBody) {
         System.out.println("Service Invocation " + counter++);
         System.out.println("Data:  " + inboundBody);
+        
         WebhookData issue = IssueConverter.webhookJSONToWebhookData(inboundBody);
 
-        jiraService.addJiraData(issue);
+        MetricsItems metricsItems = userHarmonizerService.harmonizeJira(issue);
+        
+        MetricsItems savedItem = metricsItemsDaoService.save(metricsItems);
         
         System.out.println(issue);
         

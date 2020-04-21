@@ -8,8 +8,8 @@ import { FormsModule } from '@angular/Forms';
 })
 export class GenerateTestDataComponent implements OnInit {
 
-  _showPanel: Boolean = false;
-  generatedTestCases: Number = 0;
+  _showPanel: boolean = false;
+  generatedTestCases: number = 0;
   generatedTestCasePhrase: string = '0 test cases will be generated';
 
   constructor() {
@@ -19,7 +19,7 @@ export class GenerateTestDataComponent implements OnInit {
   ngOnInit() {
   }
 
-  setGeneratedTestCasePhrase(isGenerated: Boolean) {
+  setGeneratedTestCasePhrase(isGenerated: boolean) {
     if (!isGenerated) {
       this.generatedTestCasePhrase = this.generatedTestCases + ' test cases will be generated';
     } else {

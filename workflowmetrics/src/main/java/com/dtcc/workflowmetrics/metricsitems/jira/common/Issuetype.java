@@ -2,7 +2,7 @@ package com.dtcc.workflowmetrics.metricsitems.jira.common;
 
 public class Issuetype {
     private String self;
-    private String id;
+    private Integer id;
     private String description;
     private String iconUrl;
     private String name;
@@ -16,10 +16,10 @@ public class Issuetype {
     
         return this;
     }
-    public String getId() {
+    public Integer getId() {
         return id;
     }
-    public Issuetype setId(String id) {
+    public Issuetype setId(Integer id) {
         this.id = id;
     
         return this;
