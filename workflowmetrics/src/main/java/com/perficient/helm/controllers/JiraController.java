@@ -37,7 +37,7 @@ public class JiraController {
     @RequestMapping("/jira/addIssue")
     public void jiraMessage(@RequestHeader MultiValueMap<String, String> headers, @RequestBody String inboundBody) {
         System.out.println("Service Invocation " + counter++);
-        System.out.println("Data:  " + inboundBody);
+        
         
         WebhookData issue = IssueConverter.webhookJSONToWebhookData(inboundBody);
 
@@ -47,7 +47,7 @@ public class JiraController {
         
         System.out.println(issue);
         
-        //IssueList.addIssue(issue);
+        System.out.println("Data:  " + inboundBody);
     }
 
     @RequestMapping("/jira/getIssueByKey")

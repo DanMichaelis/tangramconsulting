@@ -1,0 +1,13 @@
+<ngx-avatar *ngIf="icon.isAvatar()" class="clickable-icon"
+        [name]="icon.getAvatarName()" [round]="icon.isAvatarRound()"
+        [size]="icon.getAvatarSize()" [value]="icon.getAvatarValue()"
+        [src]="icon.getImageSrc()" (click)="iconClicked($event)">
+</ngx-avatar>
+
+<img *ngIf="icon.isImage()" class="clickable-icon" [src]="icon.getImageSrc()"
+        [alt]="icon.getAltText()" [height]="icon.getImageHeight()"
+        [width]="icon.getImageWidth()" (click)="iconClicked($event)">
+
+<i *ngIf="icon.isIcon()" [class]="icon.getFontAwesomeIcon()" aria-hidden="true"
+        (click)="iconClicked($event)"></i>
+<span *ngIf="icon.isIcon()" class="sr-only">{{icon.getAltText()}}</span>

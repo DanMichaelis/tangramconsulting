@@ -1,0 +1,14 @@
+<app-leftandrightclickableitems [leftClickableIcon]="getAddAndEditButtons().getLeft()"
+        [rightClickableIcon]="getAddAndEditButtons().getRight()"></app-leftandrightclickableitems>
+
+<div class="layout--cards-3-up">
+    <ul class="row">
+        <li class="col-4" *ngFor="let summaryCard of getSummaryCards()">
+            <app-summarycard [cardIcon]="summaryCard.getCardIcon()"
+                [cardTitle]="summaryCard.getCardTitle()" [editIcon]="summaryCard.getEditIcon()"
+                [rows]="summaryCard.getCardData()">
+            </app-summarycard>
+        </li>
+    </ul>
+
+</div>

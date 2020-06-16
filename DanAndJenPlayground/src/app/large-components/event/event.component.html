@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="row layout--action-buttons">
+        <div class="col-8 icon-and-text card-title action-buttons--left">
+            <h3>
+                <app-titleandsubtitle [data]="getCardTitle()">
+                </app-titleandsubtitle>
+            </h3>
+        </div>
+        <div class="col-4 action-buttons--right">
+            <app-clickableicon [icon]="getCardEditIcon()"></app-clickableicon>
+        </div>
+    </div>
+
+    <ul class="members--info">
+        <li class="member--row" *ngFor="let evt of getEvents()">
+            <app-clickableicon [icon]="getEventAvatar(evt)"
+                class="action-buttons--left"></app-clickableicon>
+            <app-summarycardrow [title]="getEventTitle(evt)"
+                [icons]="getEventIcons()" class="action-buttons--right">
+            </app-summarycardrow>
+        </li>
+    </ul>
+</div>
