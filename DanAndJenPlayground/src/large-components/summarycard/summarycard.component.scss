@@ -1,0 +1,20 @@
+$p-size: 14px;
+$p-subtitle-size: calc(#{$p-size} * .85);
+
+.members--count {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.members--info {
+    padding-left: 45px;
+
+    .subtitle {
+        font-size: $p-subtitle-size;
+    }
+}
+
+.member--row {
+    width: 100%;
+    clear: both;
+}

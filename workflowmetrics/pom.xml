@@ -9,11 +9,10 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dtcc.workflowmetrics</groupId>
-	<artifactId>workflowmetrics</artifactId>
+	<groupId>com.perficient</groupId>
+	<artifactId>helm</artifactId>
 	<version>0</version>
 	<name>WorkflowMetrics</name>
-	<description>DTCC Workflow Metrics Processing Service</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -66,4 +65,5 @@
 		</plugins>
 	</build>
 
+	<description>Hub for Event Lifecycle Management</description>
 </project>

@@ -1,0 +1,13 @@
+<div class="member--info">
+    <p class="member">
+        <app-titleandsubtitle [data]="getRowTitle()"></app-titleandsubtitle>
+    </p>
+</div>
+
+<div class="member--actions">
+    <ul>
+        <li *ngFor="let clickableIcon of getIcons()">
+            <app-clickableicon [icon]="clickableIcon"></app-clickableicon>
+        </li>
+    </ul>
+</div>

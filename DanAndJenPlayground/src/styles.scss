@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+$h1-size: 28px;
+$h1-subtitle-size: calc(#{$h1-size} * .5);
+
+$h3-size: 22px;
+$h3-subtitle-size: calc(#{$h3-size} * .65);
+
+$p-size: 14px;
+$p-subtitle-size: calc(#{$p-size} * .85);
+
+$font_0: 'Lato', sans-serif;
+
+html,
+body {
+  font-family: $font_0;
+}
+
+p {
+  font-size: $p-size;
+}
+
+h1 {
+  font-size: $h1-size;
+  
+  .subtitle {
+    font-size: $h1-subtitle-size;
+    font-weight: 400;
+  }
+}
+
+h3 {
+  font-size: $h3-size;
+  
+  .subtitle {
+    font-size: $h3-subtitle-size;
+    font-weight: 400;
+  }
+}
+
+.members--info {
+  .clickable-icon {
+    margin-right: 10px;
+  }
+}
+
+.members--count {
+  span {
+    font-size: 14px;
+  }
+}
+
+.layout {
+  &--action-buttons {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    
+    .col {
+      &:last-of-type {
+        a {
+          float: right;
+        }
+      }
+    }
+  }
+
+  &--cards-3-up {
+    .col-4 {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.card {
+  border-color: lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100%;
+}
+
+.icon-and-text {
+  .clickable-icon {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+i {
+  &.clickable-icon {
+    margin-right: 5px;
+  }
+}
+
+.subtitle {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.member {
+  .subtitle {
+    font-size: $p-subtitle-size;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .layout {
+    &--cards-3-up {
+      display: block;
+
+      .col-4 {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
