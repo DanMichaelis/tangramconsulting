@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.util.simulator.workflows;
+package com.perficient.helm.util.simulator.workflows;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.perficient.helm.events.jira.IssueHistory;
 
 public class WorkflowGenerator {
     

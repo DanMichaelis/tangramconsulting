@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.service;
+package com.perficient.helm.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,13 +15,14 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.dao.MetricsItemsDao;
-import com.dtcc.workflowmetrics.entity.MetricsItems;
-import com.dtcc.workflowmetrics.entity.MetricsItemsCustomField;
-import com.dtcc.workflowmetrics.entity.MetricsItemsStatusDuration;
-import com.dtcc.workflowmetrics.entity.MetricsItemsStatusTransition;
-import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusDuration;
-import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransition;
+import com.perficient.helm.dao.MetricsItemsDao;
+import com.perficient.helm.entity.MetricsItems;
+import com.perficient.helm.entity.MetricsItemsCustomField;
+import com.perficient.helm.entity.MetricsItemsStatusDuration;
+import com.perficient.helm.entity.MetricsItemsStatusTransition;
+import com.perficient.helm.entity.MetricsItemsTStatusDuration;
+import com.perficient.helm.entity.MetricsItemsTStatusTransition;
+import com.perficient.helm.service.MetricsItemsDaoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.issueObjects.util;
+package com.perficient.helm.issueObjects.util;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,8 +18,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueList;
+import com.perficient.helm.events.jira.IssueHistory;
+import com.perficient.helm.events.jira.IssueList;
+import com.perficient.helm.issueObjects.util.IssueConverter;
+import com.perficient.helm.issueObjects.util.JsonFileReader;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

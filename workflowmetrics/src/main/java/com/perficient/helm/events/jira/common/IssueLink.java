@@ -1,7 +1,7 @@
-package com.dtcc.workflowmetrics.metricsitems.jira.common;
+package com.perficient.helm.events.jira.common;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.LinkType;
-import com.dtcc.workflowmetrics.metricsitems.jira.LinkedIssue;
+import com.perficient.helm.events.jira.LinkType;
+import com.perficient.helm.events.jira.LinkedIssue;
 
 public class IssueLink {
     private String id;

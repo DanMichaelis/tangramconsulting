@@ -1,9 +1,9 @@
-package com.dtcc.workflowmetrics.dao;
+package com.perficient.helm.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.dtcc.workflowmetrics.entity.MetricsItemsStatusDuration;
-import com.dtcc.workflowmetrics.entity.MetricsItemsStatusDurationId;
+import com.perficient.helm.entity.MetricsItemsStatusDuration;
+import com.perficient.helm.entity.MetricsItemsStatusDurationId;
 
 public interface MetricsItemsStatusDurationDao extends CrudRepository<MetricsItemsStatusDuration, MetricsItemsStatusDurationId>{
 

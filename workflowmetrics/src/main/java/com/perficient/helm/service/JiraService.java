@@ -1,6 +1,6 @@
-package com.dtcc.workflowmetrics.service;
+package com.perficient.helm.service;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
+import com.perficient.helm.events.jira.webhook.WebhookData;
 
 public interface JiraService {
 

@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.issueObjects.util;
+package com.perficient.helm.issueObjects.util;
 
 import java.util.Comparator;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.perficient.helm.events.jira.IssueHistory;
 
 public class IssueComparatorFactory {
 

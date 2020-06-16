@@ -1,9 +1,9 @@
-package com.dtcc.workflowmetrics.dao;
+package com.perficient.helm.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.dtcc.workflowmetrics.entity.StatusTValue;
-import com.dtcc.workflowmetrics.entity.StatusTValueId;
+import com.perficient.helm.entity.StatusTValue;
+import com.perficient.helm.entity.StatusTValueId;
 
 public interface StatusTValueDao extends CrudRepository<StatusTValue, StatusTValueId>{
 

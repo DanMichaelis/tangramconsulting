@@ -1,51 +1,45 @@
-package com.perficient.helm.events.jira.common;
+package com.perficient.helm.entity.internal;
 
-public class Resolution {
-    private String self;
-    private Integer id;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.perficient.helm.dao.SourceSystemDao;
+
+public class SourceSystem {
+    
+    private static ArrayList<SourceSystem> SOURCE_SYSTEMS = new ArrayList<SourceSystem>(); 
+    
+    private String id;
+    private String shortDescription;
     private String description;
-    private String name;
     
-    public String getSelf() {
-        return self;
-    }
-    public Resolution setSelf(String self) {
-        this.self = self;
+    @Autowired
+    private SourceSystemDao dao;
     
-        return this;
-    }
-    public Integer getId() {
+    public final String getId() {
         return id;
     }
-    public Resolution setId(Integer id) {
-        this.id = id;
     
-        return this;
+    public final String getShortDescription() {
+        return shortDescription;
     }
-    public String getDescription() {
+   
+    public final String getDescription() {
         return description;
     }
-    public Resolution setDescription(String description) {
-        this.description = description;
     
-        return this;
+    private final void initialize() {
+        dao.findAll();
     }
-    public String getName() {
-        return name;
-    }
-    public Resolution setName(String name) {
-        this.name = name;
     
-        return this;
-    }
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((self == null) ? 0 : self.hashCode());
+        result = prime * result + ((shortDescription == null) ? 0 : shortDescription.hashCode());
         return result;
     }
     @Override
@@ -59,7 +53,7 @@ public class Resolution {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Resolution other = (Resolution) obj;
+        SourceSystem other = (SourceSystem) obj;
         if (description == null) {
             if (other.description != null) {
                 return false;
@@ -74,18 +68,11 @@ public class Resolution {
         } else if (!id.equals(other.id)) {
             return false;
         }
-        if (name == null) {
-            if (other.name != null) {
+        if (shortDescription == null) {
+            if (other.shortDescription != null) {
                 return false;
             }
-        } else if (!name.equals(other.name)) {
-            return false;
-        }
-        if (self == null) {
-            if (other.self != null) {
-                return false;
-            }
-        } else if (!self.equals(other.self)) {
+        } else if (!shortDescription.equals(other.shortDescription)) {
             return false;
         }
         return true;
@@ -93,16 +80,13 @@ public class Resolution {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Resolution [self=");
-        builder.append(self);
-        builder.append(", id=");
+        builder.append("SourceSystem [id=");
         builder.append(id);
+        builder.append(", shortDescription=");
+        builder.append(shortDescription);
         builder.append(", description=");
         builder.append(description);
-        builder.append(", name=");
-        builder.append(name);
         builder.append("]");
         return builder.toString();
     }
-    
 }

@@ -1,6 +1,6 @@
-package com.dtcc.workflowmetrics.metricsitems.jira.webhook;
+package com.perficient.helm.events.jira.webhook;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
+import com.perficient.helm.events.jira.common.User;
 
 public class WebhookData {
     private WebhookTransition transition;

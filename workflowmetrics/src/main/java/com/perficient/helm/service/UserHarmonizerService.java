@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.service;
+package com.perficient.helm.service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -12,18 +12,18 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dtcc.workflowmetrics.entity.EventUser;
-import com.dtcc.workflowmetrics.entity.EventUserCustomField;
-import com.dtcc.workflowmetrics.entity.MetricsItems;
-import com.dtcc.workflowmetrics.entity.MetricsItemsCustomField;
-import com.dtcc.workflowmetrics.entity.MetricsItemsStatusTransition;
-import com.dtcc.workflowmetrics.entity.MetricsItemsTStatusTransition;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
-import com.dtcc.workflowmetrics.metricsitems.jira.issue.Issue;
-import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookData;
-import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookIssue;
-import com.dtcc.workflowmetrics.metricsitems.jira.webhook.WebhookTransition;
+import com.perficient.helm.entity.EventUser;
+import com.perficient.helm.entity.EventUserCustomField;
+import com.perficient.helm.entity.MetricsItems;
+import com.perficient.helm.entity.MetricsItemsCustomField;
+import com.perficient.helm.entity.MetricsItemsStatusTransition;
+import com.perficient.helm.entity.MetricsItemsTStatusTransition;
+import com.perficient.helm.events.jira.common.CustomField;
+import com.perficient.helm.events.jira.common.User;
+import com.perficient.helm.events.jira.issue.Issue;
+import com.perficient.helm.events.jira.webhook.WebhookData;
+import com.perficient.helm.events.jira.webhook.WebhookIssue;
+import com.perficient.helm.events.jira.webhook.WebhookTransition;
 
 @Service
 public class UserHarmonizerService {

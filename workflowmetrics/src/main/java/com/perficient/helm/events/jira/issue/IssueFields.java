@@ -1,15 +1,15 @@
-package com.dtcc.workflowmetrics.metricsitems.jira.issue;
+package com.perficient.helm.events.jira.issue;
 
 import java.util.ArrayList;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.common.CustomField;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.FixVersion;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.IssueLink;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Resolution;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.User;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Watches;
+import com.perficient.helm.events.jira.common.CustomField;
+import com.perficient.helm.events.jira.common.FixVersion;
+import com.perficient.helm.events.jira.common.IssueLink;
+import com.perficient.helm.events.jira.common.Issuetype;
+import com.perficient.helm.events.jira.common.Priority;
+import com.perficient.helm.events.jira.common.Resolution;
+import com.perficient.helm.events.jira.common.User;
+import com.perficient.helm.events.jira.common.Watches;
 
 public class IssueFields {
     private ArrayList<CustomField> customFields;

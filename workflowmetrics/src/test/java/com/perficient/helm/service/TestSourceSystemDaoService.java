@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.service;
+package com.perficient.helm.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -20,8 +20,9 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.dao.SourceSystemDao;
-import com.dtcc.workflowmetrics.entity.SourceSystem;
+import com.perficient.helm.dao.SourceSystemDao;
+import com.perficient.helm.entity.SourceSystem;
+import com.perficient.helm.service.SourceSystemDaoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

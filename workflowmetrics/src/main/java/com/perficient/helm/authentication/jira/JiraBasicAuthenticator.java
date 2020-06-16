@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.authentication.jira;
+package com.perficient.helm.authentication.jira;
 
 public class JiraBasicAuthenticator {
     

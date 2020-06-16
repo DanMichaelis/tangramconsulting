@@ -1,5 +1,5 @@
 
-package com.dtcc.workflowmetrics.entity;
+package com.perficient.helm.entity;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import com.dtcc.workflowmetrics.exception.MetricsLogicException;
+import com.perficient.helm.exception.MetricsLogicException;
 
 @Entity(name = "project")
 

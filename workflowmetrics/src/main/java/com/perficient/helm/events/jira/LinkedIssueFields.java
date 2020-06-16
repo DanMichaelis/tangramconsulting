@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.perficient.helm.events.jira;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Issuetype;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Priority;
-import com.dtcc.workflowmetrics.metricsitems.jira.common.StatusDetails;
+import com.perficient.helm.events.jira.common.Issuetype;
+import com.perficient.helm.events.jira.common.Priority;
+import com.perficient.helm.events.jira.common.StatusDetails;
 
 public class LinkedIssueFields {
     private String summary;

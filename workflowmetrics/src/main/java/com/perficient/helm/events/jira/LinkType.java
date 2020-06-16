@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.perficient.helm.events.jira;
 
 public class LinkType {
     private String id;

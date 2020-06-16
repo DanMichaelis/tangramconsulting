@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.perficient.helm.events.jira;
 
 public class LinkedIssue {
     private String id;

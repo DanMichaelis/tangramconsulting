@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.dataaccess.rest;
+package com.perficient.helm.dataaccess.rest;
 
 import org.springframework.web.client.RestTemplate;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.issue.Issue;
+import com.perficient.helm.events.jira.issue.Issue;
 
 public class IssueRESTDAO {
     public static Issue getIssue(String issueKey) {

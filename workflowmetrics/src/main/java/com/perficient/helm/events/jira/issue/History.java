@@ -1,8 +1,8 @@
-package com.dtcc.workflowmetrics.metricsitems.jira.issue;
+package com.perficient.helm.events.jira.issue;
 
 import java.util.ArrayList;
 
-import com.dtcc.workflowmetrics.metricsitems.jira.common.Author;
+import com.perficient.helm.events.jira.common.Author;
 
 public class History {
     private Integer id;

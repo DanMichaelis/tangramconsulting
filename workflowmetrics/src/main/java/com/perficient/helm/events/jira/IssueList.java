@@ -1,9 +1,9 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.perficient.helm.events.jira;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.dtcc.workflowmetrics.issueObjects.util.IssueComparatorFactory;
+import com.perficient.helm.issueObjects.util.IssueComparatorFactory;
 
 public class IssueList {
     private static final HashMap<String, ArrayList<IssueHistory>> issueList = new HashMap<String, ArrayList<IssueHistory>>();

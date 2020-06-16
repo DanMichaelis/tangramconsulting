@@ -1,9 +1,9 @@
-package com.dtcc.workflowmetrics.dao;
+package com.perficient.helm.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.dtcc.workflowmetrics.entity.Project;
-import com.dtcc.workflowmetrics.entity.ProjectId;
+import com.perficient.helm.entity.Project;
+import com.perficient.helm.entity.ProjectId;
 
 public interface ProjectDao extends CrudRepository<Project, ProjectId> {
 

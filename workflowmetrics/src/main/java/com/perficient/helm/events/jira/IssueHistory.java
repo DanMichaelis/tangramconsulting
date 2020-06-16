@@ -1,15 +1,15 @@
-package com.dtcc.workflowmetrics.metricsitems.jira;
+package com.perficient.helm.events.jira;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
 
-import com.dtcc.workflowmetrics.issueObjects.util.IssueConverter;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.perficient.helm.issueObjects.util.IssueConverter;
 
 public class IssueHistory {
 

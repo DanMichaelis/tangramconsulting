@@ -1,4 +1,4 @@
-package com.dtcc.workflowmetrics.util.simulator.workflows;
+package com.perficient.helm.util.simulator.workflows;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dtcc.workflowmetrics.dao.EventUserCustomFieldDao;
-import com.dtcc.workflowmetrics.dao.EventUserDao;
-import com.dtcc.workflowmetrics.metricsitems.jira.IssueHistory;
+import com.perficient.helm.dao.EventUserCustomFieldDao;
+import com.perficient.helm.dao.EventUserDao;
+import com.perficient.helm.events.jira.IssueHistory;
+import com.perficient.helm.util.simulator.workflows.WorkflowGenerator;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,9 +1,9 @@
-package com.dtcc.workflowmetrics.dao;
+package com.perficient.helm.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.dtcc.workflowmetrics.entity.EventUser;
-import com.dtcc.workflowmetrics.entity.EventUserId;
+import com.perficient.helm.entity.EventUser;
+import com.perficient.helm.entity.EventUserId;
 
 public interface EventUserDao extends CrudRepository<EventUser, EventUserId>  {
 

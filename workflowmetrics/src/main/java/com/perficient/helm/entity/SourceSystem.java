@@ -1,5 +1,5 @@
 
-package com.dtcc.workflowmetrics.entity;
+package com.perficient.helm.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
