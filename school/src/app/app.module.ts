@@ -12,6 +12,8 @@ import { HeaderBarComponent } from './navigation/header-bar/header-bar.component
 import { ServicesModule } from './services/services.module';
 import { GridsterModule } from 'angular-gridster2';
 import { BasecomponentsModule } from './basecomponents/basecomponents.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import { BasecomponentsModule } from './basecomponents/basecomponents.module';
         FontAwesomeModule,
         ServicesModule,
         GridsterModule,
-        BasecomponentsModule
+        BasecomponentsModule,
+        HttpClientModule,
+        AvatarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
