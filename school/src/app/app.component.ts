@@ -31,7 +31,7 @@ export class AppComponent {
     }
 
     public getAnotherIcon(): ClickableIcon {
-        const icon = ClickableIcon.getAvatarIcon('Dan Michaelis', 'ticklingdom@gmail.com', 'Dan Michaelis', 'Dan Michaelis', null);
+        const icon = ClickableIcon.getImageIcon('Crest', 'Crest', 'assets/crest.png');
         icon.setRound(true);
         return icon;
     }
