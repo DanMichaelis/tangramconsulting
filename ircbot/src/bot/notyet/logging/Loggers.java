@@ -2,17 +2,17 @@ package bot.notyet.logging;
 
 import java.io.File;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder;
 import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilder;
 import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory;
 import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Loggers {
-	private static final Logger commandLogger = LoggerFactory.getLogger("command");
-	private static final Logger parsingLogger = LoggerFactory.getLogger("parse-errors");
-	private static final Logger debugLogger = LoggerFactory.getLogger("debug");
+	private static final Logger commandLogger = LogManager.getLogger("command");
+	private static final Logger parsingLogger = LogManager.getLogger("parse-errors");
+	private static final Logger debugLogger = LogManager.getLogger("debug");
 	private static final ConfigurationBuilder<BuiltConfiguration> builder
 	 = ConfigurationBuilderFactory.newConfigurationBuilder();
 
@@ -34,6 +34,6 @@ public class Loggers {
 		
 		appender.addAttribute("fileName", File.separator +  appender.getName());
 		
-		return LoggerFactory.getLogger(channel);
+		return LogManager.getLogger(channel);
 	}
 }

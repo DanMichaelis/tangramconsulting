@@ -4,7 +4,7 @@
 .settings/
 
 # Maven directories
-.target
+target/
 bin/
 
 # Compiled class file
