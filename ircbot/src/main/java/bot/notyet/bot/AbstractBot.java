@@ -17,8 +17,12 @@ public class AbstractBot {
 		this.botName = name;
 		this.botRealName = realName;
 		this.nickName = nickName;
+	}
+	
+	void initialize() {
+		getDefaultServers();
+		connectToServers(servers);
 		
-		initializeDefaultServers(botName);
 	}
 	
 	private ArrayList<Server> initializeDefaultServers(String botName) {

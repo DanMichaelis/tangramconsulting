@@ -1,0 +1,32 @@
+{
+	"botName": "TestBot",
+	"defaultServers": [
+		{
+			"serverName": "XXXChatters",
+			"serverUrl": "www.xxxchatters.com",
+			"serverPort": 6697,
+			"ssl": false
+		},
+		{
+			"serverName": "DALNet",
+			"serverUrl": "irc.dal.net",
+			"serverPort": 6697,
+			"ssl": false
+		}
+	],
+	"botName": "JunkBot",
+	"defaultServers": [
+		{
+			"serverName": "XXXChatters",
+			"serverUrl": "www.xxxchatters.com",
+			"serverPort": 6697,
+			"ssl": false
+		},
+		{
+			"serverName": "JunkNet",
+			"serverUrl": "irc.dal.net",
+			"serverPort": 6697,
+			"ssl": false
+		}
+	]
+}
