@@ -20,8 +20,8 @@ public class AbstractBot {
 	}
 	
 	void initialize() {
-		getDefaultServers();
-		connectToServers(servers);
+//		getDefaultServers();
+//		connectToServers(servers);
 		
 	}
 	
