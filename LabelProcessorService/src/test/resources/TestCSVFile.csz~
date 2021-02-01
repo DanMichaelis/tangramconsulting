@@ -1,0 +1,6 @@
+﻿NEXT,Default,Next,iso-8859-1
+CANCEL,Default,Cancel,
+FIRST_NAME,Default,First Name,
+LAST_NAME,Default,Last Name,
+ERROR_1,Default,This is an error message,
+ERROR_2,Default,This is an error message containing a placeholder (%s) for a formatted string,
