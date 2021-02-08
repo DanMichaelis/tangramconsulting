@@ -2,24 +2,33 @@ package org.csbs.labelprocessor.domain;
 
 import java.io.Serializable;
 
-import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvBindByPosition;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import com.opencsv.bean.CsvBindByName;
+
+@Entity
+@Table(name = "EXTERNALIZED_STRINGS")
 public class StringConfiguration implements Serializable {
 
 	private static final long serialVersionUID = -4731213277494523632L;
 
-	@CsvBindByPosition(position = 0)
+	@Column(name = "STRING_KEY")
+	@CsvBindByName(column = "Key")
 	private String key;
-	@CsvBindByPosition(position = 1)
+	@Column(name = "DISPLAY_GROUP")
+	@CsvBindByName(column = "Group")
 	private String group;
-	@CsvBindByPosition(position = 2)
+	@Column(name = "DISPLAY_VALUE")
+	@CsvBindByName(column = "Display")
 	private String displayValue;
-	@CsvBindByPosition(position = 3)
+	@Column(name = "LANGUAGE")
+	@CsvBindByName(column = "Language")
 	private String characterSet;
 
 	public StringConfiguration() {
-	};
+	}
 
 	public StringConfiguration(String key, String group, String displayValue, String characterSet) {
 		this.key = key;
@@ -120,8 +129,9 @@ public class StringConfiguration implements Serializable {
 			if (other.getKey() != null)
 				return false;
 		} else if (!key.equals(other.key)) {
-			System.out.println("key length:  " + key.length());
-			System.out.println("other length: " + other.key.length());
+			System.out.println("Key:  " + key + "  Other:  " + other);
+			System.out.println("key length:  " + getKey().length());
+			System.out.println("other length: " + other.getKey().length());
 			for (int index = 0; index < key.length(); index++) {
 				if (key.charAt(index) == other.key.charAt(index)) {
 					System.out.print(key.charAt(index));
