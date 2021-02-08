@@ -31,8 +31,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NMLSScreenConfigurationManagementService {
 
-	//@Autowired
-	//StringConfigurationDAO dao;
+	@Autowired
+	StringConfigurationDAO dao;
 
 	/**
 	 * Gets the list of all string configurations, including the DEFAULT string
