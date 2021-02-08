@@ -31,8 +31,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NMLSScreenConfigurationManagementService {
 
-	@Autowired
-	StringConfigurationDAO dao;
+	//@Autowired
+	//StringConfigurationDAO dao;
 
 	/**
 	 * Gets the list of all string configurations, including the DEFAULT string
@@ -41,8 +41,8 @@ public class NMLSScreenConfigurationManagementService {
 	 * @return
 	 */
 	public List<StringConfiguration> getAllScreenConfigurations() {
-		return dao.findAll();
-
+		//return dao.findAll();
+		return null;
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class NMLSScreenConfigurationManagementService {
 	 */
 	public List<StringConfiguration> getAllForDisplayGroup(String displayGroup) {
 		// Retrieve both the default configs, and the configs for the specified group
-		List<StringConfiguration> displayGroupConfigs = dao.findByDisplayGroup(displayGroup);
+		//List<StringConfiguration> displayGroupConfigs = dao.findByDisplayGroup(displayGroup);
 		List<StringConfiguration> defaultConfigs = getDefaultConfiguration();
 
 		// Create a HashMap of the default configs, so that we can replace the values
@@ -70,9 +70,9 @@ public class NMLSScreenConfigurationManagementService {
 
 		// If there are any values in the display group, update the hashmap with the
 		// display group values. If not, this won't do anything.
-		for (StringConfiguration sc : displayGroupConfigs) {
-			configHash.put(sc.getKey(), sc);
-		}
+		//for (StringConfiguration sc : displayGroupConfigs) {
+		//	configHash.put(sc.getKey(), sc);
+		//}
 
 		return new ArrayList<StringConfiguration>(configHash.values());
 	}
@@ -83,7 +83,8 @@ public class NMLSScreenConfigurationManagementService {
 	 * @return
 	 */
 	public List<StringConfiguration> getDefaultConfiguration() {
-		return dao.findByDisplayGroup("DEFAULT");
+		//return dao.findByDisplayGroup("DEFAULT");
+		return null;
 	}
 
 	/**
@@ -101,11 +102,11 @@ public class NMLSScreenConfigurationManagementService {
 				configs.remove(sc);
 			}
 		}
-		dao.saveAll(configs);
+		//dao.saveAll(configs);
 	}
 
 	public void removeDisplayGroup(String displayGroup) {
-		dao.deleteByDisplayGroup(displayGroup);
+		//dao.deleteByDisplayGroup(displayGroup);
 	}
 
 }

@@ -2,28 +2,28 @@ package org.csbs.labelprocessor.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
 import com.opencsv.bean.CsvBindByName;
 
-@Entity
-@Table(name = "EXTERNALIZED_STRINGS")
+//@Entity
+//@Table(name = "EXTERNALIZED_STRINGS")
 public class StringConfiguration implements Serializable {
 
 	private static final long serialVersionUID = -4731213277494523632L;
 
-	@Column(name = "STRING_KEY")
+//	@Column(name = "STRING_KEY")
 	@CsvBindByName(column = "Key")
 	private String key;
-	@Column(name = "DISPLAY_GROUP")
+//	@Column(name = "DISPLAY_GROUP")
 	@CsvBindByName(column = "Group")
 	private String group;
-	@Column(name = "DISPLAY_VALUE")
+//	@Column(name = "DISPLAY_VALUE")
 	@CsvBindByName(column = "Display")
 	private String displayValue;
-	@Column(name = "LANGUAGE")
+//	@Column(name = "LANGUAGE")
 	@CsvBindByName(column = "Language")
 	private String characterSet;
 
