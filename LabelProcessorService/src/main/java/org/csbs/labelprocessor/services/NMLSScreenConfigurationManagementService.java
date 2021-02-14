@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.csbs.labelprocessor.dataaccess.StringConfigurationDAO;
 import org.csbs.labelprocessor.domain.StringConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

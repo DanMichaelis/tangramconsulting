@@ -109,10 +109,6 @@ class TestCSVFormatter {
 		return configsFromFile;
 	}
 
-	private File getTestCSVFile(String testFileName) {
-		return new File(Thread.currentThread().getContextClassLoader().getResource(testFileName).getFile());
-	}
-
 	private void compareConfigLists(List<StringConfiguration> list1, String list1SourceName,
 			List<StringConfiguration> list2, String list2SourceName) {
 		Iterator<StringConfiguration> list1Iterator = list1.iterator();

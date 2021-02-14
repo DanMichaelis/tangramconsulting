@@ -1,8 +1,5 @@
 package org.csbs.labelprocessor.dataaccess;
 
-import java.util.List;
-
-import org.csbs.labelprocessor.domain.StringConfiguration;
 //import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StringConfigurationDAO {

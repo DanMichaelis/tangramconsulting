@@ -73,8 +73,6 @@ public class ReactConfigurationController {
 	 */
 	@GetMapping("/screenConfig/downloadScreenConfiguration")
 	public ResponseEntity<Resource> downloadFile(@PathVariable String displayGroup, HttpServletRequest request) {
-
-		List<StringConfiguration> configs = getResponseForDisplayGroup(displayGroup);
 		
 		// Load file as Resource
 		Resource resource = fileStorageService.loadFileAsResource(displayGroup);
