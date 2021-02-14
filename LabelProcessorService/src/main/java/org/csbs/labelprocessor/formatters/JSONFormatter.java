@@ -3,6 +3,7 @@ package org.csbs.labelprocessor.formatters;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.StringJoiner;
 
 import org.csbs.labelprocessor.domain.StringConfiguration;
 
@@ -13,14 +14,13 @@ public class JSONFormatter {
 
 	public static final BufferedInputStream stringConfigurationsToJSON(List<StringConfiguration> configs) {
 		JSONFormatter.configuration configuration = new JSONFormatter.configuration(configs);
-		String result = null;
-		try {
-			result = new ObjectMapper().writeValueAsString(configuration);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		StringJoiner joiner = new StringJoiner(",", "{", "}");
+		
+		for (StringConfiguration sc : configs) {
+			joiner.add("\"" + sc.getKey() + "\":\"" + sc.getDisplayValue() + "\"");
 		}
-		ByteArrayInputStream bais = new ByteArrayInputStream(result.getBytes());
+		
+		ByteArrayInputStream bais = new ByteArrayInputStream(joiner.toString().getBytes());
 		BufferedInputStream bis = new BufferedInputStream(bais);
 		return bis;
 	}
