@@ -1,0 +1,25 @@
+.menu-icon {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  height: 20px;
+  width: 20px;
+  float: left;
+}
+
+mat-nav-list.list-horizontal {
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  .mat-list-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    width: 20%;
+    text-align: center;
+    border-style: solid;
+    border-color: #FFCC00;
+  }
+}
