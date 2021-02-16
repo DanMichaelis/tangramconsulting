@@ -1,9 +1,6 @@
-<div class="navigation_bar">
-	<img src="assets/University-Icon.jpg" class="menu-icon">
-	<mat-nav-list class="list-horizontal">
-		<mat-list-item>Item 1</mat-list-item>
-		<mat-list-item>Item 2</mat-list-item>
-		<mat-list-item>Item 3</mat-list-item>
-		<mat-list-item>Item 4</mat-list-item>
-	</mat-nav-list>
+<div class="navigation-bar">
+    <img src="assets/University-Icon.png" class="menu-icon">
+    <mat-nav-list class="list-horizontal">
+        <mat-list-item *ngFor="let menuItem of menuItems">{{menuItem.displayName}}</mat-list-item>
+    </mat-nav-list>
 </div>
