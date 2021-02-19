@@ -1,4 +1,4 @@
-package org.csbs.configurationservice.exceptions;
+package org.csbs.configurationservice.exception;
 
 
 public class FileStorageException extends RuntimeException {

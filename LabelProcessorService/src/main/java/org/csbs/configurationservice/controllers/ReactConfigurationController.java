@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.csbs.configurationservice.domain.StringConfiguration;
+import org.csbs.configurationservice.exception.DocConstants;
 import org.csbs.configurationservice.formatters.CSVFormatter;
 import org.csbs.configurationservice.formatters.JSONFormatter;
 import org.csbs.configurationservice.services.FileStorageService;
@@ -20,14 +21,32 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Validated
+@RequestMapping
+@Tag(name = "configuration", description = "The configuration API")
+@Slf4j
+@ApiResponses(value = {
+        @ApiResponse(responseCode = "401", description = DocConstants.HTTP_401, content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ApiErrorResponse.class))
+        })
+})
 public class ReactConfigurationController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReactConfigurationController.class);

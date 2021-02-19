@@ -1,8 +1,8 @@
 package org.csbs.configurationservice.services;
 
-import org.csbs.configurationservice.configuration.FileStorageProperties;
-import org.csbs.configurationservice.exceptions.FileNotFoundException;
-import org.csbs.configurationservice.exceptions.FileStorageException;
+import org.csbs.configurationservice.config.FileStorageProperties;
+import org.csbs.configurationservice.exception.FileNotFoundException;
+import org.csbs.configurationservice.exception.FileStorageException;
 import org.csbs.configurationservice.formatters.CSVFormatter;
 import org.csbs.configurationservice.formatters.JSONFormatter;
 import org.springframework.beans.factory.annotation.Autowired;

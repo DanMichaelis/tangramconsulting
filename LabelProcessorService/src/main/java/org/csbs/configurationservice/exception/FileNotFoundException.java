@@ -1,4 +1,4 @@
-package org.csbs.configurationservice.exceptions;
+package org.csbs.configurationservice.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

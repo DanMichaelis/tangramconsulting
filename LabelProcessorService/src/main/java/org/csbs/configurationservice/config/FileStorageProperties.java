@@ -1,4 +1,4 @@
-package org.csbs.configurationservice.configuration;
+package org.csbs.configurationservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
